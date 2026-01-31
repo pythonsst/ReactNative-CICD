@@ -1,6 +1,14 @@
 default_platform(:android)
 
 platform :android do
+  # Note: This setup uses ONE Play Store app with multiple flavors/environments.
+  # If you want separate Play Store apps per environment, use different package
+  # names (and separate Play Console apps) and adjust ANDROID_PACKAGE_NAME per lane.
+  def require_env!(key)
+    value = ENV[key]
+    UI.user_error!("Missing required env var: #{key}") if value.to_s.strip.empty?
+    value
+  end
 
   desc "🧪 Run unit tests"
   lane :test do
@@ -8,30 +16,30 @@ platform :android do
   end
 
   desc "🚀 Deploy DEVELOPMENT flavor to Internal Testing"
-lane :development_internal do
-  gradle(task: "clean")
+  lane :development_internal do
+    gradle(task: "clean")
 
-  android_set_version_code(
-    gradle_file: "app/build.gradle",
-    version_code: android_get_version_code(
-      gradle_file: "app/build.gradle"
-    ).to_i + 1
-  )
+    android_set_version_code(
+      gradle_file: "app/build.gradle",
+      version_code: android_get_version_code(
+        gradle_file: "app/build.gradle"
+      ).to_i + 1
+    )
 
-  gradle(
-    task: "bundle",
-    flavor: "development",
-    build_type: "Release"
-  )
+    gradle(
+      task: "bundle",
+      flavor: "development",
+      build_type: "Release"
+    )
 
-  upload_to_play_store(
-    track: 'internal',
-    json_key: "fastlane/keys/reactnativeignitekit-5b01e2ebe216.json",
-    package_name: "com.validus.ignitekit",
-    skip_upload_apk: true,
-    skip_upload_screenshots: false
-  )
-end
+    upload_to_play_store(
+      track: 'internal',
+      json_key: require_env!("ANDROID_PLAY_STORE_JSON_KEY_PATH"),
+      package_name: require_env!("ANDROID_PACKAGE_NAME"),
+      skip_upload_apk: true,
+      skip_upload_screenshots: false
+    )
+  end
 
 
   desc "🧪 Deploy SIT flavor to Open Testing (Beta)"
@@ -53,8 +61,8 @@ end
 
     upload_to_play_store(
       track: 'beta',
-      json_key: "fastlane/keys/reactnativeignitekit-5b01e2ebe216.json",
-      package_name: "com.validus.ignitekit",
+      json_key: require_env!("ANDROID_PLAY_STORE_JSON_KEY_PATH"),
+      package_name: require_env!("ANDROID_PACKAGE_NAME"),
       skip_upload_apk: true,
       skip_upload_screenshots: false
     )
@@ -79,8 +87,8 @@ end
 
     upload_to_play_store(
       track: 'closed',
-      json_key: "fastlane/keys/reactnativeignitekit-5b01e2ebe216.json",
-      package_name: "com.validus.ignitekit",
+      json_key: require_env!("ANDROID_PLAY_STORE_JSON_KEY_PATH"),
+      package_name: require_env!("ANDROID_PACKAGE_NAME"),
       skip_upload_apk: true,
       skip_upload_screenshots: false
     )
@@ -113,8 +121,8 @@ end
 
     upload_to_play_store(
       track: 'production',
-      json_key: "fastlane/keys/reactnativeignitekit-5b01e2ebe216.json",
-      package_name: "com.validus.ignitekit",
+      json_key: require_env!("ANDROID_PLAY_STORE_JSON_KEY_PATH"),
+      package_name: require_env!("ANDROID_PACKAGE_NAME"),
       skip_upload_apk: true,
       skip_upload_screenshots: false
     )

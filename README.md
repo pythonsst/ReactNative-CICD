@@ -46,6 +46,33 @@ If everything is set up _correctly_, you should see your new app running in your
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
+## Environment files
+
+Use `.env.signing.example` as a template and create your own local `.env.signing`. The `.env.signing` file is intentionally ignored by git.
+
+## Android Fastlane (Play Store)
+
+Fastlane lanes live in `android/fastlane/Fastfile`. For release lanes, set these env vars:
+
+- `ANDROID_PLAY_STORE_JSON_KEY_PATH`
+- `ANDROID_PACKAGE_NAME`
+
+Copy `android/fastlane/.env.example` to `android/fastlane/.env` and fill in your values (keep the JSON key file out of git). Then run a lane, for example:
+
+```bash
+bundle exec fastlane android development_internal
+```
+
+Lane guide (choose one):
+- `development_internal` → Internal testing (fastest for early QA)
+- `sit_beta` → Open testing (beta track)
+- `uat_closed` → Closed testing (limited testers)
+- `production_release` → Production (public)
+
+Notes:
+- You must create the app in Google Play Console first (Fastlane cannot create it).
+- Keep your service account JSON key private and out of git.
+
 ## Step 3: Modifying your App
 
 Now that you have successfully run the app, let's modify it.

@@ -55,6 +55,20 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 🏁 Deploy PRODUCTION flavor to Production
 
+## Play Store service account (required for deploy)
+
+Fastlane uploads need a Google Play service account JSON key. Create it once in Google Play Console:
+
+1) Go to Play Console → Setup → API access  
+2) Link a Google Cloud project (or create one)  
+3) Create a Service Account and grant appropriate permissions  
+4) Create a JSON key and download it  
+
+Then set these env vars (example in `android/fastlane/.env.example`):
+
+- `ANDROID_PLAY_STORE_JSON_KEY_PATH` (path to the JSON file)
+- `ANDROID_PACKAGE_NAME` (your app id, e.g. `com.example.app`)
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

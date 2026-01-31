@@ -1,2 +1,2 @@
-json_key_file("android/fastlane/keys/reactnativeignitekit-5b01e2ebe216.json") # 🔐 JSON key used for Google Play Developer API
-package_name("com.validus.ignitekit")                                          # 📦 Your app’s package name
+json_key_file(ENV["ANDROID_PLAY_STORE_JSON_KEY_PATH"]) if ENV["ANDROID_PLAY_STORE_JSON_KEY_PATH"] # 🔐 JSON key used for Google Play Developer API
+package_name(ENV["ANDROID_PACKAGE_NAME"]) if ENV["ANDROID_PACKAGE_NAME"]                          # 📦 Your app’s package name

@@ -75,6 +75,7 @@ yarn-error.log
 
 # ❗️Ignore all environment files (currently included only for testing/demo purposes)
 # NOTE: These will be removed in production. Do not include real credentials or secrets.
+# Use `.env.signing` locally from `.env.signing.example`
 .env*
 !.env.signing.example
 

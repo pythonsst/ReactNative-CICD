@@ -6,17 +6,45 @@ apply plugin: "com.facebook.react"
 
 // Load secure signing properties
 def signingPropsFile = rootProject.file("../.env.signing")
+def isReleaseBuild = gradle.startParameter.taskNames.any { it.toLowerCase().contains("release") || it.toLowerCase().contains("bundle") }
 
 if (signingPropsFile.exists()) {
     def signingProps = new Properties()
     signingProps.load(new FileInputStream(signingPropsFile))
 
-    ext.UPLOAD_STORE_FILE      = signingProps['UPLOAD_STORE_FILE']
-    ext.UPLOAD_STORE_PASSWORD = signingProps['UPLOAD_STORE_PASSWORD']
-    ext.UPLOAD_KEY_ALIAS      = signingProps['UPLOAD_KEY_ALIAS']
-    ext.UPLOAD_KEY_PASSWORD   = signingProps['UPLOAD_KEY_PASSWORD']
+    // Support both old and new key names.
+    ext.UPLOAD_STORE_FILE      = signingProps['UPLOAD_STORE_FILE'] ?: signingProps['KEYSTORE_PATH']
+    ext.UPLOAD_STORE_PASSWORD  = signingProps['UPLOAD_STORE_PASSWORD'] ?: signingProps['KEYSTORE_PASSWORD']
+    ext.UPLOAD_KEY_ALIAS       = signingProps['UPLOAD_KEY_ALIAS'] ?: signingProps['KEY_ALIAS']
+    ext.UPLOAD_KEY_PASSWORD    = signingProps['UPLOAD_KEY_PASSWORD'] ?: signingProps['KEY_PASSWORD']
+
+    def missingKeys = []
+    if (!ext.UPLOAD_STORE_FILE)      missingKeys << "UPLOAD_STORE_FILE (or KEYSTORE_PATH)"
+    if (!ext.UPLOAD_STORE_PASSWORD)  missingKeys << "UPLOAD_STORE_PASSWORD (or KEYSTORE_PASSWORD)"
+    if (!ext.UPLOAD_KEY_ALIAS)       missingKeys << "UPLOAD_KEY_ALIAS (or KEY_ALIAS)"
+    if (!ext.UPLOAD_KEY_PASSWORD)    missingKeys << "UPLOAD_KEY_PASSWORD (or KEY_PASSWORD)"
+
+    if (!missingKeys.isEmpty()) {
+        if (isReleaseBuild) {
+            throw new RuntimeException("🛑 .env.signing is missing required keys: " + missingKeys.join(", "))
+        } else {
+            // Allow debug builds without release signing.
+            ext.UPLOAD_STORE_FILE = "app/debug.keystore"
+            ext.UPLOAD_STORE_PASSWORD = "android"
+            ext.UPLOAD_KEY_ALIAS = "androiddebugkey"
+            ext.UPLOAD_KEY_PASSWORD = "android"
+        }
+    }
 } else {
-    throw new FileNotFoundException("🛑 .env.signing file is missing.")
+    if (isReleaseBuild) {
+        throw new FileNotFoundException("🛑 .env.signing file is missing.")
+    } else {
+        // Allow debug builds without release signing.
+        ext.UPLOAD_STORE_FILE = "app/debug.keystore"
+        ext.UPLOAD_STORE_PASSWORD = "android"
+        ext.UPLOAD_KEY_ALIAS = "androiddebugkey"
+        ext.UPLOAD_KEY_PASSWORD = "android"
+    }
 }
 
 // Environment files per build type + flavor
