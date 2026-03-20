@@ -1,5 +1,8 @@
 name: EAS Update (OTA)
 
+# Pushes a JavaScript-only over-the-air update to a channel.
+# Use this for JS/asset changes that don't require a new native build.
+# See docs/EAS.md — "OTA UPDATE OR NEW BUILD?" for decision guidance.
 on:
   workflow_dispatch:
     inputs:
@@ -13,12 +16,18 @@ on:
           - staging
           - production
       message:
-        description: 'Update message'
+        description: 'Update message (shown in EAS dashboard)'
         required: false
         default: 'OTA update'
 
+# Cancel any in-flight update to the same channel to avoid race conditions.
+concurrency:
+  group: eas-update-${{ github.event.inputs.channel }}
+  cancel-in-progress: true
+
 jobs:
   update:
+    name: EAS Update → ${{ github.event.inputs.channel }}
     runs-on: ubuntu-latest
 
     steps:
@@ -34,7 +43,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Setup Expo and EAS
+      - name: Setup EAS
         uses: expo/expo-github-action@v8
         with:
           eas-version: latest

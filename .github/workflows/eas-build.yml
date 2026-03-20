@@ -1,5 +1,7 @@
 name: EAS Build
 
+# Trigger manually from the Actions tab.
+# Choose a profile (development / staging / production) and platform (all / android / ios).
 on:
   workflow_dispatch:
     inputs:
@@ -22,8 +24,14 @@ on:
           - android
           - ios
 
+# Cancel any in-flight build for the same profile + platform to avoid wasted minutes.
+concurrency:
+  group: eas-build-${{ github.event.inputs.profile }}-${{ github.event.inputs.platform }}
+  cancel-in-progress: true
+
 jobs:
   build:
+    name: EAS Build (${{ github.event.inputs.profile }} / ${{ github.event.inputs.platform }})
     runs-on: ubuntu-latest
 
     steps:
@@ -39,7 +47,13 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Setup Expo and EAS
+      # Informational only — does not block the build.
+      # Fix any reported mismatches before the next release.
+      - name: Check version consistency
+        run: yarn eas:version:get
+        continue-on-error: true
+
+      - name: Setup EAS
         uses: expo/expo-github-action@v8
         with:
           eas-version: latest

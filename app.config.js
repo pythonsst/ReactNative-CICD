@@ -1,20 +1,34 @@
 /**
- * Explicit app config for EAS Update (bare workflow).
- * Ensures runtimeVersion is correctly read during `eas update` bundling.
- * Channel is set in eas.json and injected at build time.
+ * EAS app config (bare workflow).
  *
- * Run `eas init` to link this project to your EAS account and
- * populate the projectId below.
+ * This file is only used by EAS Build / EAS Update — it is NOT used by the
+ * Metro bundler or react-native CLI at dev time.
+ *
+ * ─── ONE-TIME SETUP ─────────────────────────────────────────────────────────
+ *  1. npm install -g eas-cli
+ *  2. eas login
+ *  3. eas init          ← auto-fills owner + projectId below
+ *  4. Replace YOUR_APP_STORE_APP_ID in eas.json with your App Store numeric ID
+ *  5. Add EXPO_TOKEN secret to your GitHub repo settings
+ * ────────────────────────────────────────────────────────────────────────────
  */
-const appJson = require('./app.json');
+
+const pkg = require('./package.json');
 
 module.exports = {
-  name: appJson.name,
+  name: 'ReactNativeIgniteKit',
   slug: 'reactnativeignitekit',
-  version: '0.0.1',
+
+  // Kept in sync with package.json — run `yarn eas:version:get` to verify
+  version: pkg.version,
+
+  // OTA updates: clients only receive updates built with the same runtimeVersion.
+  // 'appVersion' policy ties runtimeVersion to the native app version automatically.
   runtimeVersion: {
     policy: 'appVersion',
   },
+
+  // ─── FILL IN AFTER RUNNING `eas init` ───────────────────────────────────
   owner: 'YOUR_EXPO_ACCOUNT',
   extra: {
     eas: {
@@ -24,6 +38,8 @@ module.exports = {
   updates: {
     url: 'https://u.expo.dev/YOUR_EAS_PROJECT_ID',
   },
+  // ────────────────────────────────────────────────────────────────────────
+
   android: {
     package: 'com.validus.ignitekit',
   },

@@ -7,8 +7,10 @@
     "development": {
       "distribution": "store",
       "channel": "development",
-      "environment": "development",
       "autoIncrement": true,
+      "android": {
+        "gradleCommand": ":app:bundleDevelopmentRelease"
+      },
       "ios": {
         "scheme": "ReactNativeIgniteKit dev"
       }
@@ -16,8 +18,10 @@
     "staging": {
       "distribution": "store",
       "channel": "staging",
-      "environment": "staging",
       "autoIncrement": true,
+      "android": {
+        "gradleCommand": ":app:bundleSitRelease"
+      },
       "ios": {
         "scheme": "ReactNativeIgniteKit stag"
       }
@@ -26,10 +30,12 @@
       "distribution": "store",
       "channel": "production",
       "autoIncrement": true,
+      "android": {
+        "gradleCommand": ":app:bundleProductionRelease"
+      },
       "ios": {
         "scheme": "ReactNativeIgniteKit prod"
-      },
-      "environment": "production"
+      }
     }
   },
   "submit": {

@@ -5,7 +5,10 @@ apply plugin: "com.facebook.react"
 
 
 // Load secure signing properties
+// When building via EAS (EAS_BUILD=true), signing is handled by EAS credentials
+// and the local .env.signing file is not required.
 def signingPropsFile = rootProject.file("../.env.signing")
+def isEasBuild = System.getenv("EAS_BUILD") == "true"
 
 if (signingPropsFile.exists()) {
     def signingProps = new Properties()
@@ -15,8 +18,18 @@ if (signingPropsFile.exists()) {
     ext.UPLOAD_STORE_PASSWORD = signingProps['UPLOAD_STORE_PASSWORD']
     ext.UPLOAD_KEY_ALIAS      = signingProps['UPLOAD_KEY_ALIAS']
     ext.UPLOAD_KEY_PASSWORD   = signingProps['UPLOAD_KEY_PASSWORD']
+} else if (!isEasBuild) {
+    throw new FileNotFoundException(
+        "🛑 .env.signing file is missing.\n" +
+        "   Copy .env.signing.example → .env.signing and fill in your keystore values.\n" +
+        "   See docs/EAS.md for setup instructions."
+    )
 } else {
-    throw new FileNotFoundException("🛑 .env.signing file is missing.")
+    // EAS build: signing is managed by EAS credentials — set safe defaults
+    ext.UPLOAD_STORE_FILE      = ""
+    ext.UPLOAD_STORE_PASSWORD = ""
+    ext.UPLOAD_KEY_ALIAS      = ""
+    ext.UPLOAD_KEY_PASSWORD   = ""
 }
 
 // Environment files per build type + flavor

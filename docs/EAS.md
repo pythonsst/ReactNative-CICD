@@ -1,147 +1,225 @@
 ╭─────────────────────────────────────────────────────────────────────────────╮
-│  EAS — Build · Submit · OTA                                                 │
-│  Complete guide for ReactNativeIgniteKit builds, submissions, and OTA       │
+│  EAS — Build · Submit · Update (OTA)                                        │
+│  ReactNativeIgniteKit  ·  Complete reference guide                          │
 ╰─────────────────────────────────────────────────────────────────────────────╯
 
-  Quick terminal reference:  yarn eas:help
+  Quick help in terminal:  yarn eas:help
 
 
-  SETUP (first time)
-  ──────────────────
-  1. Install EAS CLI:    npm install -g eas-cli
-  2. Login:              eas login
-  3. Link project:       eas init
-     → This populates projectId in app.config.js and links to your Expo account
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ONE-TIME SETUP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  4. Add GitHub secret:  EXPO_TOKEN  (from expo.dev → Access Tokens)
-  5. Fill in eas.json:   Replace YOUR_APP_STORE_APP_ID with your App Store app ID
+  Step 1 — Install EAS CLI
+  ────────────────────────
+  npm install -g eas-cli
+  eas --version          # verify: must be >= 16.32.0
+
+  Step 2 — Login to Expo
+  ──────────────────────
+  eas login
+  eas whoami             # confirm you're authenticated
+
+  Step 3 — Link the project
+  ─────────────────────────
+  eas init               # auto-populates owner + projectId in app.config.js
+
+  Step 4 — Update placeholders in app.config.js
+  ─────────────────────────────────────────────
+  After `eas init` the following are filled in automatically:
+    owner      →  your Expo account username
+    projectId  →  your EAS project UUID
+    updates.url
+
+  Step 5 — Update eas.json with your App Store App ID
+  ────────────────────────────────────────────────────
+  Find your numeric App Store App ID in App Store Connect → App Information.
+  Replace every "YOUR_APP_STORE_APP_ID" in eas.json with that number.
+  (Android tracks are pre-configured; no changes needed there.)
+
+  Step 6 — Configure local signing (for local/Fastlane builds only)
+  ─────────────────────────────────────────────────────────────────
+  cp .env.signing.example .env.signing
+  # Fill in your keystore path and passwords.
+  # EAS Build manages signing automatically — this file is only needed for
+  # local Gradle / Fastlane builds.
+
+  Step 7 — Add GitHub Secret
+  ──────────────────────────
+  Go to: GitHub repo → Settings → Secrets and variables → Actions → New secret
+
+  ┌─────────────────┬────────────────────────────────────────────────────────┐
+  │ Secret name     │ Where to get it                                        │
+  ├─────────────────┼────────────────────────────────────────────────────────┤
+  │ EXPO_TOKEN      │ expo.dev → Account Settings → Access Tokens → Create  │
+  └─────────────────┴────────────────────────────────────────────────────────┘
+
+  Step 8 — Verify setup
+  ─────────────────────
+  yarn eas:version:get   # confirm versions are consistent
+  eas build:list         # should return your project's build history (even if empty)
 
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   ENVIRONMENTS
-  ────────────
-  development   →  Internal testing   (dev team, no review delay)
-  staging       →  Closed/alpha       (QA, stakeholders, invite-only)
-  production    →  Production         (public — Play Store / App Store)
-
-  Each environment has its own OTA channel baked in at build time.
-  Pushing an update to staging NEVER reaches development or production.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   ┌──────────────┬──────────────────────┬────────────────────┬──────────────┐
   │              │  development         │  staging           │  production  │
   ├──────────────┼──────────────────────┼────────────────────┼──────────────┤
-  │ Android      │  Internal testing    │  Closed testing    │  Production  │
+  │ Android      │  Internal testing    │  Closed / alpha    │  Production  │
   │ iOS          │  TestFlight internal │  TestFlight ext.   │  App Store   │
   │ OTA channel  │  development         │  staging           │  production  │
-  │ iOS scheme   │  ReactNativeIgniteKit dev  │  ReactNativeIgniteKit stag  │  ReactNativeIgniteKit prod  │
-  │ Audience     │  Build team          │  Invite-only       │  Everyone    │
+  │ iOS scheme   │  …IgniteKit dev      │  …IgniteKit stag   │  …IgniteKit prod │
+  │ Android task │  bundleDevelopment…  │  bundleSitRelease  │  bundleProduction… │
+  │ Audience     │  Dev team            │  QA / stakeholders │  Everyone    │
   └──────────────┴──────────────────────┴────────────────────┴──────────────┘
 
+  ⚠️  Android flavor note
+      The project has four Android flavors: production, development, sit, uat.
+      EAS maps staging → sit (System Integration Testing) via gradleCommand in
+      eas.json. If you need a true "staging" flavor, add it to productFlavors
+      in android/app/build.gradle and update eas.json accordingly.
 
+  Each environment bakes its OTA channel into the binary at build time.
+  An update pushed to "staging" will NEVER reach development or production.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   OTA UPDATE OR NEW BUILD?
-  ────────────────────────
-  Rule of thumb: if Metro can bundle it, an OTA update is enough.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  JS / React Native code    →  OTA ✓
-  Images, fonts, assets     →  OTA ✓
-  Expo config (icons, etc.) →  OTA ✓
-  New native dependency     →  New build
-  New / changed permissions →  New build
-  runtimeVersion bump       →  New build
-  Java / Kotlin / Swift     →  New build
+  Rule: if Metro can bundle it, an OTA update is enough.
+
+  JS / TypeScript code changes    →  OTA ✓
+  Images, fonts, JSON assets      →  OTA ✓
+  New JS-only dependency          →  OTA ✓
+  New native (Kotlin/Swift) code  →  New build required
+  New native dependency           →  New build required
+  New / changed permissions       →  New build required
+  runtimeVersion bump             →  New build required
 
 
-  OTA UPDATE  (no build, no store submission)
-  ───────────────────────────────────────────
-  yarn eas:update:development     dev team only
-  yarn eas:update:staging         QA / stakeholders only
-  yarn eas:update:production      public users only
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  LOCAL COMMANDS (yarn scripts)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  Custom message:
-  MESSAGE="Fix login crash" yarn eas:update:staging
-
-  Users receive the update automatically on next app open.
-
+  VERSION CHECK
+  ─────────────
+  yarn eas:version:get          show versions: package.json · gradle · pbxproj
+  yarn eas:version:check        exit 1 if any mismatch (used by safe-build)
 
   BUILD
   ─────
-  yarn eas:build:development      all platforms, development
-  yarn eas:build:staging          all platforms, staging
-  yarn eas:build:production       all platforms, production
+  yarn eas:build                all platforms, production
+  yarn eas:build:development    all platforms, development
+  yarn eas:build:staging        all platforms, staging
+  yarn eas:build:production     all platforms, production
 
-  yarn eas:build:android:staging  Android only
-  yarn eas:build:ios:staging      iOS only
+  yarn eas:build:android:staging   Android only, staging
+  yarn eas:build:ios:staging       iOS only, staging
 
-  Safe build (checks version consistency first):
+  Safe build (version check first — recommended):
   yarn eas:build:safe:staging
 
-
-  SUBMIT  (after build completes)
-  ────────────────────────────────
+  SUBMIT  (run after build completes)
+  ─────
   yarn eas:submit:development
   yarn eas:submit:staging
   yarn eas:submit:production
 
-  Submit a specific build (when --latest picks the wrong one):
-  eas build:list --platform android --profile staging --limit 1
+  Submit a specific build ID (if --latest picks the wrong one):
+  eas build:list --platform android --profile staging --limit 3
   eas submit --id <build-id> --profile staging --platform android
 
+  OTA UPDATE
+  ──────────
+  yarn eas:update:development   push update to dev channel
+  yarn eas:update:staging       push update to staging channel
+  yarn eas:update:production    push update to production channel
 
-  DEFAULTS  (all → production)
-  ─────────────────────────────
-  yarn eas:build    all platforms, production
-  yarn eas:submit   all platforms, production
-  yarn eas:update   production channel
+  Custom message:
+  MESSAGE="Fix login crash" yarn eas:update:staging
 
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  GITHUB ACTIONS WORKFLOWS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  All four workflows are triggered manually from the Actions tab.
+
+  ┌───────────────────────────┬──────────────────────────────────────────────┐
+  │ Workflow file             │ What it does                                 │
+  ├───────────────────────────┼──────────────────────────────────────────────┤
+  │ eas-build-submit.yml      │ Build + submit in one run  (recommended)     │
+  │ eas-build.yml             │ Build only                                   │
+  │ eas-submit.yml            │ Submit the latest build                      │
+  │ eas-update.yml            │ OTA update — no build required               │
+  └───────────────────────────┴──────────────────────────────────────────────┘
+
+  Required GitHub secret:
+  ┌─────────────────┬────────────────────────────────────────────────────────┐
+  │ EXPO_TOKEN      │ expo.dev → Account Settings → Access Tokens → Create  │
+  └─────────────────┴────────────────────────────────────────────────────────┘
+
+  Concurrency: duplicate runs for the same profile are cancelled automatically.
+  For eas-build-submit.yml, a running release is never cancelled — it finishes.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   RELEASE FLOW
-  ────────────
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   ① development  ──►  build + submit  ──►  Internal testing   (dev team)
           │
-          ▼
-  ② staging      ──►  build + submit  ──►  Closed testing     (QA, stakeholders)
+          ▼  (QA sign-off)
+  ② staging      ──►  build + submit  ──►  Closed / alpha     (QA, stakeholders)
           │
-          ▼
-  ③ production   ──►  build + submit  ──►  Play Store / App Store  (public)
+          ▼  (stakeholder sign-off)
+  ③ production   ──►  build + submit  ──►  Play Store / App Store  (everyone)
 
-  JS-only change on any environment → skip the build, just run eas:update:<env>
-
-
-  GITHUB ACTIONS
-  ──────────────
-  Three workflows are available under .github/workflows/:
-
-  eas-build.yml   →  Trigger EAS Build (choose profile + platform)
-  eas-submit.yml  →  Trigger EAS Submit (choose profile + platform)
-  eas-update.yml  →  Trigger EAS Update / OTA (choose channel + message)
-
-  Required GitHub secret:
-  EXPO_TOKEN  →  Generate at expo.dev → Account Settings → Access Tokens
+  JS-only change at any stage?  Skip the build — just run eas:update:<env>.
 
 
-  VERSION CHECK
-  ─────────────
-  yarn eas:version:get    — show versions across package.json, Android gradle, iOS pbxproj
-  yarn eas:version:check  — exit 1 if any mismatch (used by eas:build:safe)
-
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   TROUBLESHOOTING
-  ───────────────
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  "Project not found" / "You must be logged in"
+  ·  Run:  eas login && eas init
+  ·  Confirm app.config.js has the correct owner and projectId
 
   "APKs are not allowed" on Play Store
-  ·  You submitted an .apk — Play Store requires .aab for all tracks.
-  ·  Fix: build fresh with  yarn eas:build:android:staging
-  ·  Confirm the artifact URL ends in .aab (not .apk)
-  ·  Submit:  eas submit --id <new-build-id> --profile staging --platform android
-  ·  All profiles use distribution: "store" and produce AAB.
+  ·  Play Store requires .aab — all EAS profiles use distribution: "store"
+     which produces AAB automatically.
+  ·  If you submitted an old .apk, build a fresh one:
+       yarn eas:build:android:staging
+  ·  Then submit:  eas submit --id <new-id> --profile staging --platform android
 
-  iOS OTA update not applying
-  ·  Re-link channel:  eas channel:edit production --branch production
-  ·  Verify runtimeVersion matches what was built
+  "Scheme not found" on iOS build
+  ·  Confirm the scheme exists in Xcode: Product → Scheme → Manage Schemes
+  ·  Scheme names must match eas.json exactly (spaces included):
+       "ReactNativeIgniteKit dev" / "ReactNativeIgniteKit stag" / "ReactNativeIgniteKit prod"
 
-  "Project not found" or EAS login errors
-  ·  Run  eas login  and  eas init  to link the project
-  ·  Make sure EXPO_TOKEN secret is set in GitHub repo settings
+  ".env.signing file is missing" on local build
+  ·  Copy .env.signing.example → .env.signing and fill in your keystore values
+  ·  EAS builds skip this check automatically (EAS manages signing)
+
+  OTA update deployed but users not receiving it
+  ·  Verify channel is linked to the correct branch:
+       eas channel:edit staging --branch staging
+  ·  Confirm runtimeVersion in the installed app matches the update
+  ·  Check: eas update:list --branch staging
+
+  EXPO_TOKEN expired in GitHub Actions
+  ·  Regenerate at expo.dev → Account Settings → Access Tokens
+  ·  Update the EXPO_TOKEN secret in GitHub repo → Settings → Secrets
+
+  Version mismatch reported by yarn eas:version:get
+  ·  Align all three sources before the next build:
+       package.json  →  "version": "x.y.z"
+       android/app/build.gradle  →  versionName "x.y.z"
+       ios/ReactNativeIgniteKit.xcodeproj  →  MARKETING_VERSION = x.y.z
 
 
 ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
