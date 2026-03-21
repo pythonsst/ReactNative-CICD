@@ -11,17 +11,17 @@
         "gradleCommand": ":app:bundleDevelopmentRelease"
       },
       "ios": {
-        "scheme": "ReactNativeIgniteKit dev"
+        "scheme": "ReactNativeCICD development"
       }
     },
     "staging": {
       "distribution": "store",
       "autoIncrement": true,
       "android": {
-        "gradleCommand": ":app:bundleSitRelease"
+        "gradleCommand": ":app:bundleStagingRelease"
       },
       "ios": {
-        "scheme": "ReactNativeIgniteKit stag"
+        "scheme": "ReactNativeCICD staging"
       }
     },
     "production": {
@@ -31,7 +31,7 @@
         "gradleCommand": ":app:bundleProductionRelease"
       },
       "ios": {
-        "scheme": "ReactNativeIgniteKit prod"
+        "scheme": "ReactNativeCICD production"
       }
     }
   },

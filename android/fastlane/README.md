@@ -31,21 +31,13 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 🚀 Deploy DEVELOPMENT flavor to Internal Testing
 
-### android sit_beta
+### android staging_beta
 
 ```sh
-[bundle exec] fastlane android sit_beta
+[bundle exec] fastlane android staging_beta
 ```
 
-🧪 Deploy SIT flavor to Open Testing (Beta)
-
-### android uat_closed
-
-```sh
-[bundle exec] fastlane android uat_closed
-```
-
-🔒 Deploy UAT flavor to Closed Testing
+🧪 Deploy STAGING flavor to Open Testing (Beta)
 
 ### android production_release
 

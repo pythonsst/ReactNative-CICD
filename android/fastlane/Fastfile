@@ -8,34 +8,7 @@ platform :android do
   end
 
   desc "🚀 Deploy DEVELOPMENT flavor to Internal Testing"
-lane :development_internal do
-  gradle(task: "clean")
-
-  android_set_version_code(
-    gradle_file: "app/build.gradle",
-    version_code: android_get_version_code(
-      gradle_file: "app/build.gradle"
-    ).to_i + 1
-  )
-
-  gradle(
-    task: "bundle",
-    flavor: "development",
-    build_type: "Release"
-  )
-
-  upload_to_play_store(
-    track: 'internal',
-    json_key: "fastlane/keys/reactnativeignitekit-465baf38544b.json",
-    package_name: "com.shivshankartiwari.reactnativeignitekit",
-    skip_upload_apk: true,
-    skip_upload_screenshots: false
-  )
-end
-
-
-  desc "🧪 Deploy SIT flavor to Open Testing (Beta)"
-  lane :sit_beta do
+  lane :development_internal do
     gradle(task: "clean")
 
     android_set_version_code(
@@ -47,12 +20,12 @@ end
 
     gradle(
       task: "bundle",
-      flavor: "sit",
+      flavor: "development",
       build_type: "Release"
     )
 
     upload_to_play_store(
-      track: 'beta',
+      track: 'internal',
       json_key: "fastlane/keys/reactnativeignitekit-465baf38544b.json",
       package_name: "com.shivshankartiwari.reactnativeignitekit",
       skip_upload_apk: true,
@@ -60,8 +33,8 @@ end
     )
   end
 
-  desc "🔒 Deploy UAT flavor to Closed Testing"
-  lane :uat_closed do
+  desc "🧪 Deploy STAGING flavor to Open Testing (Beta)"
+  lane :staging_beta do
     gradle(task: "clean")
 
     android_set_version_code(
@@ -73,12 +46,12 @@ end
 
     gradle(
       task: "bundle",
-      flavor: "uat",
+      flavor: "staging",
       build_type: "Release"
     )
 
     upload_to_play_store(
-      track: 'closed',
+      track: 'beta',
       json_key: "fastlane/keys/reactnativeignitekit-465baf38544b.json",
       package_name: "com.shivshankartiwari.reactnativeignitekit",
       skip_upload_apk: true,
@@ -97,14 +70,12 @@ end
       ).to_i + 1
     )
 
-    # 🧱 Optional: Build APK (for internal use)
     gradle(
       task: "assemble",
       flavor: "production",
       build_type: "Release"
     )
 
-    # 🧱 Build AAB for Play Store
     gradle(
       task: "bundle",
       flavor: "production",

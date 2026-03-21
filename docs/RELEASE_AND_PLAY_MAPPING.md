@@ -18,10 +18,9 @@ Profile is always one of: `development` | `staging` | `production`.
 | EAS profile | Android product flavor | Gradle bundle task (release) | Play API track (`eas.json` submit) | `releaseStatus` (Android submit) | Where it appears in Play Console |
 |-------------|--------------------------|--------------------------------|-------------------------------------|-------------------------------------|----------------------------------|
 | **development** | `development` | `:app:bundleDevelopmentRelease` | `internal` | `draft` | **Testing → Internal testing** |
-| **staging** | `sit` | `:app:bundleSitRelease` | `beta` | `draft` | **Testing → Open testing** (Beta track) |
+| **staging** | `staging` | `:app:bundleStagingRelease` | `beta` | `draft` | **Testing → Open testing** (Beta track) |
 | **production** | `production` | `:app:bundleProductionRelease` | `production` | `completed` | **Release → Production** |
 
-- **Staging** uses the **`sit`** flavor in Gradle (SIT). The EAS profile is still named **`staging`** for clarity in CI and scripts.
 - **`releaseStatus`**: `draft` avoids Play blocking uploads while store listing or policy steps are incomplete; switch to `completed` for production when the listing is fully ready (see `eas.json`).
 
 ## Yarn shortcuts
@@ -31,13 +30,23 @@ Profile is always one of: `development` | `staging` | `production`.
 | Android build | `yarn eas:build:android:development` | `yarn eas:build:android:staging` | `yarn eas:build:android:production` |
 | Android submit (latest build) | `yarn eas:submit:android:development` | `yarn eas:submit:android:staging` | `yarn eas:submit:android:production` |
 
-## iOS (same profile names)
+## iOS (same three environments)
 
-| EAS profile | Xcode scheme (from `eas.json`) | Typical destination |
-|-------------|--------------------------------|---------------------|
-| development | `ReactNativeIgniteKit dev` | TestFlight internal |
-| staging | `ReactNativeIgniteKit stag` | TestFlight external / beta |
-| production | `ReactNativeIgniteKit prod` | App Store |
+Scheme files live under `ios/ReactNativeIgniteKit.xcodeproj/xcshareddata/xcschemes/`:
+
+| File | Scheme name (used by EAS & CLI) |
+|------|--------------------------------|
+| `ReactNativeCICD development.xcscheme` | `ReactNativeCICD development` |
+| `ReactNativeCICD staging.xcscheme` | `ReactNativeCICD staging` |
+| `ReactNativeCICD production.xcscheme` | `ReactNativeCICD production` |
+
+| EAS profile | `eas.json` `ios.scheme` | Typical destination |
+|-------------|-------------------------|---------------------|
+| development | `ReactNativeCICD development` | TestFlight internal |
+| staging | `ReactNativeCICD staging` | TestFlight external / beta |
+| production | `ReactNativeCICD production` | App Store |
+
+Xcode **targets** are `ReactNativeIgniteKit development` / `staging` / `production`, matching the Android flavor names. The **scheme** names use the `ReactNativeCICD` prefix for clarity in open-source docs; the middle word matches Android: **development** / **staging** / **production**.
 
 Set real `ascAppId` values in `eas.json` under each submit profile when ready.
 

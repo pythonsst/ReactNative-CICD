@@ -16,8 +16,8 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "58BDA2EA2CCF866D00DF7710"
-                     BuildableName = "ReactNativeIgniteKit dev.app"
-                     BlueprintName = "ReactNativeIgniteKit dev"
+                     BuildableName = "ReactNativeIgniteKit development.app"
+                     BlueprintName = "ReactNativeIgniteKit development"
                      ReferencedContainer = "container:ReactNativeIgniteKit.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
@@ -32,8 +32,8 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "58BDA2EA2CCF866D00DF7710"
-                     BuildableName = "ReactNativeIgniteKit dev.app"
-                     BlueprintName = "ReactNativeIgniteKit dev"
+                     BuildableName = "ReactNativeIgniteKit development.app"
+                     BlueprintName = "ReactNativeIgniteKit development"
                      ReferencedContainer = "container:ReactNativeIgniteKit.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
@@ -50,8 +50,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "58BDA2EA2CCF866D00DF7710"
-               BuildableName = "ReactNativeIgniteKit dev.app"
-               BlueprintName = "ReactNativeIgniteKit dev"
+               BuildableName = "ReactNativeIgniteKit development.app"
+               BlueprintName = "ReactNativeIgniteKit development"
                ReferencedContainer = "container:ReactNativeIgniteKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -79,8 +79,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "58BDA2EA2CCF866D00DF7710"
-            BuildableName = "ReactNativeIgniteKit dev.app"
-            BlueprintName = "ReactNativeIgniteKit dev"
+            BuildableName = "ReactNativeIgniteKit development.app"
+            BlueprintName = "ReactNativeIgniteKit development"
             ReferencedContainer = "container:ReactNativeIgniteKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -96,8 +96,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "58BDA2EA2CCF866D00DF7710"
-            BuildableName = "ReactNativeIgniteKit dev.app"
-            BlueprintName = "ReactNativeIgniteKit dev"
+            BuildableName = "ReactNativeIgniteKit development.app"
+            BlueprintName = "ReactNativeIgniteKit development"
             ReferencedContainer = "container:ReactNativeIgniteKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

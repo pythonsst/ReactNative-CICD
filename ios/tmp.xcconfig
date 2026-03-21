@@ -1,5 +1,5 @@
-ENV=dev
-API_URL=https:/$()/dev-api.example.com/v1
+ENV=staging
+API_URL=https:/$()/staging-api.example.com/v1
 NODE_VERSION=18
 YARN_VERSION=1.22.22
 ANDROID_SIGNING_KEY=dummy_base64_encoded_key
