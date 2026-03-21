@@ -5,6 +5,8 @@
 
   Quick help in terminal:  yarn eas:help
 
+  Full matrix (EAS → Android flavor → Play track):  docs/RELEASE_AND_PLAY_MAPPING.md
+
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   ONE-TIME SETUP
