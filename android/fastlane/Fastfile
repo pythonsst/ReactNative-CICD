@@ -27,7 +27,7 @@ lane :development_internal do
   upload_to_play_store(
     track: 'internal',
     json_key: "fastlane/keys/reactnativeignitekit-5b01e2ebe216.json",
-    package_name: "com.validus.ignitekit",
+    package_name: "com.shivshankartiwari.reactnativeignitekit",
     skip_upload_apk: true,
     skip_upload_screenshots: false
   )
@@ -54,7 +54,7 @@ end
     upload_to_play_store(
       track: 'beta',
       json_key: "fastlane/keys/reactnativeignitekit-5b01e2ebe216.json",
-      package_name: "com.validus.ignitekit",
+      package_name: "com.shivshankartiwari.reactnativeignitekit",
       skip_upload_apk: true,
       skip_upload_screenshots: false
     )
@@ -80,7 +80,7 @@ end
     upload_to_play_store(
       track: 'closed',
       json_key: "fastlane/keys/reactnativeignitekit-5b01e2ebe216.json",
-      package_name: "com.validus.ignitekit",
+      package_name: "com.shivshankartiwari.reactnativeignitekit",
       skip_upload_apk: true,
       skip_upload_screenshots: false
     )
@@ -114,7 +114,7 @@ end
     upload_to_play_store(
       track: 'production',
       json_key: "fastlane/keys/reactnativeignitekit-5b01e2ebe216.json",
-      package_name: "com.validus.ignitekit",
+      package_name: "com.shivshankartiwari.reactnativeignitekit",
       skip_upload_apk: true,
       skip_upload_screenshots: false
     )

@@ -6,7 +6,6 @@
   "build": {
     "development": {
       "distribution": "store",
-      "channel": "development",
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleDevelopmentRelease"
@@ -17,7 +16,6 @@
     },
     "staging": {
       "distribution": "store",
-      "channel": "staging",
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleSitRelease"
@@ -28,7 +26,6 @@
     },
     "production": {
       "distribution": "store",
-      "channel": "production",
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleProductionRelease"

@@ -24,26 +24,23 @@ module.exports = {
 
   // OTA updates: clients only receive updates built with the same runtimeVersion.
   // 'appVersion' policy ties runtimeVersion to the native app version automatically.
-  runtimeVersion: {
-    policy: 'appVersion',
-  },
+  // runtimeVersion and updates are enabled once expo-updates is installed.
+  // Run: npx expo install expo-updates && npx eas update:configure
+  // runtimeVersion: { policy: 'appVersion' },
 
   // ─── FILL IN AFTER RUNNING `eas init` ───────────────────────────────────
-  owner: 'YOUR_EXPO_ACCOUNT',
+  owner: 'shivtiwari',
   extra: {
     eas: {
-      projectId: 'YOUR_EAS_PROJECT_ID',
+      projectId: '81e7f11f-c57a-420e-ae2a-b564c882828a',
     },
-  },
-  updates: {
-    url: 'https://u.expo.dev/YOUR_EAS_PROJECT_ID',
   },
   // ────────────────────────────────────────────────────────────────────────
 
   android: {
-    package: 'com.validus.ignitekit',
+    package: 'com.shivshankartiwari.reactnativeignitekit',
   },
   ios: {
-    bundleIdentifier: 'com.validus.ignitekit',
+    bundleIdentifier: 'com.shivshankartiwari.reactnativeignitekit',
   },
 };
