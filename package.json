@@ -24,7 +24,8 @@
     "ios:prod": "ENVFILE=.env.production react-native run-ios --scheme production",
     "ios:prod-release": "yarn ios:clean && yarn ios:bundle:assets && ENVFILE=.env.production react-native run-ios --scheme production --configuration Release",
 
-    "eas": "cat docs/EAS.md",
+    "eas": "eas",
+    "eas:docs": "cat docs/EAS.md",
     "eas:help": "cat docs/EAS.md",
 
     "eas:version:get": "node scripts/eas-version.js get",

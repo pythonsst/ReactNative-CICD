@@ -78,6 +78,10 @@ yarn-error.log
 .env*
 !.env.signing.example
 
+# EAS credentials export (keystore + secrets — never commit)
+/credentials.json
+/credentials/
+
 # Ignore service account credentials
 android/fastlane/keys/*.json
 android/*.json

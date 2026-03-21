@@ -38,7 +38,9 @@
   "submit": {
     "development": {
       "android": {
-        "track": "internal"
+        "applicationId": "com.shivshankartiwari.reactnativeignitekit",
+        "track": "internal",
+        "releaseStatus": "draft"
       },
       "ios": {
         "ascAppId": "YOUR_APP_STORE_APP_ID"
@@ -46,6 +48,7 @@
     },
     "staging": {
       "android": {
+        "applicationId": "com.shivshankartiwari.reactnativeignitekit",
         "track": "alpha"
       },
       "ios": {
@@ -54,6 +57,7 @@
     },
     "production": {
       "android": {
+        "applicationId": "com.shivshankartiwari.reactnativeignitekit",
         "track": "production"
       },
       "ios": {

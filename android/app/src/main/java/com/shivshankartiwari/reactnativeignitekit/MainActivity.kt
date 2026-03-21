@@ -1,4 +1,4 @@
-package com.validus.ignitekit
+package com.shivshankartiwari.reactnativeignitekit
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

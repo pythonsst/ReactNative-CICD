@@ -120,7 +120,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT }}
-          packageName: com.testedapp
+          packageName: com.shivshankartiwari.reactnativeignitekit
           releaseFile: ${{steps.sign_app.outputs.signedReleaseFile}}
           track: beta
           userFraction: 0.5

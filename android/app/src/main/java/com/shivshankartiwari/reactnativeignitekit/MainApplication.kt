@@ -1,4 +1,4 @@
-package com.validus.ignitekit
+package com.shivshankartiwari.reactnativeignitekit
 
 import android.app.Application
 import com.facebook.react.PackageList
