@@ -4,10 +4,23 @@ apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
 
-// Load secure signing properties
+// Load secure signing properties.
+//
+// Priority order:
+//  1. EAS Build (EAS_BUILD env var set) → EAS injects keystore via its own env vars
+//  2. Local .env.signing file           → for local Gradle / Fastlane builds
+//  3. Neither found                     → throw a helpful error
 def signingPropsFile = rootProject.file("../.env.signing")
+def isEasBuild = System.getenv("EAS_BUILD") != null
 
-if (signingPropsFile.exists()) {
+if (isEasBuild) {
+    // EAS managed credentials: EAS injects keystore path + passwords as env vars.
+    // If env vars are absent, EAS is handling signing externally — use empty strings.
+    ext.UPLOAD_STORE_FILE      = System.getenv("ANDROID_KEYSTORE_PATH")     ?: ""
+    ext.UPLOAD_STORE_PASSWORD = System.getenv("ANDROID_KEYSTORE_PASSWORD")  ?: ""
+    ext.UPLOAD_KEY_ALIAS      = System.getenv("ANDROID_KEY_ALIAS")          ?: ""
+    ext.UPLOAD_KEY_PASSWORD   = System.getenv("ANDROID_KEY_PASSWORD")       ?: ""
+} else if (signingPropsFile.exists()) {
     def signingProps = new Properties()
     signingProps.load(new FileInputStream(signingPropsFile))
 
@@ -16,7 +29,11 @@ if (signingPropsFile.exists()) {
     ext.UPLOAD_KEY_ALIAS      = signingProps['UPLOAD_KEY_ALIAS']
     ext.UPLOAD_KEY_PASSWORD   = signingProps['UPLOAD_KEY_PASSWORD']
 } else {
-    throw new FileNotFoundException("🛑 .env.signing file is missing.")
+    throw new FileNotFoundException(
+        "🛑 .env.signing file is missing.\n" +
+        "   Copy .env.signing.example → .env.signing and fill in your keystore values.\n" +
+        "   See docs/EAS.md for setup instructions."
+    )
 }
 
 // Environment files per build type + flavor
@@ -48,14 +65,14 @@ android {
     ndkVersion       rootProject.ext.ndkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk       rootProject.ext.compileSdkVersion
-    namespace        "com.validus.ignitekit"
+    namespace        "com.shivshankartiwari.reactnativeignitekit"
 
     defaultConfig {
-        applicationId       "com.validus.ignitekit"
+        applicationId       "com.shivshankartiwari.reactnativeignitekit"
         minSdkVersion       rootProject.ext.minSdkVersion
         targetSdkVersion    rootProject.ext.targetSdkVersion
         versionCode         22
-        versionName         "1.2"
+        versionName         "1.0.0"
     }
 
     flavorDimensions "default"
@@ -63,54 +80,51 @@ android {
     /**
      * 👋 WHY THIS FLAVOR CONFIGURATION?
      *
-     * Since all Android build flavors (dev, sit, uat, prod) are uploaded to the **same Play Store app**, 
-     * they must share the **same applicationId** (`com.validus.ignitekit`).
+     * All flavors (dev, sit, uat, prod) share the same applicationId so they upload
+     * to the same Play Store app under different testing tracks (internal, alpha, production).
      *
-     * Adding an `applicationIdSuffix` like `.development` changes the package name and treats it as a different app on Play Console.
-     *
-     * ✅ We omit suffixes to ensure all flavors build under the same app ID for Internal, Beta, Closed & Production testing.
-     *
-     * ⚠️ If you are building **multiple apps** from one codebase (client-specific, staging, etc.), 
-     * you can uncomment the second `productFlavors` block to differentiate builds using `applicationIdSuffix`.
+     * Each flavor declares applicationId explicitly — required for EAS Submit to
+     * resolve the package name correctly.
      */
 
+    // All flavors share the same applicationId — one Play Store listing, multiple tracks.
     productFlavors {
         production {
-            resValue "string", "build_config_package", "com.validus.ignitekit"
+            applicationId "com.shivshankartiwari.reactnativeignitekit"
+            resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
         }
         development {
-            resValue "string", "build_config_package", "com.validus.ignitekit"
+            applicationId "com.shivshankartiwari.reactnativeignitekit"
+            resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
         }
         sit {
-            resValue "string", "build_config_package", "com.validus.ignitekit"
+            applicationId "com.shivshankartiwari.reactnativeignitekit"
+            resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
         }
         uat {
-            resValue "string", "build_config_package", "com.validus.ignitekit"
+            applicationId "com.shivshankartiwari.reactnativeignitekit"
+            resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
         }
     }
 
-    /* Example block for separate apps from one repo */
     /*
+    // To build separate apps per flavor (different Play Store listings), use:
     productFlavors {
         production {
-            applicationIdSuffix ""
-            resValue "string", "build_config_package", "com.validus.ignitekit"
-        }
-        staging {
-            applicationIdSuffix ".staging"
-            resValue "string", "build_config_package", "com.validus.ignitekit"
+            applicationId "com.shivshankartiwari.reactnativeignitekit"
+            resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
         }
         development {
-            applicationIdSuffix ".development"
-            resValue "string", "build_config_package", "com.validus.ignitekit"
+            applicationId "com.shivshankartiwari.reactnativeignitekit.development"
+            resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
         }
         sit {
-            applicationIdSuffix ".sit"
-            resValue "string", "build_config_package", "com.validus.ignitekit"
+            applicationId "com.shivshankartiwari.reactnativeignitekit.sit"
+            resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
         }
         uat {
-            applicationIdSuffix ".uat"
-            resValue "string", "build_config_package", "com.validus.ignitekit"
+            applicationId "com.shivshankartiwari.reactnativeignitekit.uat"
+            resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
         }
     }
     */
@@ -123,10 +137,10 @@ android {
             keyPassword   'android'
         }
         release {
-            storeFile     rootProject.file(UPLOAD_STORE_FILE)
-            storePassword UPLOAD_STORE_PASSWORD
-            keyAlias      UPLOAD_KEY_ALIAS
-            keyPassword   UPLOAD_KEY_PASSWORD
+            storeFile     UPLOAD_STORE_FILE ? rootProject.file(UPLOAD_STORE_FILE) : null
+            storePassword UPLOAD_STORE_PASSWORD ?: ""
+            keyAlias      UPLOAD_KEY_ALIAS      ?: ""
+            keyPassword   UPLOAD_KEY_PASSWORD   ?: ""
         }
     }
 

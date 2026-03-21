@@ -1,0 +1,62 @@
+name: EAS Submit
+
+# Submits the latest build for a profile to the App Store / Play Store.
+# Run this after EAS Build completes successfully.
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: 'Submit profile'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+      platform:
+        description: 'Platform'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - android
+          - ios
+
+# Cancel any in-flight submission for the same profile + platform.
+concurrency:
+  group: eas-submit-${{ github.event.inputs.profile }}-${{ github.event.inputs.platform }}
+  cancel-in-progress: true
+
+jobs:
+  submit:
+    name: EAS Submit (${{ github.event.inputs.profile }} / ${{ github.event.inputs.platform }})
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Run EAS Submit
+        run: |
+          eas submit \
+            --platform ${{ github.event.inputs.platform }} \
+            --profile ${{ github.event.inputs.profile }} \
+            --latest \
+            --non-interactive

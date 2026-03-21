@@ -1,0 +1,81 @@
+name: EAS Build & Submit
+
+# One-shot workflow: builds the app on EAS servers then immediately submits
+# the result to the Play Store / App Store.
+# Use this for full release deployments. For OTA-only changes use eas-update.yml.
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: 'Build + submit profile'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+      platform:
+        description: 'Platform'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - android
+          - ios
+
+# Only one release pipeline per profile can run at a time.
+concurrency:
+  group: eas-release-${{ github.event.inputs.profile }}-${{ github.event.inputs.platform }}
+  cancel-in-progress: false   # don't cancel — let the running release finish
+
+jobs:
+  build-and-submit:
+    name: Build & Submit (${{ github.event.inputs.profile }} / ${{ github.event.inputs.platform }})
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      # Informational — reports version alignment across package.json, gradle, and pbxproj.
+      # Fix any mismatches before the next release; does not block this run.
+      - name: Check version consistency
+        run: yarn eas:version:get
+        continue-on-error: true
+
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      # Build on EAS infrastructure. The --wait flag keeps the job alive until
+      # the remote build finishes so the submit step has an artifact to use.
+      - name: EAS Build
+        id: build
+        run: |
+          eas build \
+            --platform ${{ github.event.inputs.platform }} \
+            --profile ${{ github.event.inputs.profile }} \
+            --non-interactive \
+            --wait
+
+      # Submit the build that just completed (--latest picks it up automatically).
+      - name: EAS Submit
+        run: |
+          eas submit \
+            --platform ${{ github.event.inputs.platform }} \
+            --profile ${{ github.event.inputs.profile }} \
+            --latest \
+            --non-interactive

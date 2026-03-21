@@ -1,4 +1,4 @@
-app_identifier("com.validus.ignitekit") # The bundle identifier of your app
+app_identifier("com.shivshankartiwari.reactnativeignitekit") # The bundle identifier of your app
 apple_id("shiv.tiwari@validusfintech.com") # Your Apple Developer Portal username
 
 itc_team_id("126207635") # App Store Connect Team ID

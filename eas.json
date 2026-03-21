@@ -1,0 +1,64 @@
+{
+  "cli": {
+    "version": ">= 16.32.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "distribution": "store",
+      "autoIncrement": true,
+      "android": {
+        "gradleCommand": ":app:bundleDevelopmentRelease"
+      },
+      "ios": {
+        "scheme": "ReactNativeIgniteKit dev"
+      }
+    },
+    "staging": {
+      "distribution": "store",
+      "autoIncrement": true,
+      "android": {
+        "gradleCommand": ":app:bundleSitRelease"
+      },
+      "ios": {
+        "scheme": "ReactNativeIgniteKit stag"
+      }
+    },
+    "production": {
+      "distribution": "store",
+      "autoIncrement": true,
+      "android": {
+        "gradleCommand": ":app:bundleProductionRelease"
+      },
+      "ios": {
+        "scheme": "ReactNativeIgniteKit prod"
+      }
+    }
+  },
+  "submit": {
+    "development": {
+      "android": {
+        "track": "internal"
+      },
+      "ios": {
+        "ascAppId": "YOUR_APP_STORE_APP_ID"
+      }
+    },
+    "staging": {
+      "android": {
+        "track": "alpha"
+      },
+      "ios": {
+        "ascAppId": "YOUR_APP_STORE_APP_ID"
+      }
+    },
+    "production": {
+      "android": {
+        "track": "production"
+      },
+      "ios": {
+        "ascAppId": "YOUR_APP_STORE_APP_ID"
+      }
+    }
+  }
+}
