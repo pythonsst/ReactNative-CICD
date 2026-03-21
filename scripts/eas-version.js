@@ -121,7 +121,7 @@ function check() {
     const remoteNum = parseInt(remoteAndroid, 10);
     if (localNum > remoteNum) {
       errors.push(
-        `Android versionCode is ahead of EAS remote:`,
+        'Android versionCode is ahead of EAS remote:',
         `  local: ${localNum}  remote: ${remoteNum}`,
         '  → Reset local versionCode to match remote, or run eas:version:get to check.',
       );
@@ -135,7 +135,7 @@ function check() {
     const remoteNum = parseInt(remoteIos, 10);
     if (localNum > remoteNum) {
       errors.push(
-        `iOS buildNumber is ahead of EAS remote:`,
+        'iOS buildNumber is ahead of EAS remote:',
         `  local: ${localNum}  remote: ${remoteNum}`,
         '  → Reset local buildNumber to match remote, or run eas:version:get to check.',
       );
