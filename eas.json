@@ -49,7 +49,8 @@
     "staging": {
       "android": {
         "applicationId": "com.shivshankartiwari.reactnativeignitekit",
-        "track": "alpha"
+        "track": "alpha",
+        "releaseStatus": "draft"
       },
       "ios": {
         "ascAppId": "YOUR_APP_STORE_APP_ID"
@@ -58,7 +59,8 @@
     "production": {
       "android": {
         "applicationId": "com.shivshankartiwari.reactnativeignitekit",
-        "track": "production"
+        "track": "production",
+        "releaseStatus": "completed"
       },
       "ios": {
         "ascAppId": "YOUR_APP_STORE_APP_ID"

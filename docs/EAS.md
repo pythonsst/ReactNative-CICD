@@ -68,12 +68,18 @@
   │              │  development         │  staging           │  production  │
   ├──────────────┼──────────────────────┼────────────────────┼──────────────┤
   │ Android      │  Internal testing    │  Closed / alpha    │  Production  │
+  │ Play submit  │  track: internal     │  track: alpha      │  track: prod. │
+  │ Play Console │  Testing → Internal  │  Testing → Closed  │  Release →   │
+  │              │  testing             │  testing (Alpha)   │  Production  │
   │ iOS          │  TestFlight internal │  TestFlight ext.   │  App Store   │
   │ OTA channel  │  development         │  staging           │  production  │
   │ iOS scheme   │  …IgniteKit dev      │  …IgniteKit stag   │  …IgniteKit prod │
   │ Android task │  bundleDevelopment…  │  bundleSitRelease  │  bundleProduction… │
   │ Audience     │  Dev team            │  QA / stakeholders │  Everyone    │
   └──────────────┴──────────────────────┴────────────────────┴──────────────┘
+
+  EAS build profile and EAS submit profile use the SAME name (development | staging | production).
+  Example:  eas build --profile staging  →  eas submit --profile staging
 
   ⚠️  Android flavor note
       The project has four Android flavors: production, development, sit, uat.
