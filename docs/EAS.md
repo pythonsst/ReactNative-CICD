@@ -67,10 +67,10 @@
   ┌──────────────┬──────────────────────┬────────────────────┬──────────────┐
   │              │  development         │  staging           │  production  │
   ├──────────────┼──────────────────────┼────────────────────┼──────────────┤
-  │ Android      │  Internal testing    │  Closed / alpha    │  Production  │
-  │ Play submit  │  track: internal     │  track: alpha      │  track: prod. │
-  │ Play Console │  Testing → Internal  │  Testing → Closed  │  Release →   │
-  │              │  testing             │  testing (Alpha)   │  Production  │
+  │ Android      │  Internal testing    │  Open / beta       │  Production  │
+  │ Play submit  │  track: internal     │  track: beta       │  track: prod. │
+  │ Play Console │  Testing → Internal  │  Testing → Open    │  Release →   │
+  │              │  testing             │  testing (Beta)    │  Production  │
   │ iOS          │  TestFlight internal │  TestFlight ext.   │  App Store   │
   │ OTA channel  │  development         │  staging           │  production  │
   │ iOS scheme   │  …IgniteKit dev      │  …IgniteKit stag   │  …IgniteKit prod │
@@ -179,7 +179,7 @@
   ① development  ──►  build + submit  ──►  Internal testing   (dev team)
           │
           ▼  (QA sign-off)
-  ② staging      ──►  build + submit  ──►  Closed / alpha     (QA, stakeholders)
+  ② staging      ──►  build + submit  ──►  Open / beta        (QA, stakeholders)
           │
           ▼  (stakeholder sign-off)
   ③ production   ──►  build + submit  ──►  Play Store / App Store  (everyone)

@@ -49,7 +49,7 @@
     "staging": {
       "android": {
         "applicationId": "com.shivshankartiwari.reactnativeignitekit",
-        "track": "alpha",
+        "track": "beta",
         "releaseStatus": "draft"
       },
       "ios": {
