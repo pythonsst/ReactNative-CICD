@@ -39,6 +39,7 @@ local.properties
 node_modules/
 npm-debug.log
 yarn-error.log
+package-lock.json
 
 # fastlane
 #
@@ -77,6 +78,9 @@ yarn-error.log
 # NOTE: These will be removed in production. Do not include real credentials or secrets.
 .env*
 !.env.signing.example
+!.env.development.local.example
+!.env.staging.local.example
+!.env.production.local.example
 
 # EAS credentials export (keystore + secrets — never commit)
 /credentials.json
@@ -91,4 +95,9 @@ fastlane/keys/*.json
 
 # 🔐 Android keystore files (highly sensitive)
 android/keystores/*.jks
-!android/keystores/your-app-upload-key.jks
+android/keystores/*.keystore
+ios/tmp.xcconfig
+# Expo
+.expo
+dist/
+web-build/

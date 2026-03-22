@@ -5,6 +5,8 @@
 
   Quick help in terminal:  yarn eas:help
 
+  Full matrix (EAS → Android flavor → Play track):  docs/RELEASE_AND_PLAY_MAPPING.md
+
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   ONE-TIME SETUP
@@ -67,19 +69,23 @@
   ┌──────────────┬──────────────────────┬────────────────────┬──────────────┐
   │              │  development         │  staging           │  production  │
   ├──────────────┼──────────────────────┼────────────────────┼──────────────┤
-  │ Android      │  Internal testing    │  Closed / alpha    │  Production  │
+  │ Android      │  Internal testing    │  Open / beta       │  Production  │
+  │ Play submit  │  track: internal     │  track: beta       │  track: prod. │
+  │ Play Console │  Testing → Internal  │  Testing → Open    │  Release →   │
+  │              │  testing             │  testing (Beta)    │  Production  │
   │ iOS          │  TestFlight internal │  TestFlight ext.   │  App Store   │
   │ OTA channel  │  development         │  staging           │  production  │
-  │ iOS scheme   │  …IgniteKit dev      │  …IgniteKit stag   │  …IgniteKit prod │
-  │ Android task │  bundleDevelopment…  │  bundleSitRelease  │  bundleProduction… │
+  │ iOS scheme   │  ReactNativeCICD     │  ReactNativeCICD   │  ReactNativeCICD │
+  │              │  development         │  staging           │  production    │
+  │ Android task │  bundleDevelopment…  │  bundleStaging…    │  bundleProduction… │
   │ Audience     │  Dev team            │  QA / stakeholders │  Everyone    │
   └──────────────┴──────────────────────┴────────────────────┴──────────────┘
 
-  ⚠️  Android flavor note
-      The project has four Android flavors: production, development, sit, uat.
-      EAS maps staging → sit (System Integration Testing) via gradleCommand in
-      eas.json. If you need a true "staging" flavor, add it to productFlavors
-      in android/app/build.gradle and update eas.json accordingly.
+  EAS build profile and EAS submit profile use the SAME name (development | staging | production).
+  Example:  eas build --profile staging  →  eas submit --profile staging
+
+  ⚠️  Android flavors
+      Three product flavors: development, staging, production (same applicationId).
 
   Each environment bakes its OTA channel into the binary at build time.
   An update pushed to "staging" will NEVER reach development or production.
@@ -173,7 +179,7 @@
   ① development  ──►  build + submit  ──►  Internal testing   (dev team)
           │
           ▼  (QA sign-off)
-  ② staging      ──►  build + submit  ──►  Closed / alpha     (QA, stakeholders)
+  ② staging      ──►  build + submit  ──►  Open / beta        (QA, stakeholders)
           │
           ▼  (stakeholder sign-off)
   ③ production   ──►  build + submit  ──►  Play Store / App Store  (everyone)
@@ -198,8 +204,8 @@
 
   "Scheme not found" on iOS build
   ·  Confirm the scheme exists in Xcode: Product → Scheme → Manage Schemes
-  ·  Scheme names must match eas.json exactly (spaces included):
-       "ReactNativeIgniteKit dev" / "ReactNativeIgniteKit stag" / "ReactNativeIgniteKit prod"
+  ·  Scheme names must match eas.json exactly (quotes if spaces):
+       "ReactNativeCICD development" / "ReactNativeCICD staging" / "ReactNativeCICD production"
 
   ".env.signing file is missing" on local build
   ·  Copy .env.signing.example → .env.signing and fill in your keystore values

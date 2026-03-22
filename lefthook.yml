@@ -18,9 +18,11 @@ pre-push:
 pre-commit:
   parallel: true  # Run commands in parallel to save time
   commands:
+    secret_scan:
+      run: node scripts/secret-scan-staged.cjs
     eslint:
-      glob: "*.{js,ts,jsx,tsx}"  # Specify the file types for ESLint (React Native related)
-      run: yarn eslint {staged_files}  # Run ESLint on the staged files
+      glob: "*.{js,ts,jsx,tsx}"
+      run: node scripts/eslint-staged.cjs {staged_files}
 
   # Remove non-React Native commands such as Ruby and Go for now
   # You can reintroduce these if needed, but it's unlikely you need them for React Native

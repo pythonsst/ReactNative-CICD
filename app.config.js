@@ -1,8 +1,8 @@
 /**
- * EAS app config (bare workflow).
+ * EAS app config (bare React Native — no `expo` app package required).
  *
- * This file is only used by EAS Build / EAS Update — it is NOT used by the
- * Metro bundler or react-native CLI at dev time.
+ * Used by: `eas build`, `eas submit`, `eas update` (reads this + eas.json).
+ * Not used by: Metro, `react-native start`, or local Gradle/Xcode (those use native projects).
  *
  * ─── ONE-TIME SETUP ─────────────────────────────────────────────────────────
  *  1. npm install -g eas-cli
@@ -24,9 +24,10 @@ module.exports = {
 
   // OTA updates: clients only receive updates built with the same runtimeVersion.
   // 'appVersion' policy ties runtimeVersion to the native app version automatically.
-  // runtimeVersion and updates are enabled once expo-updates is installed.
-  // Run: npx expo install expo-updates && npx eas update:configure
-  // runtimeVersion: { policy: 'appVersion' },
+  runtimeVersion: '1.0.0',
+  updates: {
+    url: 'https://u.expo.dev/81e7f11f-c57a-420e-ae2a-b564c882828a',
+  },
 
   // ─── FILL IN AFTER RUNNING `eas init` ───────────────────────────────────
   owner: 'shivtiwari',

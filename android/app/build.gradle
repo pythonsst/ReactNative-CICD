@@ -36,25 +36,58 @@ if (isEasBuild) {
     )
 }
 
-// Environment files per build type + flavor
+// Environment files per build type + flavor.
+// Local overrides (e.g. .env.production.local) let each engineer keep private keys
+// outside git while sharing non-sensitive defaults in .env.*.
+def resolveEnvFile = { baseEnv ->
+    def localOverride = "${baseEnv}.local"
+    return rootProject.file("../${localOverride}").exists() ? localOverride : baseEnv
+}
 project.ext.envConfigFiles = [
-    productiondebug:     ".env.production",
-    productionrelease:   ".env.production",
-    developmentdebug:    ".env.development",
-    developmentrelease:  ".env.development",
-    stagingdebug:        ".env.staging",
-    stagingrelease:      ".env.staging",
-    sitdebug:            ".env.sit",
-    sitrelease:          ".env.sit",
-    uatdebug:            ".env.uat",
-    uatrelease:          ".env.uat"
+    productiondebug:     resolveEnvFile(".env.production"),
+    productionrelease:   resolveEnvFile(".env.production"),
+    developmentdebug:    resolveEnvFile(".env.development"),
+    developmentrelease:  resolveEnvFile(".env.development"),
+    stagingdebug:        resolveEnvFile(".env.staging"),
+    stagingrelease:      resolveEnvFile(".env.staging")
 ]
+
+// Guard against leaked ENVFILE forcing the wrong env (common on CI/EAS).
+def taskNames = gradle.startParameter.taskNames.collect { it.toLowerCase() }
+def expectedEnvFile = null
+if (taskNames.any { it.contains("development") }) {
+    expectedEnvFile = ".env.development"
+} else if (taskNames.any { it.contains("staging") }) {
+    expectedEnvFile = ".env.staging"
+} else if (taskNames.any { it.contains("production") }) {
+    expectedEnvFile = ".env.production"
+}
+def forcedEnvFile = System.getenv("ENVFILE")
+if (forcedEnvFile && expectedEnvFile && forcedEnvFile != expectedEnvFile) {
+    throw new RuntimeException(
+        "ENVFILE mismatch for selected flavor tasks.\n" +
+        "Expected: ${expectedEnvFile}\n" +
+        "Received: ${forcedEnvFile}\n" +
+        "Fix: set build profile env.ENVFILE in eas.json for each profile."
+    )
+}
+if (expectedEnvFile) {
+    // Force the default .env when Android Studio invokes bundle-only tasks
+    // (e.g. createBundleProductionReleaseJsAndAssets), where react-native-config
+    // flavor parsing can otherwise fall back to plain ".env".
+    project.ext.defaultEnvFile = expectedEnvFile
+}
 
 // Apply react-native-config dotenv support
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 react {
     autolinkLibrariesWithApp()
+    //
+    // Added by install-expo-modules
+    entryFile = file(["node", "-e", "require('expo/scripts/resolveAppEntry')", rootDir.getAbsoluteFile().getParentFile().getAbsolutePath(), "android", "absolute"].execute(null, rootDir).text.trim())
+    cliFile = new File(["node", "--print", "require.resolve('@expo/cli')"].execute(null, rootDir).text.trim())
+    bundleCommand = "export:embed"
 }
 
 // Configuration switches
@@ -78,56 +111,24 @@ android {
     flavorDimensions "default"
 
     /**
-     * 👋 WHY THIS FLAVOR CONFIGURATION?
-     *
-     * All flavors (dev, sit, uat, prod) share the same applicationId so they upload
-     * to the same Play Store app under different testing tracks (internal, alpha, production).
-     *
-     * Each flavor declares applicationId explicitly — required for EAS Submit to
-     * resolve the package name correctly.
+     * Three flavors — development, staging, production — share the same applicationId
+     * so they map to one Play Store app on different tracks (internal, beta, production).
      */
 
-    // All flavors share the same applicationId — one Play Store listing, multiple tracks.
     productFlavors {
-        production {
-            applicationId "com.shivshankartiwari.reactnativeignitekit"
-            resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
-        }
         development {
             applicationId "com.shivshankartiwari.reactnativeignitekit"
             resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
         }
-        sit {
+        staging {
             applicationId "com.shivshankartiwari.reactnativeignitekit"
             resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
         }
-        uat {
-            applicationId "com.shivshankartiwari.reactnativeignitekit"
-            resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
-        }
-    }
-
-    /*
-    // To build separate apps per flavor (different Play Store listings), use:
-    productFlavors {
         production {
             applicationId "com.shivshankartiwari.reactnativeignitekit"
             resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
         }
-        development {
-            applicationId "com.shivshankartiwari.reactnativeignitekit.development"
-            resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
-        }
-        sit {
-            applicationId "com.shivshankartiwari.reactnativeignitekit.sit"
-            resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
-        }
-        uat {
-            applicationId "com.shivshankartiwari.reactnativeignitekit.uat"
-            resValue "string", "build_config_package", "com.shivshankartiwari.reactnativeignitekit"
-        }
     }
-    */
 
     signingConfigs {
         debug {

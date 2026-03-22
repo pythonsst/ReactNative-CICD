@@ -6,32 +6,44 @@
   "build": {
     "development": {
       "distribution": "store",
+      "environment": "development",
+      "env": {
+        "ENVFILE": ".env.development"
+      },
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleDevelopmentRelease"
       },
       "ios": {
-        "scheme": "ReactNativeIgniteKit dev"
+        "scheme": "ReactNativeCICD development"
       }
     },
     "staging": {
       "distribution": "store",
+      "environment": "preview",
+      "env": {
+        "ENVFILE": ".env.staging"
+      },
       "autoIncrement": true,
       "android": {
-        "gradleCommand": ":app:bundleSitRelease"
+        "gradleCommand": ":app:bundleStagingRelease"
       },
       "ios": {
-        "scheme": "ReactNativeIgniteKit stag"
+        "scheme": "ReactNativeCICD staging"
       }
     },
     "production": {
       "distribution": "store",
+      "environment": "production",
+      "env": {
+        "ENVFILE": ".env.production"
+      },
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleProductionRelease"
       },
       "ios": {
-        "scheme": "ReactNativeIgniteKit prod"
+        "scheme": "ReactNativeCICD production"
       }
     }
   },
@@ -49,7 +61,8 @@
     "staging": {
       "android": {
         "applicationId": "com.shivshankartiwari.reactnativeignitekit",
-        "track": "alpha"
+        "track": "beta",
+        "releaseStatus": "draft"
       },
       "ios": {
         "ascAppId": "YOUR_APP_STORE_APP_ID"
@@ -58,7 +71,8 @@
     "production": {
       "android": {
         "applicationId": "com.shivshankartiwari.reactnativeignitekit",
-        "track": "production"
+        "track": "production",
+        "releaseStatus": "completed"
       },
       "ios": {
         "ascAppId": "YOUR_APP_STORE_APP_ID"

@@ -1,3 +1,4 @@
+require File.join(File.dirname(`node --print "require.resolve('expo/package.json')"`), "scripts/autolinking")
 # Resolve react_native_pods.rb with node to allow for hoisting
 require Pod::Executable.execute_command('node', ['-p',
   'require.resolve(
@@ -19,25 +20,39 @@ abstract_target 'RnNewArchitectureDemoBase' do
   # Shared pods go here, if any
   
   target 'ReactNativeIgniteKit' do
+  use_expo_modules!
+  post_integrate do |installer|
+    begin
+      expo_patch_react_imports!(installer)
+    rescue => e
+      Pod::UI.warn e
+    end
+    begin
+      expo_patch_react_imports!(installer)
+    rescue => e
+      Pod::UI.warn e
+    end
+  end
     # Pods for ReactNativeIgniteKit
   end
 
-  target 'ReactNativeIgniteKit dev' do
-    # Pods for ReactNativeIgniteKit dev
+  target 'ReactNativeIgniteKit development' do
+    # Pods for ReactNativeIgniteKit development
   end
 
-  target 'ReactNativeIgniteKit stag' do
-    # Pods for ReactNativeIgniteKit sit
+  target 'ReactNativeIgniteKit staging' do
+    # Pods for ReactNativeIgniteKit staging
   end
 
-  target 'ReactNativeIgniteKit prod' do
-    # Pods for ReactNativeIgniteKit prod
+  target 'ReactNativeIgniteKit production' do
+    # Pods for ReactNativeIgniteKit production
   end
   
   config = use_native_modules!
   pod 'react-native-config/Extension', :path => '../node_modules/react-native-config'
   use_react_native!(
     :path => config[:reactNativePath],
+    :hermes_enabled => true,
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )

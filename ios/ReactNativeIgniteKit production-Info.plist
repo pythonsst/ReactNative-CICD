@@ -5,9 +5,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Netflix Stag</string>
+	<string>Netflix Prod</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -49,5 +51,15 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>EXUpdatesEnabled</key>
+	<true/>
+	<key>EXUpdatesCheckOnLaunch</key>
+	<string>ALWAYS</string>
+	<key>EXUpdatesLaunchWaitMs</key>
+	<integer>0</integer>
+	<key>EXUpdatesRuntimeVersion</key>
+	<string>1.0.0</string>
+	<key>EXUpdatesURL</key>
+	<string>https://u.expo.dev/81e7f11f-c57a-420e-ae2a-b564c882828a</string>
 </dict>
 </plist>

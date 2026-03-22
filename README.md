@@ -22,7 +22,7 @@ eas init
 
 # 4. You're ready — trigger a build from the Actions tab or locally:
 yarn eas:build:staging        # build both platforms, staging
-yarn eas:build:safe:staging   # same, but checks version consistency first
+yarn eas:version:check        # verify native/app version alignment before release
 yarn eas:update:staging       # OTA update (JS changes only, no new build)
 ```
 
@@ -45,13 +45,13 @@ yarn eas:help
 
 ## Environment → Android flavor mapping
 
-| EAS profile | Android Gradle task | iOS scheme |
+| EAS profile | Android Gradle task | iOS Xcode scheme |
 |---|---|---|
-| `development` | `bundleDevelopmentRelease` | `ReactNativeIgniteKit dev` |
-| `staging` | `bundleSitRelease` | `ReactNativeIgniteKit stag` |
-| `production` | `bundleProductionRelease` | `ReactNativeIgniteKit prod` |
+| `development` | `bundleDevelopmentRelease` | `ReactNativeCICD development` |
+| `staging` | `bundleStagingRelease` | `ReactNativeCICD staging` |
+| `production` | `bundleProductionRelease` | `ReactNativeCICD production` |
 
-> The project uses `sit` (System Integration Testing) as the Android flavor for the `staging` EAS profile. To use a dedicated `staging` flavor, add it to `android/app/build.gradle` → `productFlavors` and update `eas.json`.
+**Naming:** The three environments are always **`development`**, **`staging`**, **`production`** (EAS profile = Android flavor = env file). iOS schemes are prefixed **`ReactNativeCICD `** so they read clearly in Xcode; Android flavors stay short for Gradle. Same `applicationId` on Android across flavors.
 
 ---
 
