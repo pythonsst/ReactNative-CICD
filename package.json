@@ -3,7 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "reset": "yarn node:clean && yarn android:clean && yarn start --reset-cache",
+    "lefthook:install": "node scripts/lefthook-install.js",
+    "bootstrap": "yarn install && yarn start",
+    "start": "node scripts/start-metro.js",
+    "start:clean": "yarn watchman:reset && node scripts/start-metro.js",
+    "watchman:reset": "watchman shutdown-server 2>/dev/null || true; watchman watch-del-all 2>/dev/null || true",
+    "start:verbose": "react-native start --verbose",
+    "start:8082": "react-native start --port 8082",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "eslint": "eslint",
+    "test": "jest --watchAll=false",
+    "test:watch": "jest --watch",
+    "reset": "yarn node:clean && yarn android:clean && yarn start -- --reset-cache",
+    "node:clean": "watchman watch-del-all 2>/dev/null || true; rm -rf \"$TMPDIR/metro-*\" \"$TMPDIR/haste-map-*\" 2>/dev/null || true",
     "android:clean": "rm -rf android/app/.cxx android/app/build android/build android/.gradle && cd android && ./gradlew clean || true",
     "android:dev": "ENVFILE=.env.development yarn android:build:dev && yarn android:install:dev",
     "android:build:dev": "cd android && ./gradlew assembleDevelopmentDebug",
@@ -17,20 +29,19 @@
     "android:build:prod": "cd android && ./gradlew assembleProductionDebug",
     "android:install:prod": "cd android && ./gradlew installProductionDebug",
     "android:prod-release": "ENVFILE=.env.production cd android && ./gradlew assembleProductionRelease && ./gradlew installProductionRelease",
+    "ios:clean": "cd ios && xcodebuild clean -workspace ReactNativeIgniteKit.xcworkspace -scheme ReactNativeIgniteKit",
+    "ios:bundle:assets": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios",
     "ios:dev": "ENVFILE=.env.development react-native run-ios --scheme \"ReactNativeCICD development\"",
     "ios:dev-release": "yarn ios:clean && ENVFILE=.env.development react-native run-ios --scheme \"ReactNativeCICD development\" --configuration Release",
     "ios:staging": "ENVFILE=.env.staging react-native run-ios --scheme \"ReactNativeCICD staging\"",
     "ios:staging-release": "yarn ios:clean && ENVFILE=.env.staging react-native run-ios --scheme \"ReactNativeCICD staging\" --configuration Release",
     "ios:prod": "ENVFILE=.env.production react-native run-ios --scheme \"ReactNativeCICD production\"",
     "ios:prod-release": "yarn ios:clean && yarn ios:bundle:assets && ENVFILE=.env.production react-native run-ios --scheme \"ReactNativeCICD production\" --configuration Release",
-
     "eas": "eas",
     "eas:docs": "cat docs/EAS.md",
     "eas:help": "cat docs/EAS.md",
-
     "eas:version:get": "node scripts/eas-version.js get",
     "eas:version:check": "node scripts/eas-version.js check",
-
     "eas:build": "yarn eas:version:check && eas build --platform all --profile production",
     "eas:build:development": "yarn eas:version:check && eas build --platform all --profile development",
     "eas:build:staging": "yarn eas:version:check && eas build --platform all --profile staging",
@@ -43,7 +54,6 @@
     "eas:build:ios:development": "yarn eas:version:check && eas build --platform ios --profile development",
     "eas:build:ios:staging": "yarn eas:version:check && eas build --platform ios --profile staging",
     "eas:build:ios:production": "yarn eas:version:check && eas build --platform ios --profile production",
-
     "eas:submit": "eas submit --platform all --latest --profile production",
     "eas:submit:development": "eas submit --platform all --latest --profile development",
     "eas:submit:staging": "eas submit --platform all --latest --profile staging",
@@ -56,7 +66,6 @@
     "eas:submit:ios:development": "eas submit --platform ios --latest --profile development",
     "eas:submit:ios:staging": "eas submit --platform ios --latest --profile staging",
     "eas:submit:ios:production": "eas submit --platform ios --latest --profile production",
-
     "eas:update": "eas update --channel production --message \"${MESSAGE:-OTA update}\"",
     "eas:update:development": "eas update --channel development --message \"${MESSAGE:-OTA update}\"",
     "eas:update:staging": "eas update --channel staging --message \"${MESSAGE:-OTA update}\"",
@@ -74,6 +83,7 @@
     "@babel/core": "^7.20.0",
     "@babel/plugin-transform-private-methods": "^7.25.9",
     "@babel/preset-env": "^7.20.0",
+    "@babel/preset-typescript": "^7.25.0",
     "@babel/runtime": "^7.20.0",
     "@react-native/babel-preset": "0.75.4",
     "@react-native/eslint-config": "0.75.4",
@@ -83,6 +93,7 @@
     "@types/react": "^18.2.6",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.6.3",
+    "eas-cli": "^16.32.0",
     "eslint": "^8.19.0",
     "jest": "^29.7.0",
     "lefthook": "^1.8.1",
@@ -91,6 +102,14 @@
     "react-test-renderer": "18.3.1",
     "ts-jest": "^29.2.5",
     "typescript": "5.0.4"
+  },
+  "dependenciesMeta": {
+    "dtrace-provider": {
+      "built": false
+    },
+    "lefthook": {
+      "built": false
+    }
   },
   "engines": {
     "node": ">=18"

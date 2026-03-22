@@ -1,8 +1,8 @@
 /**
- * EAS app config (bare workflow).
+ * EAS app config (bare React Native — no `expo` app package required).
  *
- * This file is only used by EAS Build / EAS Update — it is NOT used by the
- * Metro bundler or react-native CLI at dev time.
+ * Used by: `eas build`, `eas submit`, `eas update` (reads this + eas.json).
+ * Not used by: Metro, `react-native start`, or local Gradle/Xcode (those use native projects).
  *
  * ─── ONE-TIME SETUP ─────────────────────────────────────────────────────────
  *  1. npm install -g eas-cli
