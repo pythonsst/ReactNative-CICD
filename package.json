@@ -66,13 +66,15 @@
     "eas:submit:ios:development": "eas submit --platform ios --latest --profile development",
     "eas:submit:ios:staging": "eas submit --platform ios --latest --profile staging",
     "eas:submit:ios:production": "eas submit --platform ios --latest --profile production",
-    "eas:update": "eas update --channel production --message \"${MESSAGE:-OTA update}\"",
-    "eas:update:development": "eas update --channel development --message \"${MESSAGE:-OTA update}\"",
-    "eas:update:staging": "eas update --channel staging --message \"${MESSAGE:-OTA update}\"",
-    "eas:update:production": "eas update --channel production --message \"${MESSAGE:-OTA update}\""
+    "eas:update": "node scripts/eas-update.cjs production",
+    "eas:update:development": "node scripts/eas-update.cjs development",
+    "eas:update:staging": "node scripts/eas-update.cjs staging",
+    "eas:update:production": "node scripts/eas-update.cjs production"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.0.0",
+    "expo": "~51.0.0",
+    "expo-updates": "~0.25.28",
     "react": "18.3.1",
     "react-native": "0.75.4",
     "react-native-config": "^1.5.3",
@@ -93,6 +95,7 @@
     "@types/react": "^18.2.6",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.6.3",
+    "babel-preset-expo": "~11.0.0",
     "eas-cli": "^16.32.0",
     "eslint": "^8.19.0",
     "jest": "^29.7.0",

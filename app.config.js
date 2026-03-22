@@ -24,9 +24,10 @@ module.exports = {
 
   // OTA updates: clients only receive updates built with the same runtimeVersion.
   // 'appVersion' policy ties runtimeVersion to the native app version automatically.
-  // runtimeVersion and updates are enabled once expo-updates is installed.
-  // Run: npx expo install expo-updates && npx eas update:configure
-  // runtimeVersion: { policy: 'appVersion' },
+  runtimeVersion: '1.0.0',
+  updates: {
+    url: 'https://u.expo.dev/81e7f11f-c57a-420e-ae2a-b564c882828a',
+  },
 
   // ─── FILL IN AFTER RUNNING `eas init` ───────────────────────────────────
   owner: 'shivtiwari',
