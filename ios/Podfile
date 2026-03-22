@@ -18,21 +18,17 @@ end
 
 abstract_target 'RnNewArchitectureDemoBase' do
   # Shared pods go here, if any
-  
-  target 'ReactNativeIgniteKit' do
   use_expo_modules!
+
   post_integrate do |installer|
     begin
       expo_patch_react_imports!(installer)
     rescue => e
       Pod::UI.warn e
     end
-    begin
-      expo_patch_react_imports!(installer)
-    rescue => e
-      Pod::UI.warn e
-    end
   end
+  
+  target 'ReactNativeIgniteKit' do
     # Pods for ReactNativeIgniteKit
   end
 
