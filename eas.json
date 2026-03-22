@@ -6,6 +6,10 @@
   "build": {
     "development": {
       "distribution": "store",
+      "environment": "development",
+      "env": {
+        "ENVFILE": ".env.development"
+      },
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleDevelopmentRelease"
@@ -16,6 +20,10 @@
     },
     "staging": {
       "distribution": "store",
+      "environment": "preview",
+      "env": {
+        "ENVFILE": ".env.staging"
+      },
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleStagingRelease"
@@ -26,6 +34,10 @@
     },
     "production": {
       "distribution": "store",
+      "environment": "production",
+      "env": {
+        "ENVFILE": ".env.production"
+      },
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleProductionRelease"

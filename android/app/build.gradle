@@ -46,6 +46,32 @@ project.ext.envConfigFiles = [
     stagingrelease:      ".env.staging"
 ]
 
+// Guard against leaked ENVFILE forcing the wrong env (common on CI/EAS).
+def taskNames = gradle.startParameter.taskNames.collect { it.toLowerCase() }
+def expectedEnvFile = null
+if (taskNames.any { it.contains("development") }) {
+    expectedEnvFile = ".env.development"
+} else if (taskNames.any { it.contains("staging") }) {
+    expectedEnvFile = ".env.staging"
+} else if (taskNames.any { it.contains("production") }) {
+    expectedEnvFile = ".env.production"
+}
+def forcedEnvFile = System.getenv("ENVFILE")
+if (forcedEnvFile && expectedEnvFile && forcedEnvFile != expectedEnvFile) {
+    throw new RuntimeException(
+        "ENVFILE mismatch for selected flavor tasks.\n" +
+        "Expected: ${expectedEnvFile}\n" +
+        "Received: ${forcedEnvFile}\n" +
+        "Fix: set build profile env.ENVFILE in eas.json for each profile."
+    )
+}
+if (expectedEnvFile) {
+    // Force the default .env when Android Studio invokes bundle-only tasks
+    // (e.g. createBundleProductionReleaseJsAndAssets), where react-native-config
+    // flavor parsing can otherwise fall back to plain ".env".
+    project.ext.defaultEnvFile = expectedEnvFile
+}
+
 // Apply react-native-config dotenv support
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
