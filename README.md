@@ -22,7 +22,7 @@ eas init
 
 # 4. You're ready — trigger a build from the Actions tab or locally:
 yarn eas:build:staging        # build both platforms, staging
-yarn eas:build:safe:staging   # same, but checks version consistency first
+yarn eas:version:check        # verify native/app version alignment before release
 yarn eas:update:staging       # OTA update (JS changes only, no new build)
 ```
 

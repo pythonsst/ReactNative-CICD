@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: CI
 
 on:
   pull_request:
@@ -7,121 +7,40 @@ on:
       - staging
       - main
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  test:
-    name: Run Tests
+  quality:
+    name: Lint, Test, Version Checks
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'  # Use Node.js version 18.x
+          node-version: '20.x'
+          cache: 'yarn'
 
-      - name: Install Yarn
-        run: npm install --global yarn@1.22.22  # Specify Yarn version 1.22.22
-
-      - name: Cache Yarn dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/yarn
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable
 
-      - name: Run Lefthook CI checks
-        run: yarn lefthook run ci-hook  # Runs Lefthook CI hook defined in .lefthook.yml
+      - name: Lint
+        run: yarn lint
 
-      - name: Run tests
-        run: yarn test-ci  # Ensure that your package.json has this script defined
+      - name: Tests
+        run: yarn test
 
-      # Optional: Add a step for building the project (if applicable)
-      # - name: Build Project
-      #   run: yarn build
+      - name: Lefthook CI hook
+        run: yarn lefthook run ci-hook
 
-  android-build:
-    name: Build Android and Deploy to Play Store (Beta)
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      # Set up Node.js for Yarn and related tasks
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install Yarn
-        run: npm install --global yarn@1.22.22
-
-      - name: Cache Yarn dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/yarn
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Install dependencies
-        run: yarn install
-
-      # Cache Gradle Wrapper
-      - name: Cache Gradle Wrapper
-        uses: actions/cache@v3
-        with:
-          path: ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
-
-      # Cache Gradle dependencies
-      - name: Cache Gradle Dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-caches-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-caches-
-
-      # Make Gradle Wrapper executable
-      - name: Make Gradlew Executable
-        run: cd android && chmod +x ./gradlew
-
-      # Build Android App Bundle
-      - name: Build Android App Bundle
-        run: cd android && ./gradlew bundleRelease --no-daemon
-
-      # Sign the App Bundle
-      - name: Sign App Bundle
-        id: sign_app
-        uses: r0adkll/sign-android-release@v1
-        with:
-          releaseDirectory: android/app/build/outputs/bundle/release
-          signingKeyBase64: ${{ secrets.ANDROID_SIGNING_KEY }}
-          alias: ${{ secrets.ANDROID_SIGNING_ALIAS }}
-          keyStorePassword: ${{ secrets.ANDROID_SIGNING_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
-
-      # Upload the signed App Bundle
-      - name: Upload Signed App Bundle
-        uses: actions/upload-artifact@v2
-        with:
-          name: Signed App Bundle
-          path: ${{steps.sign_app.outputs.signedReleaseFile}}
-
-      # Deploy to Google Play Store Beta
-      - name: Deploy to Google Play Store (Beta)
-        uses: r0adkll/upload-google-play@v1
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT }}
-          packageName: com.shivshankartiwari.reactnativeignitekit
-          releaseFile: ${{steps.sign_app.outputs.signedReleaseFile}}
-          track: beta
-          userFraction: 0.5
-          whatsNewDirectory: android/release-notes/
+      # Informational version consistency check across package.json + native files.
+      - name: EAS version consistency
+        run: yarn eas:version:get
