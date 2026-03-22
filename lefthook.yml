@@ -18,6 +18,8 @@ pre-push:
 pre-commit:
   parallel: true  # Run commands in parallel to save time
   commands:
+    secret_scan:
+      run: node scripts/secret-scan-staged.cjs
     eslint:
       glob: "*.{js,ts,jsx,tsx}"
       run: node scripts/eslint-staged.cjs {staged_files}
