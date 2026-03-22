@@ -16,7 +16,7 @@ if linkage != nil
 end
 
 
-abstract_target 'RnNewArchitectureDemoBase' do
+abstract_target 'ReactNativeIgniteKitBase' do
   # Shared pods go here, if any
   use_expo_modules!
 
