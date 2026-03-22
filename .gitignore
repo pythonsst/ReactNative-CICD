@@ -78,6 +78,9 @@ package-lock.json
 # NOTE: These will be removed in production. Do not include real credentials or secrets.
 .env*
 !.env.signing.example
+!.env.development.local.example
+!.env.staging.local.example
+!.env.production.local.example
 
 # EAS credentials export (keystore + secrets — never commit)
 /credentials.json

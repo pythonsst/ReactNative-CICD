@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "eas-build-pre-install": "node scripts/prepare-env-local.cjs",
     "lefthook:install": "node scripts/lefthook-install.js",
     "bootstrap": "yarn install && yarn start",
     "start": "node scripts/start-metro.js",

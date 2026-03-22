@@ -36,14 +36,20 @@ if (isEasBuild) {
     )
 }
 
-// Environment files per build type + flavor
+// Environment files per build type + flavor.
+// Local overrides (e.g. .env.production.local) let each engineer keep private keys
+// outside git while sharing non-sensitive defaults in .env.*.
+def resolveEnvFile = { baseEnv ->
+    def localOverride = "${baseEnv}.local"
+    return rootProject.file("../${localOverride}").exists() ? localOverride : baseEnv
+}
 project.ext.envConfigFiles = [
-    productiondebug:     ".env.production",
-    productionrelease:   ".env.production",
-    developmentdebug:    ".env.development",
-    developmentrelease:  ".env.development",
-    stagingdebug:        ".env.staging",
-    stagingrelease:      ".env.staging"
+    productiondebug:     resolveEnvFile(".env.production"),
+    productionrelease:   resolveEnvFile(".env.production"),
+    developmentdebug:    resolveEnvFile(".env.development"),
+    developmentrelease:  resolveEnvFile(".env.development"),
+    stagingdebug:        resolveEnvFile(".env.staging"),
+    stagingrelease:      resolveEnvFile(".env.staging")
 ]
 
 // Guard against leaked ENVFILE forcing the wrong env (common on CI/EAS).
