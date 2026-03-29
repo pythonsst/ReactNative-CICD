@@ -101,3 +101,13 @@ ios/tmp.xcconfig
 .expo
 dist/
 web-build/
+
+# Screenshots
+ios/simulator-build/
+screenshots/
+# ASC API key
+AuthKey_*.p8
+asc-api-key.json
+
+# Fastlane generated
+Preview.html

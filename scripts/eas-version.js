@@ -42,10 +42,10 @@ function getLocalVersions() {
 function getRemoteBuildNumber(platform) {
   try {
     const raw = execSync(
-      `npx eas-cli@latest build:version:get -p ${platform} --non-interactive`,
+      `npx eas-cli build:version:get -p ${platform} --non-interactive`,
       {encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe']},
     );
-    const match = raw.match(/(?:buildNumber|versionCode)\s*[-:]\s*(\d+)/);
+    const match = raw.match(/(?:buildNumber|versionCode)[\s:\-]+(\d+)/);
     return match ? match[1] : null;
   } catch {
     return null;

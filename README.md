@@ -16,12 +16,19 @@ npm install -g eas-cli
 eas login
 eas init
 
-# 3. Add EXPO_TOKEN to your GitHub repo secrets
-#    expo.dev → Account Settings → Access Tokens → Create Token
-#    GitHub → repo Settings → Secrets and variables → Actions → New secret
+# 3. Set up iOS signing credentials (one-time, per Apple Developer account)
+eas credentials --platform ios
+# → Select: Build Credentials → All: Set up all required credentials
+# → EAS generates and stores the Distribution Certificate + Provisioning Profile
 
-# 4. You're ready — trigger a build from the Actions tab or locally:
-yarn eas:build:staging        # build both platforms, staging
+# 4. Add EXPO_TOKEN to your GitHub repo secrets
+#    expo.dev → Account Settings → Access Tokens → Create Token
+#    GitHub → repo Settings → Secrets and variables → Actions → New secret → EXPO_TOKEN
+
+# 5. You're ready — trigger a build from the Actions tab or locally:
+yarn eas:dev:ios              # iOS development build
+yarn eas:staging:ios          # iOS staging build
+yarn eas:prod:ios             # iOS production build
 yarn eas:version:check        # verify native/app version alignment before release
 yarn eas:update:staging       # OTA update (JS changes only, no new build)
 ```

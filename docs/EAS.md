@@ -15,7 +15,7 @@
   Step 1 — Install EAS CLI
   ────────────────────────
   npm install -g eas-cli
-  eas --version          # verify: must be >= 16.32.0
+  eas --version          # verify: must be >= 18.4.0
 
   Step 2 — Login to Expo
   ──────────────────────
@@ -39,12 +39,26 @@
   Replace every "YOUR_APP_STORE_APP_ID" in eas.json with that number.
   (Android tracks are pre-configured; no changes needed there.)
 
-  Step 6 — Configure local signing (for local/Fastlane builds only)
-  ─────────────────────────────────────────────────────────────────
+  Step 6 — Set up iOS signing credentials
+  ────────────────────────────────────────
+  eas credentials --platform ios
+  # Select: Build Credentials → All: Set up all the required credentials
+  # EAS will automatically:
+  #   · Register com.educatorslabs.ignitekit on your Apple Developer account
+  #   · Generate an Apple Distribution Certificate
+  #   · Generate a Provisioning Profile
+  #   · Store both securely on EAS servers (used by every cloud build)
+  #
+  # Run this once per Apple Developer account.
+  # You can verify credentials at any time:
+  eas credentials --platform ios   # view / rotate / replace
+
+  Step 6b — Configure local signing (for local builds only)
+  ──────────────────────────────────────────────────────────
   cp .env.signing.example .env.signing
   # Fill in your keystore path and passwords.
   # EAS Build manages signing automatically — this file is only needed for
-  # local Gradle / Fastlane builds.
+  # local Gradle builds.
 
   Step 7 — Add GitHub Secret
   ──────────────────────────
@@ -112,27 +126,37 @@
 
   VERSION CHECK
   ─────────────
-  yarn eas:version:get          show versions: package.json · gradle · pbxproj
-  yarn eas:version:check        exit 1 if any mismatch (used by safe-build)
+  yarn eas:version              show versions: package.json · gradle · pbxproj
+  yarn eas:version:check        exit 1 if any mismatch (used before builds)
 
   BUILD
   ─────
-  yarn eas:build                all platforms, production
-  yarn eas:build:development    all platforms, development
+  yarn eas:build:dev            all platforms, development
   yarn eas:build:staging        all platforms, staging
-  yarn eas:build:production     all platforms, production
+  yarn eas:build:prod           all platforms, production
 
-  yarn eas:build:android:staging   Android only, staging
-  yarn eas:build:ios:staging       iOS only, staging
+  yarn eas:build:dev:ios        iOS only, development
+  yarn eas:build:staging:ios    iOS only, staging
+  yarn eas:build:prod:ios       iOS only, production
 
-  Safe build (version check first — recommended):
-  yarn eas:build:safe:staging
+  yarn eas:build:dev:android    Android only, development
+  yarn eas:build:staging:android  Android only, staging
+  yarn eas:build:prod:android   Android only, production
+
+  Local build (no EAS cloud — uses local Xcode/Gradle):
+  yarn eas:local:dev:ios
+  yarn eas:local:staging:ios
+  yarn eas:local:prod:ios
 
   SUBMIT  (run after build completes)
-  ─────
-  yarn eas:submit:development
-  yarn eas:submit:staging
-  yarn eas:submit:production
+  ──────
+  yarn eas:submit:dev           all platforms, development
+  yarn eas:submit:staging       all platforms, staging
+  yarn eas:submit:prod          all platforms, production
+
+  yarn eas:submit:dev:ios       iOS only, development
+  yarn eas:submit:staging:ios   iOS only, staging
+  yarn eas:submit:prod:ios      iOS only, production
 
   Submit a specific build ID (if --latest picks the wrong one):
   eas build:list --platform android --profile staging --limit 3
@@ -140,9 +164,9 @@
 
   OTA UPDATE
   ──────────
-  yarn eas:update:development   push update to dev channel
+  yarn eas:update:dev           push update to dev channel
   yarn eas:update:staging       push update to staging channel
-  yarn eas:update:production    push update to production channel
+  yarn eas:update:prod          push update to production channel
 
   Custom message:
   MESSAGE="Fix login crash" yarn eas:update:staging
