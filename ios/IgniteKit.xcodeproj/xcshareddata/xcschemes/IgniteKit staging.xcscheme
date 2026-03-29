@@ -16,9 +16,9 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "58BDA2FD2CCF866F00DF7710"
-                     BuildableName = "ReactNativeIgniteKit staging.app"
-                     BlueprintName = "ReactNativeIgniteKit staging"
-                     ReferencedContainer = "container:ReactNativeIgniteKit.xcodeproj">
+                     BuildableName = "IgniteKit staging.app"
+                     BlueprintName = "IgniteKit staging"
+                     ReferencedContainer = "container:IgniteKit.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
             </ActionContent>
@@ -32,9 +32,9 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "58BDA2FD2CCF866F00DF7710"
-                     BuildableName = "ReactNativeIgniteKit staging.app"
-                     BlueprintName = "ReactNativeIgniteKit staging"
-                     ReferencedContainer = "container:ReactNativeIgniteKit.xcodeproj">
+                     BuildableName = "IgniteKit staging.app"
+                     BlueprintName = "IgniteKit staging"
+                     ReferencedContainer = "container:IgniteKit.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
             </ActionContent>
@@ -50,9 +50,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "58BDA2FD2CCF866F00DF7710"
-               BuildableName = "ReactNativeIgniteKit staging.app"
-               BlueprintName = "ReactNativeIgniteKit staging"
-               ReferencedContainer = "container:ReactNativeIgniteKit.xcodeproj">
+               BuildableName = "IgniteKit staging.app"
+               BlueprintName = "IgniteKit staging"
+               ReferencedContainer = "container:IgniteKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -79,9 +79,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "58BDA2FD2CCF866F00DF7710"
-            BuildableName = "ReactNativeIgniteKit staging.app"
-            BlueprintName = "ReactNativeIgniteKit staging"
-            ReferencedContainer = "container:ReactNativeIgniteKit.xcodeproj">
+            BuildableName = "IgniteKit staging.app"
+            BlueprintName = "IgniteKit staging"
+            ReferencedContainer = "container:IgniteKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "58BDA2FD2CCF866F00DF7710"
-            BuildableName = "ReactNativeIgniteKit staging.app"
-            BlueprintName = "ReactNativeIgniteKit staging"
-            ReferencedContainer = "container:ReactNativeIgniteKit.xcodeproj">
+            BuildableName = "IgniteKit staging.app"
+            BlueprintName = "IgniteKit staging"
+            ReferencedContainer = "container:IgniteKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

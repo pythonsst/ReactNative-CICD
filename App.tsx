@@ -24,7 +24,7 @@ function App(): React.JSX.Element {
 
   // Function to handle button press
   const handleLearnMorePress = async () => {
-    const url = 'https://www.netflix.com/in/';
+    const url = 'https://www.educatorslabs.com/';
     // Check if the URL can be opened
     const supported = await Linking.canOpenURL(url);
     if (supported) {
@@ -42,7 +42,7 @@ function App(): React.JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <View style={styles.content}>
-        <Text style={styles.title}>Welcome to Netflix App!</Text>
+        <Text style={styles.title}>Welcome to IgniteKit!</Text>
         <Text style={styles.subtitle}>Current Environment:</Text>
         <Text style={styles.apiUrl}>{apiUrl}</Text>
         <TouchableOpacity
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#E50914', // Netflix Red
+    color: '#6366F1',
     marginBottom: 8,
     textAlign: 'center',
   },
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   apiUrl: {
     fontSize: 16,
-    color: '#007AFF', // A more vibrant blue
+    color: '#007AFF',
     fontStyle: 'italic',
     textAlign: 'center',
     borderWidth: 1,
@@ -88,14 +88,14 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
-    backgroundColor: '#E6F7FF', // Light background for the URL
+    backgroundColor: '#E6F7FF',
   },
   button: {
     marginTop: 20,
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 5,
-    backgroundColor: '#E50914', // Netflix Red
+    backgroundColor: '#6366F1',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 2.62,
-    elevation: 4, // For Android shadow
+    elevation: 4,
   },
   buttonText: {
     color: 'white',

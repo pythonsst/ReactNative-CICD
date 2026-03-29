@@ -47,11 +47,11 @@ yarn eas:help
 
 | EAS profile | Android Gradle task | iOS Xcode scheme |
 |---|---|---|
-| `development` | `bundleDevelopmentRelease` | `ReactNativeCICD development` |
-| `staging` | `bundleStagingRelease` | `ReactNativeCICD staging` |
-| `production` | `bundleProductionRelease` | `ReactNativeCICD production` |
+| `development` | `bundleDevelopmentRelease` | `IgniteKit development` |
+| `staging` | `bundleStagingRelease` | `IgniteKit staging` |
+| `production` | `bundleProductionRelease` | `IgniteKit production` |
 
-**Naming:** The three environments are always **`development`**, **`staging`**, **`production`** (EAS profile = Android flavor = env file). iOS schemes are prefixed **`ReactNativeCICD `** so they read clearly in Xcode; Android flavors stay short for Gradle. Same `applicationId` on Android across flavors.
+**Naming:** The three environments are always **`development`**, **`staging`**, **`production`** (EAS profile = Android flavor = env file). iOS schemes are prefixed **`IgniteKit `** matching the Xcode project name; Android flavors stay short for Gradle. Same `applicationId` on Android across flavors.
 
 ---
 

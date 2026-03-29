@@ -8,42 +8,45 @@
       "distribution": "store",
       "environment": "development",
       "env": {
-        "ENVFILE": ".env.development"
+        "ENVFILE": ".env.development",
+        "APP_ENV": "development"
       },
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleDevelopmentRelease"
       },
       "ios": {
-        "scheme": "ReactNativeCICD development"
+        "scheme": "IgniteKit development"
       }
     },
     "staging": {
       "distribution": "store",
       "environment": "preview",
       "env": {
-        "ENVFILE": ".env.staging"
+        "ENVFILE": ".env.staging",
+        "APP_ENV": "staging"
       },
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleStagingRelease"
       },
       "ios": {
-        "scheme": "ReactNativeCICD staging"
+        "scheme": "IgniteKit staging"
       }
     },
     "production": {
       "distribution": "store",
       "environment": "production",
       "env": {
-        "ENVFILE": ".env.production"
+        "ENVFILE": ".env.production",
+        "APP_ENV": "production"
       },
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleProductionRelease"
       },
       "ios": {
-        "scheme": "ReactNativeCICD production"
+        "scheme": "IgniteKit production"
       }
     }
   },

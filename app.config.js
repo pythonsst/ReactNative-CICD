@@ -15,8 +15,26 @@
 
 const pkg = require('./package.json');
 
+// Resolved from eas.json `env.APP_ENV` at build time, or locally from the shell.
+// Falls back to 'development' so local runs always work.
+const appEnv = (process.env.APP_ENV || 'development').toLowerCase();
+
+const envConfig = {
+  development: {
+    appName: 'IgniteKit Dev',
+  },
+  staging: {
+    appName: 'IgniteKit Staging',
+  },
+  production: {
+    appName: 'IgniteKit',
+  },
+};
+
+const { appName } = envConfig[appEnv] ?? envConfig.development;
+
 module.exports = {
-  name: 'ReactNativeIgniteKit',
+  name: appName,
   slug: 'reactnativeignitekit',
 
   // Kept in sync with package.json — run `yarn eas:version:get` to verify
@@ -35,6 +53,7 @@ module.exports = {
     eas: {
       projectId: '81e7f11f-c57a-420e-ae2a-b564c882828a',
     },
+    appEnv,
   },
   // ────────────────────────────────────────────────────────────────────────
 
@@ -42,6 +61,6 @@ module.exports = {
     package: 'com.shivshankartiwari.reactnativeignitekit',
   },
   ios: {
-    bundleIdentifier: 'com.shivshankartiwari.reactnativeignitekit',
+    bundleIdentifier: 'com.educatorslabs.ignitekit',
   },
 };

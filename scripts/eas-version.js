@@ -28,7 +28,7 @@ function getLocalVersions() {
   const androidVersionCode = (gradleContent.match(/versionCode\s+(\d+)/)     || [])[1] || 'NOT FOUND';
 
   const pbxContent = fs.readFileSync(
-    './ios/ReactNativeIgniteKit.xcodeproj/project.pbxproj',
+    './ios/IgniteKit.xcodeproj/project.pbxproj',
     'utf8',
   );
   const iosVersion     = ((pbxContent.match(/MARKETING_VERSION\s*=\s*([^;]+);/)      || [])[1] || 'NOT FOUND').trim();

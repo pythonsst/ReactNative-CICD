@@ -75,8 +75,8 @@
   │              │  testing             │  testing (Beta)    │  Production  │
   │ iOS          │  TestFlight internal │  TestFlight ext.   │  App Store   │
   │ OTA channel  │  development         │  staging           │  production  │
-  │ iOS scheme   │  ReactNativeCICD     │  ReactNativeCICD   │  ReactNativeCICD │
-  │              │  development         │  staging           │  production    │
+  │ iOS scheme   │  IgniteKit           │  IgniteKit         │  IgniteKit       │
+  │              │  development         │  staging           │  production      │
   │ Android task │  bundleDevelopment…  │  bundleStaging…    │  bundleProduction… │
   │ Audience     │  Dev team            │  QA / stakeholders │  Everyone    │
   └──────────────┴──────────────────────┴────────────────────┴──────────────┘
@@ -205,7 +205,7 @@
   "Scheme not found" on iOS build
   ·  Confirm the scheme exists in Xcode: Product → Scheme → Manage Schemes
   ·  Scheme names must match eas.json exactly (quotes if spaces):
-       "ReactNativeCICD development" / "ReactNativeCICD staging" / "ReactNativeCICD production"
+       "IgniteKit development" / "IgniteKit staging" / "IgniteKit production"
 
   ".env.signing file is missing" on local build
   ·  Copy .env.signing.example → .env.signing and fill in your keystore values
