@@ -24,7 +24,7 @@ const envConfig = {
     appName: 'IgniteKit Dev',
   },
   staging: {
-    appName: 'IgniteKit Staging',
+    appName: 'IgniteKit Stag',
   },
   production: {
     appName: 'IgniteKit',
