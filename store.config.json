@@ -1,0 +1,21 @@
+{
+  "configVersion": 0,
+  "apple": {
+    "version": "1.0",
+    "copyright": "2026 Educators Labs Private Limited",
+    "release": {
+      "automaticRelease": true
+    },
+    "info": {
+      "en-US": {
+        "title": "IgniteKit",
+        "description": "IgniteKit is a powerful toolkit by Educators Labs designed to help developers and teams build, configure, and launch high-quality mobile apps faster.\n\nWith a clean setup experience and flexible environment configuration, IgniteKit gives you everything you need to go from idea to production with confidence.\n\nFeatures:\n• Environment-aware configuration\n• Clean and minimal interface\n• Built for speed and reliability",
+        "keywords": ["toolkit", "developer tools", "mobile", "environment", "configuration", "starter", "boilerplate", "education"],
+        "marketingUrl": "https://educatorslabs.com/ignitekit",
+        "supportUrl": "https://educatorslabs.com/support",
+        "privacyPolicyUrl": "https://educatorslabs.com/privacy",
+        "releaseNotes": "Initial release."
+      }
+    }
+  }
+}

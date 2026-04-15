@@ -10,6 +10,18 @@ if (!profile || !['development', 'staging', 'production'].includes(profile)) {
   process.exit(0);
 }
 
+// Write /tmp/envfile so react-native-config's iOS BuildDotenvConfig.rb picks up
+// the correct .env.* file regardless of whether Xcode scheme pre-actions ran.
+// ReadDotEnv.rb checks /tmp/envfile FIRST (before the ENVFILE env var), so this
+// guarantees the right file is used even when EAS skips scheme pre-actions.
+const envFile = process.env.ENVFILE || `.env.${profile}`;
+try {
+  fs.writeFileSync('/tmp/envfile', envFile, 'utf8');
+  console.log(`[prepare-env-local] Wrote /tmp/envfile = ${envFile}`);
+} catch (e) {
+  console.warn(`[prepare-env-local] Could not write /tmp/envfile: ${e.message}`);
+}
+
 const profileKeyName = `GOOGLE_MAPS_API_KEY_${profile.toUpperCase()}`;
 const injectedKey = (process.env[profileKeyName] || process.env.GOOGLE_MAPS_API_KEY || '').trim();
 

@@ -6,11 +6,5 @@ ruby ">= 2.6.10"
 # Exclude problematic versions of cocoapods and activesupport that causes build failures.
 gem 'cocoapods', '>= 1.13', '!= 1.15.0', '!= 1.15.1'
 gem 'activesupport', '>= 6.1.7.5', '!= 7.1.0'
-
-# for fastlane
-gem 'nokogiri'
-gem 'rack', '~> 2.2.4'
-gem 'rspec'
-
-gem "fastlane"
-
+gem 'fastlane', '>= 2.232.0'
+gem 'abbrev'

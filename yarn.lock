@@ -2292,36 +2292,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/eas-build-job@npm:1.0.231":
-  version: 1.0.231
-  resolution: "@expo/eas-build-job@npm:1.0.231"
+"@expo/eas-build-job@npm:18.4.0":
+  version: 18.4.0
+  resolution: "@expo/eas-build-job@npm:18.4.0"
   dependencies:
-    "@expo/logger": 1.0.221
+    "@expo/logger": 18.0.1
     joi: ^17.13.1
     semver: ^7.6.2
-    zod: ^4.1.3
-  checksum: 02eb78716dc6b06b508c07c2a03e80228e18170464212e759ad798ae344b583a9d499aad455d660dc867374a1b726cd1c992cf1347ac87f451331881da114ab7
+    zod: ^4.3.5
+  checksum: 02eeeeb2c86b0d4f142eb5f3e45c8e32bdfd8d4c331b97eb58a94f2c7179793dd174a86568b9c846f44478d9ca46d2f7f5a265bf5ff151937ba7d81caeaa76e5
   languageName: node
   linkType: hard
 
-"@expo/eas-build-job@npm:1.0.243":
-  version: 1.0.243
-  resolution: "@expo/eas-build-job@npm:1.0.243"
-  dependencies:
-    "@expo/logger": 1.0.221
-    joi: ^17.13.1
-    semver: ^7.6.2
-    zod: ^4.1.3
-  checksum: 91e332f92fb0fdce67f497f1c055053e7ea41c72caca59a2e62c7256784227d33fa27246a7c3028cbe80463b21326e445e9afb73ccd9eea15dcb4ed29ecf06d2
-  languageName: node
-  linkType: hard
-
-"@expo/eas-json@npm:16.30.0":
-  version: 16.30.0
-  resolution: "@expo/eas-json@npm:16.30.0"
+"@expo/eas-json@npm:18.4.0":
+  version: 18.4.0
+  resolution: "@expo/eas-json@npm:18.4.0"
   dependencies:
     "@babel/code-frame": 7.23.5
-    "@expo/eas-build-job": 1.0.231
+    "@expo/eas-build-job": 18.4.0
     chalk: 4.1.2
     env-string: 1.0.1
     fs-extra: 11.2.0
@@ -2331,7 +2319,7 @@ __metadata:
     semver: 7.5.2
     terminal-link: 2.1.1
     tslib: 2.4.1
-  checksum: 05e244feac307c70cdb51147337ffd67ad83da882c4af528c5f77fecbc0d0ae766adb6f59223fae29b57e40bf6c6fef5df745de0634df942a7e30f33e2d62193
+  checksum: 55d58e552b0dc3d587b88952b8f3f2c4f9350775a3ed509acc7829512816f98db208fff742ba871c61945232a44b5d0a6fc380234e6a040ff7601f16610082f4
   languageName: node
   linkType: hard
 
@@ -2457,13 +2445,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/logger@npm:1.0.221":
-  version: 1.0.221
-  resolution: "@expo/logger@npm:1.0.221"
+"@expo/logger@npm:18.0.1":
+  version: 18.0.1
+  resolution: "@expo/logger@npm:18.0.1"
   dependencies:
     "@types/bunyan": ^1.8.11
     bunyan: ^1.8.15
-  checksum: a4a8d380cedbce2360f232139cd1e7aa7537349ece485106f3522e6fe520bc36defc4eb0a0e0539390664f04a29ef2ba108a98b711e840d3e95eaf8398b32a3c
+  checksum: 97d39a4e78b0bcae4553a7e27a74715296a925fb5277df4da98e1fede92f0db47571e7fbba3d6107093763424d6585294cf069705a9c251d7102d9a744eb1490
   languageName: node
   linkType: hard
 
@@ -2694,12 +2682,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/steps@npm:1.0.231":
-  version: 1.0.231
-  resolution: "@expo/steps@npm:1.0.231"
+"@expo/steps@npm:18.4.0":
+  version: 18.4.0
+  resolution: "@expo/steps@npm:18.4.0"
   dependencies:
-    "@expo/eas-build-job": 1.0.231
-    "@expo/logger": 1.0.221
+    "@expo/eas-build-job": 18.4.0
+    "@expo/logger": 18.0.1
     "@expo/spawn-async": ^1.7.2
     arg: ^5.0.2
     fs-extra: ^11.2.0
@@ -2707,10 +2695,9 @@ __metadata:
     jsep: ^1.3.8
     lodash.clonedeep: ^4.5.0
     lodash.get: ^4.4.2
-    this-file: ^2.0.3
     uuid: ^9.0.1
     yaml: ^2.4.3
-  checksum: 805252e72d1b282032c2bdbe93887b713fc4ad704b24c0740665741ef01ef3d9374fcdac505e739817452a8808eb4f7e1da3dcf63d1f6eebb01c15248a56e756
+  checksum: 986a30596fab3ae96d42de47c204e1e3769347e0f4822ad16e4a71f7f4358f825935947bf853bce7f8f7cd5f1596160ddb4fd2f3292b568ee56b9f1851a35033
   languageName: node
   linkType: hard
 
@@ -3253,43 +3240,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oclif/core@npm:^1.26.2":
-  version: 1.26.2
-  resolution: "@oclif/core@npm:1.26.2"
-  dependencies:
-    "@oclif/linewrap": ^1.0.0
-    "@oclif/screen": ^3.0.4
-    ansi-escapes: ^4.3.2
-    ansi-styles: ^4.3.0
-    cardinal: ^2.1.1
-    chalk: ^4.1.2
-    clean-stack: ^3.0.1
-    cli-progress: ^3.10.0
-    debug: ^4.3.4
-    ejs: ^3.1.6
-    fs-extra: ^9.1.0
-    get-package-type: ^0.1.0
-    globby: ^11.1.0
-    hyperlinker: ^1.0.0
-    indent-string: ^4.0.0
-    is-wsl: ^2.2.0
-    js-yaml: ^3.14.1
-    natural-orderby: ^2.0.3
-    object-treeify: ^1.1.33
-    password-prompt: ^1.1.2
-    semver: ^7.3.7
-    string-width: ^4.2.3
-    strip-ansi: ^6.0.1
-    supports-color: ^8.1.1
-    supports-hyperlinks: ^2.2.0
-    tslib: ^2.4.1
-    widest-line: ^3.1.0
-    wrap-ansi: ^7.0.0
-  checksum: 1da7f22fff1eb4bba10f17f07a97bad308d317a0b591561be7f1171edff2f40bf84830295965b26cfcb80d3c5df7958df35bbbba4ce030e14a68bbc8e3cedc82
-  languageName: node
-  linkType: hard
-
-"@oclif/core@npm:^2.11.1, @oclif/core@npm:^2.15.0":
+"@oclif/core@npm:^2.11.1":
   version: 2.16.0
   resolution: "@oclif/core@npm:2.16.0"
   dependencies:
@@ -3325,28 +3276,41 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oclif/linewrap@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@oclif/linewrap@npm:1.0.0"
-  checksum: a072016a58b5e1331bbc21303ad5100fcda846ac4b181e344aec88bb24c5da09c416651e51313ffcc846a83514b74b8b987dd965982900f3edbb42b4e87cc246
-  languageName: node
-  linkType: hard
-
-"@oclif/plugin-autocomplete@npm:^2.3.10":
-  version: 2.3.10
-  resolution: "@oclif/plugin-autocomplete@npm:2.3.10"
+"@oclif/core@npm:^4, @oclif/core@npm:^4.8.3":
+  version: 4.10.3
+  resolution: "@oclif/core@npm:4.10.3"
   dependencies:
-    "@oclif/core": ^2.15.0
-    chalk: ^4.1.0
-    debug: ^4.3.4
-  checksum: 294f21679a1dfec7f7cd593e704f160a8137733215b58158cb4bf0b6855684f4e27e0df118bf803e894fc52e7f1184ecae3026ce96057a19c6dbdd9318c7e2f9
+    ansi-escapes: ^4.3.2
+    ansis: ^3.17.0
+    clean-stack: ^3.0.1
+    cli-spinners: ^2.9.2
+    debug: ^4.4.3
+    ejs: ^3.1.10
+    get-package-type: ^0.1.0
+    indent-string: ^4.0.0
+    is-wsl: ^2.2.0
+    lilconfig: ^3.1.3
+    minimatch: ^10.2.4
+    semver: ^7.7.3
+    string-width: ^4.2.3
+    supports-color: ^8
+    tinyglobby: ^0.2.14
+    widest-line: ^3.1.0
+    wordwrap: ^1.0.0
+    wrap-ansi: ^7.0.0
+  checksum: ac5e04c1646b7fd71323997c93c9a046f97619810c5a4c14d1393d51bb7dfa683fd424555db1ad4618df50882efe63ee405d3640599d0ad48adb4aee1a8d5a5c
   languageName: node
   linkType: hard
 
-"@oclif/screen@npm:^3.0.4":
-  version: 3.0.8
-  resolution: "@oclif/screen@npm:3.0.8"
-  checksum: d287d5abf236e6564259a11f3942ad68a70ead2fe2ad3653c3730bce8519d21e49cabcc5be449fab769f4efc5ca74c6de98edc34e3464e60d2277119fb4796d2
+"@oclif/plugin-autocomplete@npm:^3.2.40":
+  version: 3.2.43
+  resolution: "@oclif/plugin-autocomplete@npm:3.2.43"
+  dependencies:
+    "@oclif/core": ^4
+    ansis: ^3.16.0
+    debug: ^4.4.1
+    ejs: ^3.1.10
+  checksum: 4521187481e2c4eff7e03b73c92511f3583b2f5564a5b4d0f7ea315118e2b37c381e7650fe16453fce1ea5910481075bdfaa25204456a114b15761d1328f2d97
   languageName: node
   linkType: hard
 
@@ -4702,6 +4666,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ansis@npm:^3.16.0, ansis@npm:^3.17.0":
+  version: 3.17.0
+  resolution: "ansis@npm:3.17.0"
+  checksum: 6fd6bc4d1187b894d9706f4c141c81b788e90766426617385486dae38f8b2f5a1726d8cc754939e44265f92a9db4647d5136cb1425435c39ac42b35e3acf4f3d
+  languageName: node
+  linkType: hard
+
 "any-promise@npm:^1.0.0":
   version: 1.3.0
   resolution: "any-promise@npm:1.3.0"
@@ -5137,6 +5108,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"balanced-match@npm:^4.0.2":
+  version: 4.0.4
+  resolution: "balanced-match@npm:4.0.4"
+  checksum: fb07bb66a0959c2843fc055838047e2a95ccebb837c519614afb067ebfdf2fa967ca8d712c35ced07f2cd26fc6f07964230b094891315ad74f11eba3d53178a0
+  languageName: node
+  linkType: hard
+
 "bare-events@npm:^2.7.0":
   version: 2.8.2
   resolution: "bare-events@npm:2.8.2"
@@ -5229,6 +5207,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"brace-expansion@npm:^5.0.2":
+  version: 5.0.5
+  resolution: "brace-expansion@npm:5.0.5"
+  dependencies:
+    balanced-match: ^4.0.2
+  checksum: 4481b7ffa467b34c14e258167dbd8d9485a2d31d03060e8e8b38142dcde32cdc89c8f55b04d3ae7aae9304fa7eac1dfafd602787cf09c019cc45de3bb6950ffc
+  languageName: node
+  linkType: hard
+
 "braces@npm:^3.0.3":
   version: 3.0.3
   resolution: "braces@npm:3.0.3"
@@ -5284,13 +5271,6 @@ __metadata:
     buffer-alloc-unsafe: ^1.1.0
     buffer-fill: ^1.0.0
   checksum: 560cd27f3cbe73c614867da373407d4506309c62fe18de45a1ce191f3785ec6ca2488d802ff82065798542422980ca25f903db078c57822218182c37c3576df5
-  languageName: node
-  linkType: hard
-
-"buffer-equal-constant-time@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "buffer-equal-constant-time@npm:1.0.1"
-  checksum: 80bb945f5d782a56f374b292770901065bad21420e34936ecbe949e57724b4a13874f735850dd1cc61f078773c4fb5493a41391e7bda40d1fa388d6bd80daaab
   languageName: node
   linkType: hard
 
@@ -5624,7 +5604,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cli-progress@npm:3.12.0, cli-progress@npm:^3.10.0, cli-progress@npm:^3.12.0":
+"cli-progress@npm:3.12.0, cli-progress@npm:^3.12.0":
   version: 3.12.0
   resolution: "cli-progress@npm:3.12.0"
   dependencies:
@@ -5633,7 +5613,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cli-spinners@npm:^2.0.0, cli-spinners@npm:^2.4.0, cli-spinners@npm:^2.5.0":
+"cli-spinners@npm:^2.0.0, cli-spinners@npm:^2.4.0, cli-spinners@npm:^2.5.0, cli-spinners@npm:^2.9.2":
   version: 2.9.2
   resolution: "cli-spinners@npm:2.9.2"
   checksum: 1bd588289b28432e4676cb5d40505cfe3e53f2e4e10fbe05c8a710a154d6fe0ce7836844b00d6858f740f2ffe67cdc36e0fce9c7b6a8430e80e6388d5aa4956c
@@ -6069,7 +6049,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:^4.3.5":
+"debug@npm:^4.3.5, debug@npm:^4.4.3":
   version: 4.4.3
   resolution: "debug@npm:4.4.3"
   dependencies:
@@ -6335,19 +6315,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eas-cli@npm:^16.32.0":
-  version: 16.32.0
-  resolution: "eas-cli@npm:16.32.0"
+"eas-cli@npm:^18.4.0":
+  version: 18.4.0
+  resolution: "eas-cli@npm:18.4.0"
   dependencies:
     "@expo/apple-utils": 2.1.13
     "@expo/code-signing-certificates": 0.0.5
     "@expo/config": 10.0.6
     "@expo/config-plugins": 9.0.12
-    "@expo/eas-build-job": 1.0.243
-    "@expo/eas-json": 16.30.0
+    "@expo/eas-build-job": 18.4.0
+    "@expo/eas-json": 18.4.0
     "@expo/env": ^1.0.0
     "@expo/json-file": 8.3.3
-    "@expo/logger": 1.0.221
+    "@expo/logger": 18.0.1
     "@expo/multipart-body-parser": 2.0.0
     "@expo/osascript": 2.1.4
     "@expo/package-manager": 1.9.10
@@ -6359,10 +6339,10 @@ __metadata:
     "@expo/results": 1.0.0
     "@expo/rudder-sdk-node": 1.1.1
     "@expo/spawn-async": 1.7.2
-    "@expo/steps": 1.0.231
+    "@expo/steps": 18.4.0
     "@expo/timeago.js": 1.0.0
-    "@oclif/core": ^1.26.2
-    "@oclif/plugin-autocomplete": ^2.3.10
+    "@oclif/core": ^4.8.3
+    "@oclif/plugin-autocomplete": ^3.2.40
     "@segment/ajv-human-errors": ^2.1.2
     "@urql/core": 4.0.11
     "@urql/exchange-retry": 1.2.0
@@ -6392,7 +6372,6 @@ __metadata:
     invariant: ^2.2.2
     jks-js: 1.1.0
     joi: 17.11.0
-    jsonwebtoken: 9.0.0
     keychain: 1.5.0
     log-symbols: 4.1.0
     mime: 3.0.0
@@ -6414,7 +6393,7 @@ __metadata:
     semver: 7.5.4
     set-interval-async: 3.0.3
     slash: 3.0.0
-    tar: 6.2.1
+    tar: 7.5.7
     tar-stream: 3.1.7
     terminal-link: 2.1.1
     ts-deepmerge: 6.2.0
@@ -6427,7 +6406,7 @@ __metadata:
     zod: ^4.1.3
   bin:
     eas: bin/run
-  checksum: 31fb773d64dc39d4c7ade302c3ab29957845248903cc730519020737f1969d9d93b37f8478692ee35198ba784998a384e12937ddac731d4b60c8e56abf1a3d3e
+  checksum: d1a3f2ce6bc34f6c1ac0ddf66b44caf415c6fcb4e37257a678b4692c38355d0b73d6e14aa9008d31d49358346b6c0fea5d0e785151dd3e809419ed2dcd2ed607
   languageName: node
   linkType: hard
 
@@ -6438,15 +6417,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ecdsa-sig-formatter@npm:1.0.11":
-  version: 1.0.11
-  resolution: "ecdsa-sig-formatter@npm:1.0.11"
-  dependencies:
-    safe-buffer: ^5.0.1
-  checksum: 207f9ab1c2669b8e65540bce29506134613dd5f122cccf1e6a560f4d63f2732d427d938f8481df175505aad94583bcb32c688737bb39a6df0625f903d6d93c03
-  languageName: node
-  linkType: hard
-
 "ee-first@npm:1.1.1":
   version: 1.1.1
   resolution: "ee-first@npm:1.1.1"
@@ -6454,7 +6424,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ejs@npm:^3.1.10, ejs@npm:^3.1.6, ejs@npm:^3.1.7, ejs@npm:^3.1.8":
+"ejs@npm:^3.1.10, ejs@npm:^3.1.7, ejs@npm:^3.1.8":
   version: 3.1.10
   resolution: "ejs@npm:3.1.10"
   dependencies:
@@ -7426,6 +7396,18 @@ __metadata:
     picomatch:
       optional: true
   checksum: fe9f3014901d023cf631831dcb9eae5447f4d7f69218001dd01ecf007eccc40f6c129a04411b5cc273a5f93c14e02e971e17270afc9022041c80be924091eb6f
+  languageName: node
+  linkType: hard
+
+"fdir@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "fdir@npm:6.5.0"
+  peerDependencies:
+    picomatch: ^3 || ^4
+  peerDependenciesMeta:
+    picomatch:
+      optional: true
+  checksum: bd537daa9d3cd53887eed35efa0eab2dbb1ca408790e10e024120e7a36c6e9ae2b33710cb8381e35def01bc9c1d7eaba746f886338413e68ff6ebaee07b9a6e8
   languageName: node
   linkType: hard
 
@@ -9681,18 +9663,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsonwebtoken@npm:9.0.0":
-  version: 9.0.0
-  resolution: "jsonwebtoken@npm:9.0.0"
-  dependencies:
-    jws: ^3.2.2
-    lodash: ^4.17.21
-    ms: ^2.1.1
-    semver: ^7.3.8
-  checksum: b9181cecf9df99f1dc0253f91ba000a1aa4d91f5816d1608c0dba61a5623726a0bfe200b51df25de18c1a6000825d231ad7ce2788aa54fd48dcb760ad9eb9514
-  languageName: node
-  linkType: hard
-
 "jsx-ast-utils@npm:^2.4.1 || ^3.0.0":
   version: 3.3.5
   resolution: "jsx-ast-utils@npm:3.3.5"
@@ -9702,27 +9672,6 @@ __metadata:
     object.assign: ^4.1.4
     object.values: ^1.1.6
   checksum: f4b05fa4d7b5234230c905cfa88d36dc8a58a6666975a3891429b1a8cdc8a140bca76c297225cb7a499fad25a2c052ac93934449a2c31a44fc9edd06c773780a
-  languageName: node
-  linkType: hard
-
-"jwa@npm:^1.4.2":
-  version: 1.4.2
-  resolution: "jwa@npm:1.4.2"
-  dependencies:
-    buffer-equal-constant-time: ^1.0.1
-    ecdsa-sig-formatter: 1.0.11
-    safe-buffer: ^5.0.1
-  checksum: fd1a6de6c649a4b16f0775439ac9173e4bc9aa0162c7f3836699af47736ae000fafe89f232a2345170de6c14021029cb94b488f7882c6caf61e6afef5fce6494
-  languageName: node
-  linkType: hard
-
-"jws@npm:^3.2.2":
-  version: 3.2.3
-  resolution: "jws@npm:3.2.3"
-  dependencies:
-    jwa: ^1.4.2
-    safe-buffer: ^5.0.1
-  checksum: 58f88f1898899e47e9eb0fe61e6347268a498ef75a3d6563158cca855fe0c628138c9c42964d60a4daad8a955696c69fbae5c3e66da8e0f0138bdd7a140cbb27
   languageName: node
   linkType: hard
 
@@ -9981,6 +9930,13 @@ __metadata:
     lightningcss-win32-x64-msvc:
       optional: true
   checksum: c51de34b7379f9da391d0c1157893bb1484357d1ce2212a8c7943690d7a4fed7f2fa0d2dd7a92004b4444662011564ec7bf31f458a1638c856c529fe07285177
+  languageName: node
+  linkType: hard
+
+"lilconfig@npm:^3.1.3":
+  version: 3.1.3
+  resolution: "lilconfig@npm:3.1.3"
+  checksum: 644eb10830350f9cdc88610f71a921f510574ed02424b57b0b3abb66ea725d7a082559552524a842f4e0272c196b88dfe1ff7d35ffcc6f45736777185cd67c9a
   languageName: node
   linkType: hard
 
@@ -10661,6 +10617,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"minimatch@npm:^10.2.4":
+  version: 10.2.4
+  resolution: "minimatch@npm:10.2.4"
+  dependencies:
+    brace-expansion: ^5.0.2
+  checksum: 56dce6b04c6b30b500d81d7a29822c108b7d58c46696ec7332d04a2bd104a5cb69e5c7ce93e1783dc66d61400d831e6e226ca101ac23665aff32ca303619dc3d
+  languageName: node
+  linkType: hard
+
 "minimatch@npm:^3.0.2, minimatch@npm:^3.0.4, minimatch@npm:^3.0.5, minimatch@npm:^3.1.1, minimatch@npm:^3.1.2":
   version: 3.1.2
   resolution: "minimatch@npm:3.1.2"
@@ -10795,6 +10760,15 @@ __metadata:
   dependencies:
     minipass: ^7.1.2
   checksum: 493bed14dcb6118da7f8af356a8947cf1473289c09658e5aabd69a737800a8c3b1736fb7d7931b722268a9c9bc038a6d53c049b6a6af24b34a121823bb709996
+  languageName: node
+  linkType: hard
+
+"minizlib@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "minizlib@npm:3.1.0"
+  dependencies:
+    minipass: ^7.1.2
+  checksum: a15e6f0128f514b7d41a1c68ce531155447f4669e32d279bba1c1c071ef6c2abd7e4d4579bb59ccc2ed1531346749665968fdd7be8d83eb6b6ae2fe1f3d370a7
   languageName: node
   linkType: hard
 
@@ -11656,6 +11630,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"picomatch@npm:^4.0.3":
+  version: 4.0.4
+  resolution: "picomatch@npm:4.0.4"
+  checksum: 76b387b5157951422fa6049a96bdd1695e39dd126cd99df34d343638dc5cdb8bcdc83fff288c23eddcf7c26657c35e3173d4d5f488c4f28b889b314472e0a662
+  languageName: node
+  linkType: hard
+
 "pify@npm:^4.0.1":
   version: 4.0.1
   resolution: "pify@npm:4.0.1"
@@ -12127,7 +12108,7 @@ __metadata:
     "@types/react-test-renderer": ^18.0.0
     babel-jest: ^29.6.3
     babel-preset-expo: ~11.0.0
-    eas-cli: ^16.32.0
+    eas-cli: ^18.4.0
     eslint: ^8.19.0
     expo: ~51.0.0
     expo-updates: ~0.25.28
@@ -12730,7 +12711,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.3.8, semver@npm:^7.6.2":
+"semver@npm:^7.6.2, semver@npm:^7.7.3":
   version: 7.7.4
   resolution: "semver@npm:7.7.4"
   bin:
@@ -13460,7 +13441,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"supports-color@npm:^8.0.0, supports-color@npm:^8.1.1":
+"supports-color@npm:^8, supports-color@npm:^8.0.0, supports-color@npm:^8.1.1":
   version: 8.1.1
   resolution: "supports-color@npm:8.1.1"
   dependencies:
@@ -13497,7 +13478,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tar@npm:6.2.1, tar@npm:^6.0.5, tar@npm:^6.1.11":
+"tar@npm:7.5.7":
+  version: 7.5.7
+  resolution: "tar@npm:7.5.7"
+  dependencies:
+    "@isaacs/fs-minipass": ^4.0.0
+    chownr: ^3.0.0
+    minipass: ^7.1.2
+    minizlib: ^3.1.0
+    yallist: ^5.0.0
+  checksum: 82fa04804b6cae4c0b46b84e97a08c39e1c17bb959350baa32d139bcf5e1fc7ebc3ceb72465dd3e2e311992386ecc13599a257d5672158490ceb9464146d5573
+  languageName: node
+  linkType: hard
+
+"tar@npm:^6.0.5, tar@npm:^6.1.11":
   version: 6.2.1
   resolution: "tar@npm:6.2.1"
   dependencies:
@@ -13641,13 +13635,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"this-file@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "this-file@npm:2.0.3"
-  checksum: 25f5afd98bcd1fcf959e0591bdec4a6a48f364a6aa13de6c46c2485d36bf6ff397f6605b3e7610f788d1232274c42230492fad5500775a09825c6adbe8ba1279
-  languageName: node
-  linkType: hard
-
 "throat@npm:^5.0.0":
   version: 5.0.0
   resolution: "throat@npm:5.0.0"
@@ -13672,6 +13659,16 @@ __metadata:
     fdir: ^6.4.4
     picomatch: ^4.0.2
   checksum: 261e986e3f2062dec3a582303bad2ce31b4634b9348648b46828c000d464b012cf474e38f503312367d4117c3f2f18611992738fca684040758bba44c24de522
+  languageName: node
+  linkType: hard
+
+"tinyglobby@npm:^0.2.14":
+  version: 0.2.15
+  resolution: "tinyglobby@npm:0.2.15"
+  dependencies:
+    fdir: ^6.5.0
+    picomatch: ^4.0.3
+  checksum: 0e33b8babff966c6ab86e9b825a350a6a98a63700fa0bb7ae6cf36a7770a508892383adc272f7f9d17aaf46a9d622b455e775b9949a3f951eaaf5dfb26331d44
   languageName: node
   linkType: hard
 
@@ -13845,7 +13842,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.4.1, tslib@npm:^2.5.0":
+"tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.5.0":
   version: 2.8.1
   resolution: "tslib@npm:2.8.1"
   checksum: e4aba30e632b8c8902b47587fd13345e2827fa639e7c3121074d5ee0880723282411a8838f830b55100cbe4517672f84a2472667d355b81e8af165a55dc6203a
@@ -14813,7 +14810,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^4.1.3":
+"zod@npm:^4.1.3, zod@npm:^4.3.5":
   version: 4.3.6
   resolution: "zod@npm:4.3.6"
   checksum: 19cec761b46bae4b6e7e861ea740f3f248e50a6671825afc8a5758e27b35d6f20ccde9942422fd5cf6f8b697f18bd05ef8bb33f5f2db112ab25cc628de2fae47

@@ -1,2 +1,0 @@
-json_key_file("android/fastlane/keys/reactnativeignitekit-465baf38544b.json") # 🔐 JSON key used for Google Play Developer API
-package_name("com.shivshankartiwari.reactnativeignitekit")                                          # 📦 Your app’s package name

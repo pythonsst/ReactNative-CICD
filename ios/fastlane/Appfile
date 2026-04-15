@@ -1,8 +1,0 @@
-app_identifier("com.shivshankartiwari.reactnativeignitekit") # The bundle identifier of your app
-apple_id("shiv.tiwari@validusfintech.com") # Your Apple Developer Portal username
-
-itc_team_id("126207635") # App Store Connect Team ID
-team_id("7BJAJP6YCF") # Developer Portal Team ID
-
-# For more information about the Appfile, see:
-#     https://docs.fastlane.tools/advanced/#appfile

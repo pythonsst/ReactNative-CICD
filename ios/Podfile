@@ -16,7 +16,7 @@ if linkage != nil
 end
 
 
-abstract_target 'ReactNativeIgniteKitBase' do
+abstract_target 'IgniteKitBase' do
   # Shared pods go here, if any
   use_expo_modules!
 
@@ -28,20 +28,20 @@ abstract_target 'ReactNativeIgniteKitBase' do
     end
   end
   
-  target 'ReactNativeIgniteKit' do
-    # Pods for ReactNativeIgniteKit
+  target 'IgniteKit' do
+    # Pods for IgniteKit
   end
 
-  target 'ReactNativeIgniteKit development' do
-    # Pods for ReactNativeIgniteKit development
+  target 'IgniteKit development' do
+    # Pods for IgniteKit development
   end
 
-  target 'ReactNativeIgniteKit staging' do
-    # Pods for ReactNativeIgniteKit staging
+  target 'IgniteKit staging' do
+    # Pods for IgniteKit staging
   end
 
-  target 'ReactNativeIgniteKit production' do
-    # Pods for ReactNativeIgniteKit production
+  target 'IgniteKit production' do
+    # Pods for IgniteKit production
   end
   
   config = use_native_modules!
@@ -53,7 +53,7 @@ abstract_target 'ReactNativeIgniteKitBase' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'ReactNativeIgniteKitTests' do
+  target 'IgniteKitTests' do
     inherit! :complete
     # Pods for testing
   end

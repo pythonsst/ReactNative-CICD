@@ -32,21 +32,21 @@ Profile is always one of: `development` | `staging` | `production`.
 
 ## iOS (same three environments)
 
-Scheme files live under `ios/ReactNativeIgniteKit.xcodeproj/xcshareddata/xcschemes/`:
+Scheme files live under `ios/IgniteKit.xcodeproj/xcshareddata/xcschemes/`:
 
 | File | Scheme name (used by EAS & CLI) |
 |------|--------------------------------|
-| `ReactNativeCICD development.xcscheme` | `ReactNativeCICD development` |
-| `ReactNativeCICD staging.xcscheme` | `ReactNativeCICD staging` |
-| `ReactNativeCICD production.xcscheme` | `ReactNativeCICD production` |
+| `IgniteKit development.xcscheme` | `IgniteKit development` |
+| `IgniteKit staging.xcscheme` | `IgniteKit staging` |
+| `IgniteKit production.xcscheme` | `IgniteKit production` |
 
 | EAS profile | `eas.json` `ios.scheme` | Typical destination |
 |-------------|-------------------------|---------------------|
-| development | `ReactNativeCICD development` | TestFlight internal |
-| staging | `ReactNativeCICD staging` | TestFlight external / beta |
-| production | `ReactNativeCICD production` | App Store |
+| development | `IgniteKit development` | TestFlight internal |
+| staging | `IgniteKit staging` | TestFlight external / beta |
+| production | `IgniteKit production` | App Store |
 
-Xcode **targets** are `ReactNativeIgniteKit development` / `staging` / `production`, matching the Android flavor names. The **scheme** names use the `ReactNativeCICD` prefix for clarity in open-source docs; the middle word matches Android: **development** / **staging** / **production**.
+Xcode **targets** are `IgniteKit development` / `staging` / `production`, matching the Android flavor names. The **scheme** names use the `IgniteKit` prefix matching the Xcode project name; the suffix matches the EAS profile: **development** / **staging** / **production**.
 
 Set real `ascAppId` values in `eas.json` under each submit profile when ready.
 

@@ -1,6 +1,6 @@
 {
   "cli": {
-    "version": ">= 16.32.0",
+    "version": ">= 18.4.0",
     "appVersionSource": "remote"
   },
   "build": {
@@ -8,42 +8,48 @@
       "distribution": "store",
       "environment": "development",
       "env": {
-        "ENVFILE": ".env.development"
+        "ENVFILE": ".env.development",
+        "APP_ENV": "development"
       },
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleDevelopmentRelease"
       },
       "ios": {
-        "scheme": "ReactNativeCICD development"
+        "scheme": "IgniteKit development",
+        "image": "macos-sequoia-15.6-xcode-26.2"
       }
     },
     "staging": {
       "distribution": "store",
       "environment": "preview",
       "env": {
-        "ENVFILE": ".env.staging"
+        "ENVFILE": ".env.staging",
+        "APP_ENV": "staging"
       },
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleStagingRelease"
       },
       "ios": {
-        "scheme": "ReactNativeCICD staging"
+        "scheme": "IgniteKit staging",
+        "image": "macos-sequoia-15.6-xcode-26.2"
       }
     },
     "production": {
       "distribution": "store",
       "environment": "production",
       "env": {
-        "ENVFILE": ".env.production"
+        "ENVFILE": ".env.production",
+        "APP_ENV": "production"
       },
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleProductionRelease"
       },
       "ios": {
-        "scheme": "ReactNativeCICD production"
+        "scheme": "IgniteKit production",
+        "image": "macos-sequoia-15.6-xcode-26.2"
       }
     }
   },
@@ -55,7 +61,8 @@
         "releaseStatus": "draft"
       },
       "ios": {
-        "ascAppId": "YOUR_APP_STORE_APP_ID"
+        "ascAppId": "6761337270",
+        "bundleIdentifier": "com.educatorslabs.ignitekit"
       }
     },
     "staging": {
@@ -65,7 +72,8 @@
         "releaseStatus": "draft"
       },
       "ios": {
-        "ascAppId": "YOUR_APP_STORE_APP_ID"
+        "ascAppId": "6761337270",
+        "bundleIdentifier": "com.educatorslabs.ignitekit"
       }
     },
     "production": {
@@ -75,7 +83,8 @@
         "releaseStatus": "completed"
       },
       "ios": {
-        "ascAppId": "YOUR_APP_STORE_APP_ID"
+        "ascAppId": "6761337270",
+        "bundleIdentifier": "com.educatorslabs.ignitekit"
       }
     }
   }

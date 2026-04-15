@@ -1,0 +1,17 @@
+appId: com.educatorslabs.ignitekit
+---
+# Launch fresh with no cached state
+- launchApp:
+    clearState: true
+
+# Wait for the welcome screen to fully render
+- waitForAnimationToEnd
+
+# Verify the screen loaded correctly before capturing
+- assertVisible: "Welcome to IgniteKit!"
+
+# Screenshot 1 — Welcome screen (main store screenshot)
+- takeScreenshot: "01_welcome"
+
+# Screenshot 2 — Highlight the environment/API section
+- takeScreenshot: "02_environment"
