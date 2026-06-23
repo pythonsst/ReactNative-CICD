@@ -2,19 +2,20 @@
   "configVersion": 0,
   "apple": {
     "version": "1.0",
-    "copyright": "2026 Educators Labs Private Limited",
+    "copyright": "2025 Shiv Shankar Tiwari",
     "release": {
       "automaticRelease": true
     },
     "info": {
       "en-US": {
-        "title": "IgniteKit",
-        "description": "IgniteKit is a powerful toolkit by Educators Labs designed to help developers and teams build, configure, and launch high-quality mobile apps faster.\n\nWith a clean setup experience and flexible environment configuration, IgniteKit gives you everything you need to go from idea to production with confidence.\n\nFeatures:\n• Environment-aware configuration\n• Clean and minimal interface\n• Built for speed and reliability",
-        "keywords": ["toolkit", "developer tools", "mobile", "environment", "configuration", "starter", "boilerplate", "education"],
-        "marketingUrl": "https://educatorslabs.com/ignitekit",
-        "supportUrl": "https://educatorslabs.com/support",
-        "privacyPolicyUrl": "https://educatorslabs.com/privacy",
-        "releaseNotes": "Initial release."
+        "title": "IgniteKit - Portfolio",
+        "subtitle": "Developer Portfolio by Shiv Shankar Tiwari",
+        "description": "IgniteKit is an open-source React Native portfolio app showcasing modern mobile development practices.\n\nThis app demonstrates:\n\n• Professional React Native development with TypeScript\n• Beautiful, responsive UI with light/dark mode support\n• Automated CI/CD deployment to both app stores\n• Clean architecture and best practices\n\nBuilt by Shiv Shankar Tiwari, a mobile engineer and founder passionate about creating polished apps and the DevOps pipelines that ship them.\n\nThe entire source code is open source on GitHub, serving as a reference implementation for developers looking to build and deploy their own React Native apps with automated pipelines.\n\nFeatures:\n• Portfolio showcase with projects and skills\n• Professional experience timeline\n• Social links and contact options\n• Fully automated App Store delivery via EAS + GitHub Actions",
+        "keywords": ["portfolio", "developer", "react native", "mobile", "open source", "showcase", "resume", "engineer"],
+        "marketingUrl": "https://github.com/pythonsst/ReactNative-CICD",
+        "supportUrl": "https://github.com/pythonsst/ReactNative-CICD/issues",
+        "privacyPolicyUrl": "https://github.com/pythonsst/ReactNative-CICD/blob/main/PRIVACY.md",
+        "releaseNotes": "Initial release of the portfolio app featuring:\n- Professional portfolio showcase\n- Skills and experience sections\n- Project highlights\n- Contact and social links\n- Light and dark mode support"
       }
     }
   }

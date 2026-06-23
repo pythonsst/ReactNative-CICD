@@ -1,56 +1,85 @@
-import React from 'react';
+/**
+ * Portfolio App - Shiv Shankar Tiwari
+ *
+ * A React Native portfolio showcasing mobile development expertise.
+ * Deployed to iOS App Store and Google Play via EAS + GitHub Actions.
+ *
+ * Repository: https://github.com/pythonsst/ReactNative-CICD
+ */
+
+import React, {useCallback, useRef} from 'react';
 import {
   SafeAreaView,
+  ScrollView,
   StatusBar,
-  useColorScheme,
-  Text,
   StyleSheet,
+  useColorScheme,
   View,
-  TouchableOpacity,
-  Alert,
-  Linking,
+  RefreshControl,
+  Animated,
 } from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import Config from 'react-native-config';
+import {getTheme, spacing} from './src/theme/theme';
+import {
+  HeroSection,
+  AboutSection,
+  SkillsSection,
+  ProjectsSection,
+  ExperienceSection,
+  ContactSection,
+  Footer,
+} from './src/components';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  const theme = getTheme(isDarkMode);
+  const scrollY = useRef(new Animated.Value(0)).current;
 
-  // Get the API URL from the environment configuration
-  const apiUrl = Config.API_URL;
-
-  // Function to handle button press
-  const handleLearnMorePress = async () => {
-    const url = 'https://www.educatorslabs.com/';
-    // Check if the URL can be opened
-    const supported = await Linking.canOpenURL(url);
-    if (supported) {
-      // Open the URL in the default browser
-      await Linking.openURL(url);
-    } else {
-      Alert.alert('Error', 'Unable to open URL');
-    }
-  };
+  // Pull-to-refresh simulation (could trigger data reload in the future)
+  const [refreshing, setRefreshing] = React.useState(false);
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    // Simulate a refresh
+    setTimeout(() => setRefreshing(false), 1000);
+  }, []);
 
   return (
-    <SafeAreaView style={[styles.container, backgroundStyle]}>
+    <SafeAreaView style={[styles.container, {backgroundColor: theme.background}]}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+        backgroundColor={theme.background}
       />
-      <View style={styles.content}>
-        <Text style={styles.title}>Welcome to IgniteKit!</Text>
-        <Text style={styles.subtitle}>Current Environment:</Text>
-        <Text style={styles.apiUrl}>{apiUrl}</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleLearnMorePress()}>
-          <Text style={styles.buttonText}>Learn More</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={theme.primary}
+            colors={[theme.primary]}
+          />
+        }
+        onScroll={Animated.event(
+          [{nativeEvent: {contentOffset: {y: scrollY}}}],
+          {useNativeDriver: false}
+        )}
+        scrollEventThrottle={16}>
+        {/* Hero Section - Profile overview */}
+        <HeroSection theme={theme} />
+
+        {/* Main content sections */}
+        <View style={styles.content}>
+          <AboutSection theme={theme} />
+          <SkillsSection theme={theme} />
+          <ProjectsSection theme={theme} />
+          <ExperienceSection theme={theme} />
+          <ContactSection theme={theme} />
+        </View>
+
+        {/* Footer */}
+        <Footer theme={theme} />
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -58,58 +87,15 @@ function App(): React.JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContent: {
+    paddingBottom: spacing.xxl,
   },
   content: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#6366F1',
-    marginBottom: 8,
-    textAlign: 'center',
-  },
-  subtitle: {
-    fontSize: 20,
-    color: 'gray',
-    marginBottom: 4,
-    textAlign: 'center',
-  },
-  apiUrl: {
-    fontSize: 16,
-    color: '#007AFF',
-    fontStyle: 'italic',
-    textAlign: 'center',
-    borderWidth: 1,
-    borderColor: '#007AFF',
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 10,
-    backgroundColor: '#E6F7FF',
-  },
-  button: {
-    marginTop: 20,
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 5,
-    backgroundColor: '#6366F1',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 2.62,
-    elevation: 4,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
 });
 
