@@ -10,6 +10,7 @@ import {
   glow,
 } from '../../theme/theme';
 import {portfolio} from '../../data/portfolio';
+import {resolveIcon} from '../../utils/icons';
 import {Section} from '../ui/Section';
 import {GlassCard} from '../ui/GlassCard';
 import {Reveal} from '../ui/Reveal';
@@ -20,14 +21,6 @@ import {tapSuccess} from '../../utils/haptics';
 interface Props {
   theme: Theme;
 }
-
-const iconMap: Record<string, string> = {
-  github: '\u{1F4BB}',
-  linkedin: '\u{1F4BC}',
-  twitter: '\u{1F426}',
-  globe: '\u{1F310}',
-  mail: '\u{2709}\u{FE0F}',
-};
 
 export function ContactSection({theme}: Props): React.JSX.Element {
   return (
@@ -44,9 +37,7 @@ export function ContactSection({theme}: Props): React.JSX.Element {
 
           <View style={styles.socialsGrid}>
             {portfolio.socials.map(social => {
-              const icon = social.icon
-                ? iconMap[social.icon] || '\u{1F517}'
-                : '\u{1F517}';
+              const icon = resolveIcon(social.icon, '\u{1F517}');
 
               return (
                 <PressableScale

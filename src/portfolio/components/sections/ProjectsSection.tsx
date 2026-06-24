@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
 import {Theme, fontSize, fontWeight, spacing, radius} from '../../theme/theme';
 import {portfolio, Project} from '../../data/portfolio';
+import {resolveIcon} from '../../utils/icons';
 import {Section} from '../ui/Section';
 import {GlassCard} from '../ui/GlassCard';
 import {Reveal} from '../ui/Reveal';
@@ -13,14 +14,6 @@ interface Props {
   theme: Theme;
 }
 
-const iconMap: Record<string, string> = {
-  rocket: '\u{1F680}',
-  flame: '\u{1F525}',
-  star: '\u{2B50}',
-  code: '\u{1F4BB}',
-  app: '\u{1F4F1}',
-};
-
 function ProjectCard({
   project,
   theme,
@@ -28,7 +21,7 @@ function ProjectCard({
   project: Project;
   theme: Theme;
 }): React.JSX.Element {
-  const icon = project.icon ? iconMap[project.icon] || '\u{1F4E6}' : '\u{1F4E6}';
+  const icon = resolveIcon(project.icon, '\u{1F4E6}');
 
   const handlePress = () => {
     if (project.url) {

@@ -5,22 +5,18 @@ interface Props {
   children: React.ReactNode;
   /** Stagger delay in ms — pass index * 80 for a cascading list. */
   delay?: number;
-  /** Initial vertical offset before settling. */
-  offset?: number;
   style?: ViewStyle | ViewStyle[];
 }
+
+/** Initial vertical offset (px) the content slides up from. */
+const OFFSET = 24;
 
 /**
  * Fade + slide-up entrance animation that plays once on mount.
  * Uses the built-in Animated API (no native config required) and the
  * native driver for smooth 60fps transforms.
  */
-export function Reveal({
-  children,
-  delay = 0,
-  offset = 24,
-  style,
-}: Props): React.JSX.Element {
+export function Reveal({children, delay = 0, style}: Props): React.JSX.Element {
   const progress = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -45,7 +41,7 @@ export function Reveal({
             {
               translateY: progress.interpolate({
                 inputRange: [0, 1],
-                outputRange: [offset, 0],
+                outputRange: [OFFSET, 0],
               }),
             },
           ],

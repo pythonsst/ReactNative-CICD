@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Animated, Platform, StatusBar, StyleSheet, Text, View} from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
 import {Theme, fontSize, fontWeight, spacing, radius} from '../../theme/theme';
 import {portfolio} from '../../data/portfolio';
+import {getInitials} from '../../utils/initials';
 import {PressableScale} from './PressableScale';
 
 interface Props {
@@ -41,16 +42,19 @@ export function StickyHeader({
   // invisible. Track whether it's shown so we can make it touch-inert when
   // hidden — otherwise it would intercept taps meant for the hero beneath.
   const [shown, setShown] = useState(false);
+  const shownRef = useRef(false);
   useEffect(() => {
-    const id = scrollY.addListener(({value}) => setShown(value > SHOW_AT));
+    const id = scrollY.addListener(({value}) => {
+      const next = value > SHOW_AT;
+      if (next !== shownRef.current) {
+        shownRef.current = next;
+        setShown(next);
+      }
+    });
     return () => scrollY.removeListener(id);
   }, [scrollY]);
 
-  const initials = portfolio.name
-    .split(' ')
-    .map(n => n[0])
-    .join('')
-    .slice(0, 2);
+  const initials = getInitials(portfolio.name);
 
   const barStyle = {
     backgroundColor: theme.isDark

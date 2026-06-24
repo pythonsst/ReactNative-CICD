@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
 import {Theme, fontSize, fontWeight, spacing, radius} from '../../theme/theme';
 import {portfolio, SkillGroup} from '../../data/portfolio';
+import {resolveIcon} from '../../utils/icons';
 import {Section} from '../ui/Section';
 import {GlassCard} from '../ui/GlassCard';
 import {Reveal} from '../ui/Reveal';
@@ -11,13 +12,6 @@ interface Props {
   theme: Theme;
 }
 
-const iconMap: Record<string, string> = {
-  phone: '\u{1F4F1}',
-  code: '\u{1F4BB}',
-  cloud: '\u{2601}\u{FE0F}',
-  tools: '\u{1F6E0}\u{FE0F}',
-};
-
 function SkillCard({
   group,
   theme,
@@ -25,7 +19,7 @@ function SkillCard({
   group: SkillGroup;
   theme: Theme;
 }): React.JSX.Element {
-  const icon = group.icon ? iconMap[group.icon] || '\u{2728}' : '\u{2728}';
+  const icon = resolveIcon(group.icon);
 
   return (
     <GlassCard theme={theme}>

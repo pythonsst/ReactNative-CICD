@@ -10,6 +10,7 @@ import {
   glow,
 } from '../../theme/theme';
 import {portfolio} from '../../data/portfolio';
+import {getInitials} from '../../utils/initials';
 import {Reveal} from '../ui/Reveal';
 import {PressableScale} from '../ui/PressableScale';
 
@@ -24,11 +25,7 @@ export function HeroSection({
   onContact,
   onWork,
 }: Props): React.JSX.Element {
-  const initials = portfolio.name
-    .split(' ')
-    .map(n => n[0])
-    .join('')
-    .slice(0, 2);
+  const initials = getInitials(portfolio.name);
 
   // Slow, looping pulse for the ambient glow blobs.
   const pulse = useRef(new Animated.Value(0)).current;
