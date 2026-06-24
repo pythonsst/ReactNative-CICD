@@ -1,9 +1,13 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import {Theme, fontSize, fontWeight, spacing, radius, shadow} from '../theme/theme';
-import {portfolio, Project} from '../data/portfolio';
-import {Section} from './Section';
-import {openUrl} from '../utils/openUrl';
+import {StyleSheet, Text, View} from 'react-native';
+import {LinearGradient} from 'expo-linear-gradient';
+import {Theme, fontSize, fontWeight, spacing, radius} from '../../theme/theme';
+import {portfolio, Project} from '../../data/portfolio';
+import {Section} from '../ui/Section';
+import {GlassCard} from '../ui/GlassCard';
+import {Reveal} from '../ui/Reveal';
+import {PressableScale} from '../ui/PressableScale';
+import {openUrl} from '../../utils/openUrl';
 
 interface Props {
   theme: Theme;
@@ -33,33 +37,26 @@ function ProjectCard({
   };
 
   return (
-    <TouchableOpacity
+    <PressableScale
       onPress={handlePress}
       disabled={!project.url}
-      activeOpacity={project.url ? 0.7 : 1}
-      accessibilityRole="button"
       accessibilityLabel={`View ${project.name} project`}>
-      <View
-        style={[
-          styles.card,
-          shadow.md,
-          {backgroundColor: theme.surface, borderColor: theme.border},
-        ]}>
+      <GlassCard theme={theme}>
         <View style={styles.cardHeader}>
-          <View
-            style={[
-              styles.iconContainer,
-              {backgroundColor: theme.surfaceHighlight},
-            ]}>
+          <LinearGradient
+            colors={theme.brandGradient}
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 1}}
+            style={styles.iconContainer}>
             <Text style={styles.icon}>{icon}</Text>
-          </View>
+          </LinearGradient>
           <View style={styles.titleContainer}>
             <Text style={[styles.projectName, {color: theme.text}]}>
               {project.name}
             </Text>
             {project.url && (
-              <Text style={[styles.linkIndicator, {color: theme.primary}]}>
-                {'\u{1F517}'} View Project
+              <Text style={[styles.linkIndicator, {color: theme.accent}]}>
+                {'\u{2197}\u{FE0F}'} View Project
               </Text>
             )}
           </View>
@@ -73,22 +70,32 @@ function ProjectCard({
           {project.tags.map(tag => (
             <View
               key={tag}
-              style={[styles.tag, {backgroundColor: theme.primarySoft}]}>
-              <Text style={[styles.tagText, {color: theme.primary}]}>{tag}</Text>
+              style={[
+                styles.tag,
+                {
+                  backgroundColor: theme.primarySoft,
+                  borderColor: theme.glassBorder,
+                },
+              ]}>
+              <Text style={[styles.tagText, {color: theme.primaryLight}]}>
+                {tag}
+              </Text>
             </View>
           ))}
         </View>
-      </View>
-    </TouchableOpacity>
+      </GlassCard>
+    </PressableScale>
   );
 }
 
 export function ProjectsSection({theme}: Props): React.JSX.Element {
   return (
-    <Section title="Featured Projects" theme={theme}>
+    <Section eyebrow="Selected work" title="Featured Projects" theme={theme}>
       <View style={styles.projectsList}>
-        {portfolio.projects.map(project => (
-          <ProjectCard key={project.name} project={project} theme={theme} />
+        {portfolio.projects.map((project, index) => (
+          <Reveal key={project.name} delay={index * 90}>
+            <ProjectCard project={project} theme={theme} />
+          </Reveal>
         ))}
       </View>
     </Section>
@@ -99,19 +106,14 @@ const styles = StyleSheet.create({
   projectsList: {
     gap: spacing.md,
   },
-  card: {
-    borderRadius: radius.lg,
-    padding: spacing.lg,
-    borderWidth: 1,
-  },
   cardHeader: {
     flexDirection: 'row',
     alignItems: 'flex-start',
     marginBottom: spacing.md,
   },
   iconContainer: {
-    width: 48,
-    height: 48,
+    width: 50,
+    height: 50,
     borderRadius: radius.md,
     alignItems: 'center',
     justifyContent: 'center',
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
   },
   linkIndicator: {
     fontSize: fontSize.sm,
-    fontWeight: fontWeight.medium,
+    fontWeight: fontWeight.semibold,
   },
   description: {
     fontSize: fontSize.md,
@@ -147,6 +149,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.xs,
     borderRadius: radius.pill,
+    borderWidth: 1,
   },
   tagText: {
     fontSize: fontSize.xs,

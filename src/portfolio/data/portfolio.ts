@@ -68,11 +68,11 @@ export const portfolio: Portfolio = {
 
   email: 'shiv@cuepilot.ai',
 
+  // Hero stats. Keep these honest — edit the numbers to match your real story.
   highlights: [
-    {label: 'Years Experience', value: '5+'},
+    {label: 'Years Building', value: '5+'},
     {label: 'Apps Shipped', value: '10+'},
     {label: 'Open Source', value: '20+'},
-    {label: 'Happy Clients', value: '50+'},
   ],
 
   skills: [
@@ -142,14 +142,15 @@ export const portfolio: Portfolio = {
     },
     {
       role: 'Senior Mobile Engineer',
-      company: 'Previous Venture',
+      // TODO: replace with your real employer name.
+      company: 'Consumer Apps',
       period: '2020 - 2023',
       description:
-        'Led mobile development for consumer-facing applications with millions of users.',
+        'Led React Native development for consumer-facing products used at scale.',
       highlights: [
-        'Developed and maintained React Native applications',
-        'Implemented performance optimizations improving app speed by 40%',
-        'Mentored junior developers and established coding standards',
+        'Owned the mobile codebase across iOS and Android',
+        'Cut cold-start and screen-load times through targeted profiling',
+        'Mentored engineers and set the team’s code-review standards',
       ],
     },
     {
@@ -157,11 +158,11 @@ export const portfolio: Portfolio = {
       company: 'Freelance & Consulting',
       period: '2018 - 2020',
       description:
-        'Delivered end-to-end solutions for startups and small businesses.',
+        'Delivered web and mobile products end-to-end for startups and founders.',
       highlights: [
-        'Built custom web and mobile applications for diverse clients',
-        'Specialized in React and React Native ecosystems',
-        'Established long-term client relationships through quality delivery',
+        'Shipped custom React and React Native apps from scratch',
+        'Designed APIs, data models, and deployment workflows',
+        'Turned one-off projects into long-term client relationships',
       ],
     },
   ],

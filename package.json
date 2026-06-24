@@ -2,6 +2,7 @@
   "name": "reactnativeignitekit",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "eas-build-pre-install": "node scripts/prepare-env-local.cjs",
     "lefthook:install": "node scripts/lefthook-install.js",
@@ -85,6 +86,8 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.0.0",
     "expo": "~51.0.0",
+    "expo-haptics": "~13.0.1",
+    "expo-linear-gradient": "~13.0.2",
     "expo-updates": "~0.25.28",
     "react": "18.3.1",
     "react-native": "0.75.4",

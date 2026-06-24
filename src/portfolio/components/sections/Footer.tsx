@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import {Theme, fontSize, fontWeight, spacing} from '../theme/theme';
-import {openUrl} from '../utils/openUrl';
+import {Theme, fontSize, fontWeight, spacing} from '../../theme/theme';
+import {openUrl} from '../../utils/openUrl';
 
 interface Props {
   theme: Theme;
@@ -23,7 +23,7 @@ export function Footer({theme}: Props): React.JSX.Element {
         onPress={() => openUrl(REPO_URL)}
         accessibilityRole="link"
         accessibilityLabel="View source code on GitHub">
-        <Text style={[styles.link, {color: theme.primary}]}>
+        <Text style={[styles.link, {color: theme.primaryLight}]}>
           {'\u{2B50}'} Star on GitHub
         </Text>
       </TouchableOpacity>
