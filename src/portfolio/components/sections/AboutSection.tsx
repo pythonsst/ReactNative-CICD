@@ -12,7 +12,10 @@ interface Props {
 
 export function AboutSection({theme}: Props): React.JSX.Element {
   return (
-    <Section eyebrow="Who I am" title="About" theme={theme}>
+    <Section
+      eyebrow={portfolio.sections.about.eyebrow}
+      title={portfolio.sections.about.title}
+      theme={theme}>
       <Reveal>
         <GlassCard theme={theme}>
           <Text style={[styles.aboutText, {color: theme.textMuted}]}>
@@ -21,7 +24,7 @@ export function AboutSection({theme}: Props): React.JSX.Element {
           <View style={[styles.divider, {backgroundColor: theme.border}]} />
           <View style={styles.emailRow}>
             <Text style={[styles.emailLabel, {color: theme.textSubtle}]}>
-              {'\u{2709}\u{FE0F}'} Get in touch
+              {'\u{2709}\u{FE0F}'} {portfolio.actions.contact}
             </Text>
             <Text style={[styles.emailValue, {color: theme.primaryLight}]}>
               {portfolio.email}

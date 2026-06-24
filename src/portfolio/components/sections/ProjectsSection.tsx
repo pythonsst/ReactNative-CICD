@@ -83,7 +83,10 @@ function ProjectCard({
 
 export function ProjectsSection({theme}: Props): React.JSX.Element {
   return (
-    <Section eyebrow="Selected work" title="Featured Projects" theme={theme}>
+    <Section
+      eyebrow={portfolio.sections.projects.eyebrow}
+      title={portfolio.sections.projects.title}
+      theme={theme}>
       <View style={styles.projectsList}>
         {portfolio.projects.map((project, index) => (
           <Reveal key={project.name} delay={index * 90}>

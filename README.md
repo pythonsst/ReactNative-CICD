@@ -1,4 +1,47 @@
-This is a [**React Native**](https://reactnative.dev) project bootstrapped with [`@react-native-community/cli`](https://github.com/react-native-community/cli). It includes a production-ready CI/CD pipeline with **EAS Build**, **EAS Submit**, and **EAS Update** (OTA) support.
+This is a [**React Native**](https://reactnative.dev) portfolio app with a production-ready CI/CD pipeline (**EAS Build**, **EAS Submit**, and **EAS Update** OTA). Use it as your own portfolio: clone it, edit one file, and ship it to the App Store and Google Play.
+
+---
+
+# 🧑‍🎨 Make it your portfolio
+
+**All on-screen content lives in a single file:**
+
+```
+src/portfolio/data/portfolio.ts
+```
+
+Open it and replace the values with your own — name, title, tagline, about,
+skills, projects, experience, social links, stats, section headings, the
+contact card, and the footer. **Nothing is hardcoded in the components**, so you
+never have to touch any UI, style, or layout code.
+
+```ts
+export const portfolio: Portfolio = {
+  name: 'Your Name',
+  title: 'Your Role',
+  location: 'Your City',
+  tagline: 'One line about what you do.',
+  about: '…',
+  email: 'you@example.com',
+  avatarUrl: 'https://…',        // optional — falls back to your initials
+  availability: 'Open to work',  // hero badge — set to '' to hide it
+  // …skills, projects, experience, socials, sections, contactCard, footer
+};
+```
+
+Tips:
+- The shape is fully typed (`Portfolio`), so your editor will flag missing or
+  mistyped fields as you go.
+- Icon names (`phone`, `rocket`, `github`, …) map to emoji in
+  `src/portfolio/utils/icons.ts` — add your own there.
+- Colors, spacing, and gradients live in `src/portfolio/theme/theme.ts` if you
+  want to restyle.
+
+**Before publishing to the stores**, also update your app identity:
+`app.config.js` / `app.json` (app name), `store.config.json`, and the native
+bundle identifiers — see the CI/CD section below.
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full project structure.
 
 ---
 

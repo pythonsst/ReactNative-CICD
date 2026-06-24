@@ -58,7 +58,10 @@ function SkillCard({
 
 export function SkillsSection({theme}: Props): React.JSX.Element {
   return (
-    <Section eyebrow="What I bring" title="Skills & Expertise" theme={theme}>
+    <Section
+      eyebrow={portfolio.sections.skills.eyebrow}
+      title={portfolio.sections.skills.title}
+      theme={theme}>
       <View style={styles.grid}>
         {portfolio.skills.map((group, index) => (
           <Reveal key={group.title} delay={index * 80}>

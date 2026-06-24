@@ -96,18 +96,22 @@ export function HeroSection({
 
       <View style={styles.container}>
         {/* Availability badge */}
-        <Reveal delay={40}>
-          <View
-            style={[
-              styles.statusBadge,
-              {backgroundColor: theme.glass, borderColor: theme.glassBorder},
-            ]}>
-            <View style={[styles.statusDot, {backgroundColor: theme.success}]} />
-            <Text style={[styles.statusText, {color: theme.textMuted}]}>
-              Available for select work
-            </Text>
-          </View>
-        </Reveal>
+        {portfolio.availability ? (
+          <Reveal delay={40}>
+            <View
+              style={[
+                styles.statusBadge,
+                {backgroundColor: theme.glass, borderColor: theme.glassBorder},
+              ]}>
+              <View
+                style={[styles.statusDot, {backgroundColor: theme.success}]}
+              />
+              <Text style={[styles.statusText, {color: theme.textMuted}]}>
+                {portfolio.availability}
+              </Text>
+            </View>
+          </Reveal>
+        ) : null}
 
         {/* Avatar with gradient ring */}
         <Reveal delay={120}>
@@ -171,16 +175,20 @@ export function HeroSection({
           <View style={styles.ctaRow}>
             <PressableScale
               onPress={onContact}
-              accessibilityLabel="Get in touch">
+              accessibilityLabel={portfolio.actions.contact}>
               <LinearGradient
                 colors={theme.brandGradient}
                 start={{x: 0, y: 0}}
                 end={{x: 1, y: 0}}
                 style={[styles.ctaPrimary, glow(theme.glowColor)]}>
-                <Text style={styles.ctaPrimaryText}>Get in touch</Text>
+                <Text style={styles.ctaPrimaryText}>
+                  {portfolio.actions.contact}
+                </Text>
               </LinearGradient>
             </PressableScale>
-            <PressableScale onPress={onWork} accessibilityLabel="View my work">
+            <PressableScale
+              onPress={onWork}
+              accessibilityLabel={portfolio.actions.work}>
               <View
                 style={[
                   styles.ctaSecondary,
@@ -190,7 +198,7 @@ export function HeroSection({
                   },
                 ]}>
                 <Text style={[styles.ctaSecondaryText, {color: theme.text}]}>
-                  View work
+                  {portfolio.actions.work}
                 </Text>
               </View>
             </PressableScale>

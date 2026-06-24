@@ -94,13 +94,15 @@ export function StickyHeader({
           </Text>
         </View>
 
-        <PressableScale onPress={onContact} accessibilityLabel="Get in touch">
+        <PressableScale
+          onPress={onContact}
+          accessibilityLabel={portfolio.actions.contact}>
           <LinearGradient
             colors={theme.brandGradient}
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
             style={styles.cta}>
-            <Text style={styles.ctaText}>Get in touch</Text>
+            <Text style={styles.ctaText}>{portfolio.actions.contact}</Text>
           </LinearGradient>
         </PressableScale>
       </View>

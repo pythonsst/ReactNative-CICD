@@ -24,15 +24,17 @@ interface Props {
 
 export function ContactSection({theme}: Props): React.JSX.Element {
   return (
-    <Section eyebrow="Say hello" title="Let's Connect" theme={theme}>
+    <Section
+      eyebrow={portfolio.sections.contact.eyebrow}
+      title={portfolio.sections.contact.title}
+      theme={theme}>
       <Reveal>
         <GlassCard theme={theme}>
           <Text style={[styles.ctaText, {color: theme.text}]}>
-            Have a project in mind?
+            {portfolio.contactCard.heading}
           </Text>
           <Text style={[styles.ctaSubtext, {color: theme.textMuted}]}>
-            I'm always open to discussing new products, creative ideas, or
-            opportunities to be part of your vision.
+            {portfolio.contactCard.subheading}
           </Text>
 
           <View style={styles.socialsGrid}>
@@ -68,14 +70,14 @@ export function ContactSection({theme}: Props): React.JSX.Element {
               tapSuccess();
               openUrl(`mailto:${portfolio.email}`);
             }}
-            accessibilityLabel="Send email">
+            accessibilityLabel={portfolio.contactCard.buttonLabel}>
             <LinearGradient
               colors={theme.brandGradient}
               start={{x: 0, y: 0}}
               end={{x: 1, y: 0}}
               style={[styles.ctaButton, glow(theme.glowColor)]}>
               <Text style={styles.ctaButtonText}>
-                {'\u{2709}\u{FE0F}'}  Send me an email
+                {'\u{2709}\u{FE0F}'}  {portfolio.contactCard.buttonLabel}
               </Text>
             </LinearGradient>
           </PressableScale>

@@ -1,11 +1,14 @@
 /**
- * Portfolio content.
- *
- * This is the single source of truth for everything shown in the app.
- * Edit the values below to make the portfolio your own.
- *
- * No secrets belong in this file: it is bundled into the public app and the
- * repository is open source.
+ * ┌─────────────────────────────────────────────────────────────────────────┐
+ * │  THIS IS THE ONLY FILE YOU NEED TO EDIT.                                  │
+ * │                                                                           │
+ * │  Replace the values below with your own and you have your portfolio —     │
+ * │  no component, style, or layout code needs to change. Every piece of      │
+ * │  on-screen text lives here.                                               │
+ * │                                                                           │
+ * │  No secrets belong in this file: it is bundled into the public app and    │
+ * │  the repository is open source.                                           │
+ * └─────────────────────────────────────────────────────────────────────────┘
  */
 
 export interface Experience {
@@ -22,7 +25,7 @@ export interface Project {
   tags: string[];
   /** Public URL (repo, live site, store listing). Optional. */
   url?: string;
-  /** Icon name for visual representation */
+  /** Icon name — see src/portfolio/utils/icons.ts for the available names. */
   icon?: string;
 }
 
@@ -38,26 +41,72 @@ export interface SocialLink {
   icon?: string;
 }
 
+/** Eyebrow + title shown at the top of a section. */
+export interface SectionHeading {
+  eyebrow: string;
+  title: string;
+}
+
 export interface Portfolio {
+  // ── Identity ────────────────────────────────────────────────────────────
   name: string;
   title: string;
   location: string;
   tagline: string;
   about: string;
   email: string;
+  /** Optional avatar image URL. Falls back to initials when omitted. */
   avatarUrl?: string;
+
+  // ── Hero ─────────────────────────────────────────────────────────────────
+  /** Status pill above the avatar. Leave empty ('') to hide it. */
+  availability: string;
+  /** Labels for the two hero buttons (also reused by the sticky header). */
+  actions: {
+    contact: string;
+    work: string;
+  };
+  /** The stat tiles in the hero. */
+  highlights: {label: string; value: string}[];
+
+  // ── Content ────────────────────────────────────────────────────────────-
   skills: SkillGroup[];
   projects: Project[];
   experience: Experience[];
   socials: SocialLink[];
-  highlights: {label: string; value: string}[];
+
+  // ── Section headings ───────────────────────────────────────────────────-
+  sections: {
+    about: SectionHeading;
+    skills: SectionHeading;
+    projects: SectionHeading;
+    experience: SectionHeading;
+    contact: SectionHeading;
+  };
+
+  // ── Contact card copy ────────────────────────────────────────────────────
+  contactCard: {
+    heading: string;
+    subheading: string;
+    buttonLabel: string;
+  };
+
+  // ── Footer ────────────────────────────────────────────────────────────--
+  footer: {
+    /** Each string renders on its own line. */
+    lines: string[];
+    /** Tappable link, e.g. your repo or website. */
+    linkLabel: string;
+    linkUrl: string;
+  };
 }
 
 export const portfolio: Portfolio = {
   name: 'Shiv Shankar Tiwari',
   title: 'Founder & Mobile / Full-Stack Engineer',
   location: 'India',
-  tagline: 'Building polished mobile apps and the CI/CD pipelines that ship them.',
+  tagline:
+    'Building polished mobile apps and the CI/CD pipelines that ship them.',
 
   about:
     "I'm an engineer and founder passionate about React Native, developer tooling, and " +
@@ -67,6 +116,13 @@ export const portfolio: Portfolio = {
     'released to both app stores through an EAS + GitHub Actions CI/CD pipeline.',
 
   email: 'shiv@cuepilot.ai',
+
+  availability: 'Available for select work',
+
+  actions: {
+    contact: 'Get in touch',
+    work: 'View work',
+  },
 
   // Hero stats. Keep these honest — edit the numbers to match your real story.
   highlights: [
@@ -195,11 +251,7 @@ export const portfolio: Portfolio = {
   ],
 
   socials: [
-    {
-      label: 'GitHub',
-      url: 'https://github.com/pythonsst',
-      icon: 'github',
-    },
+    {label: 'GitHub', url: 'https://github.com/pythonsst', icon: 'github'},
     {
       label: 'LinkedIn',
       url: 'https://www.linkedin.com/in/shivshankartiwari',
@@ -210,15 +262,32 @@ export const portfolio: Portfolio = {
       url: 'https://twitter.com/shiv_tiwari_dev',
       icon: 'twitter',
     },
-    {
-      label: 'Website',
-      url: 'https://cuepilot.ai',
-      icon: 'globe',
-    },
-    {
-      label: 'Email',
-      url: 'mailto:shiv@cuepilot.ai',
-      icon: 'mail',
-    },
+    {label: 'Website', url: 'https://cuepilot.ai', icon: 'globe'},
+    {label: 'Email', url: 'mailto:shiv@cuepilot.ai', icon: 'mail'},
   ],
+
+  sections: {
+    about: {eyebrow: 'Who I am', title: 'About'},
+    skills: {eyebrow: 'What I bring', title: 'Skills & Expertise'},
+    projects: {eyebrow: 'Selected work', title: 'Featured Projects'},
+    experience: {eyebrow: "Where I've been", title: 'Experience'},
+    contact: {eyebrow: 'Say hello', title: "Let's Connect"},
+  },
+
+  contactCard: {
+    heading: 'Have a project in mind?',
+    subheading:
+      "I'm always open to discussing new products, creative ideas, or " +
+      'opportunities to be part of your vision.',
+    buttonLabel: 'Send me an email',
+  },
+
+  footer: {
+    lines: [
+      '\u{1F4F1} Built with React Native',
+      '\u{1F680} Deployed via EAS + GitHub Actions',
+    ],
+    linkLabel: '\u{2B50} Star on GitHub',
+    linkUrl: 'https://github.com/pythonsst/ReactNative-CICD',
+  },
 };

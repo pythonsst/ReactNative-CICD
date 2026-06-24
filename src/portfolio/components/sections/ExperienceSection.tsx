@@ -94,7 +94,10 @@ function ExperienceCard({
 
 export function ExperienceSection({theme}: Props): React.JSX.Element {
   return (
-    <Section eyebrow="Where I've been" title="Experience" theme={theme}>
+    <Section
+      eyebrow={portfolio.sections.experience.eyebrow}
+      title={portfolio.sections.experience.title}
+      theme={theme}>
       <View style={styles.timeline}>
         {portfolio.experience.map((exp, index) => (
           <Reveal key={`${exp.company}-${exp.role}`} delay={index * 90}>
