@@ -1,79 +1,232 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# SnapBiodata — React Native + EAS CI/CD Starter
 
-# Getting Started
+A production-ready [React Native](https://reactnative.dev) app (bare workflow, RN 0.81 / React 19) wired up with **three build flavors** and a full **EAS (Expo Application Services)** pipeline for building, submitting to the stores, and shipping over-the-air (OTA) updates.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+This README explains **how the flavors and EAS are set up** so you can build and ship any environment with a single command.
 
-## Step 1: Start the Metro Server
+> 📖 For the complete, step-by-step reference (one-time setup, troubleshooting, release flow) see **[`docs/EAS.md`](docs/EAS.md)** or run `yarn eas:help`.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+---
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Table of contents
+
+- [The three environments (flavors)](#the-three-environments-flavors)
+- [How a flavor is defined on each platform](#how-a-flavor-is-defined-on-each-platform)
+- [Environment config (`.env` files)](#environment-config-env-files)
+- [Running locally](#running-locally)
+- [EAS: build, submit, update](#eas-build-submit-update)
+- [OTA update vs. new build](#ota-update-vs-new-build)
+- [CI/CD (GitHub Actions)](#cicd-github-actions)
+- [One-time setup](#one-time-setup)
+
+---
+
+## The three environments (flavors)
+
+Every build belongs to one of three environments. Each one is fully isolated — its own app ID, its own OTA channel, its own store track — so `development`, `staging`, and `production` can all be installed **side-by-side on the same device** without clashing.
+
+| | **development** | **staging** | **production** |
+|---|---|---|---|
+| Android applicationId | `com.snapbiodata.app.development` | `com.snapbiodata.app.staging` | `com.snapbiodata.app` |
+| iOS bundle identifier | `com.snapbiodata.app.development` | `com.snapbiodata.app.staging` | `com.snapbiodata.app` |
+| API URL | `dev.snapbiodata.com` | `staging.snapbiodata.com` | `snapbiodata.com` |
+| OTA channel | `development` | `staging` | `production` |
+| iOS scheme | `development` | `staging` | `production` |
+| Android task | `bundleDevelopmentRelease` | `bundleStagingRelease` | `bundleProductionRelease` |
+| Play Store track | `internal` | `alpha` | `production` |
+| iOS distribution | TestFlight (internal) | TestFlight (external) | App Store |
+| Audience | Dev team | QA / stakeholders | Everyone |
+
+> An OTA update pushed to `staging` will **never** reach `development` or `production` — each binary bakes its channel in at build time.
+
+---
+
+## How a flavor is defined on each platform
+
+The same three environments are expressed in **four coordinated places**. The magic is that they all line up by name:
+
+```
+                  ┌─────────────────────────────────────────────┐
+                  │              development / staging / production
+                  └─────────────────────────────────────────────┘
+                        │            │            │            │
+            ┌───────────┘            │            │            └───────────┐
+            ▼                        ▼            ▼                        ▼
+   Android productFlavor      iOS scheme    EAS profile           .env.<environment>
+   (android/app/build.gradle) (Xcode)       (eas.json)            (react-native-config)
+```
+
+- **Android** — three `productFlavors` in `android/app/build.gradle`. `production` keeps the real ID; `development` and `staging` add an `applicationIdSuffix` so they install alongside it.
+- **iOS** — three shared schemes (`development`, `staging`, `production`) under `ios/*.xcodeproj/xcshareddata/xcschemes/`.
+- **EAS** — three build/submit profiles in `eas.json`. Each profile points at the matching Android `gradleCommand` and iOS `scheme`, and carries the OTA `channel`.
+- **Runtime config** — one `.env.<environment>` file per environment, read by [`react-native-config`](https://github.com/lugg/react-native-config).
+
+Because the names match everywhere, choosing an environment is always just picking the profile name.
+
+---
+
+## Environment config (`.env` files)
+
+Each environment has an env file at the repo root:
+
+- `.env.development` → `ENV=development`, `API_URL=https://dev.snapbiodata.com`
+- `.env.staging` → `ENV=staging`, `API_URL=https://staging.snapbiodata.com`
+- `.env.production` → `ENV=production`, `API_URL=https://snapbiodata.com`
+
+> ⚠️ **These values are PUBLIC.** `react-native-config` bakes them into the app binary, where anyone can extract them by reverse-engineering the app. Put **only non-secret** config here.
+>
+> Secrets live elsewhere:
+> - Android signing keystore → `.env.signing` (gitignored, copy from `.env.signing.example`) or GitHub/EAS secrets
+> - Play service account JSON → GitHub Actions secret
+> - Expo / App Store tokens → EAS / GitHub secrets
+
+---
+
+## Running locally
+
+Start Metro in one terminal:
 
 ```bash
-# using npm
-npm start
-
-# OR using Yarn
 yarn start
 ```
 
-## Step 2: Start your Application
+Then run any environment (each script sets `ENVFILE` and picks the right flavor/scheme automatically):
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
+**Android**
 
 ```bash
-# using npm
-npm run android
+yarn android:dev        # development debug
+yarn android:staging    # staging debug
+yarn android:prod       # production debug
 
-# OR using Yarn
-yarn android
+yarn android:dev-release        # release variants
+yarn android:staging-release
+yarn android:prod-release
 ```
 
-### For iOS
+**iOS**
 
 ```bash
-# using npm
-npm run ios
+yarn ios:dev            # development scheme
+yarn ios:staging        # staging scheme
+yarn ios:prod           # production scheme
 
-# OR using Yarn
-yarn ios
+yarn ios:dev-release    # release configuration
+yarn ios:staging-release
+yarn ios:prod-release
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+---
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+## EAS: build, submit, update
 
-## Step 3: Modifying your App
+All EAS commands are wrapped as `yarn` scripts. Every build first runs a version check (`yarn eas:version:check`) that fails fast if `package.json`, `build.gradle`, and the iOS project disagree on the version number.
 
-Now that you have successfully run the app, let's modify it.
+**Build** (produces store-ready AAB / IPA on Expo's servers):
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+```bash
+yarn eas:build:development       # all platforms, dev
+yarn eas:build:staging           # all platforms, staging
+yarn eas:build:production         # all platforms, production
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+yarn eas:build:android:staging   # single platform
+yarn eas:build:ios:staging
+```
 
-## Congratulations! :tada:
+**Submit** (uploads the latest build to the store, on the right track):
 
-You've successfully run and modified your React Native App. :partying_face:
+```bash
+yarn eas:submit:development
+yarn eas:submit:staging
+yarn eas:submit:production
+```
 
-### Now what?
+**OTA update** (push JS/asset changes instantly — no store review):
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+```bash
+yarn eas:update:development
+yarn eas:update:staging
+yarn eas:update:production
 
-# Troubleshooting
+# with a custom changelog message
+MESSAGE="Fix login crash" yarn eas:update:staging
+```
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+**Version helpers:**
 
-# Learn More
+```bash
+yarn eas:version:get     # show version across package.json / gradle / pbxproj
+yarn eas:version:check   # exit 1 if any of them mismatch
+```
 
-To learn more about React Native, take a look at the following resources:
+---
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## OTA update vs. new build
+
+> **Rule of thumb:** if Metro can bundle the change, an OTA update is enough.
+
+| Change | Needs |
+|---|---|
+| JS / TypeScript code | ✅ OTA update |
+| Images, fonts, JSON assets | ✅ OTA update |
+| New JS-only dependency | ✅ OTA update |
+| New native (Kotlin/Swift) code | 🔁 New build |
+| New native dependency | 🔁 New build |
+| New / changed permissions | 🔁 New build |
+| `runtimeVersion` bump | 🔁 New build |
+
+---
+
+## CI/CD (GitHub Actions)
+
+Workflows live in `.github/workflows/` and are triggered manually from the **Actions** tab (pick the environment/profile as an input):
+
+| Workflow | What it does |
+|---|---|
+| `eas-build-submit.yml` | Build **and** submit in one run (recommended) |
+| `eas-build.yml` | Build only |
+| `eas-submit.yml` | Submit the latest build |
+| `eas-update.yml` | Push an OTA update (no build) |
+| `ci.yml` | Lint / typecheck / tests on push & PR |
+
+**Required secret:** `EXPO_TOKEN` (create at expo.dev → Account Settings → Access Tokens, then add under repo Settings → Secrets → Actions).
+
+Duplicate runs for the same profile are cancelled automatically; an in-flight release build is always allowed to finish.
+
+---
+
+## Release flow
+
+```
+① development  ──►  build + submit  ──►  Internal testing   (dev team)
+        │
+        ▼  (QA sign-off)
+② staging      ──►  build + submit  ──►  Closed / alpha     (QA, stakeholders)
+        │
+        ▼  (stakeholder sign-off)
+③ production   ──►  build + submit  ──►  Play Store / App Store  (everyone)
+```
+
+JS-only change at any stage? Skip the build — just run `yarn eas:update:<environment>`.
+
+---
+
+## One-time setup
+
+Short version (full details in [`docs/EAS.md`](docs/EAS.md)):
+
+1. `npm install -g eas-cli`
+2. `eas login`
+3. `eas init` — fills in `owner` + `projectId` in `app.config.js`
+4. Put your numeric App Store App ID in `eas.json` (`ascAppId`)
+5. Add the `EXPO_TOKEN` secret in GitHub
+6. (Local signed builds only) `cp .env.signing.example .env.signing` and fill it in
+7. Verify: `yarn eas:version:get` and `eas build:list`
+
+---
+
+## Learn more
+
+- [`docs/EAS.md`](docs/EAS.md) — complete EAS reference & troubleshooting (`yarn eas:help`)
+- [React Native docs](https://reactnative.dev)
+- [EAS Build](https://docs.expo.dev/build/introduction/) · [EAS Submit](https://docs.expo.dev/submit/introduction/) · [EAS Update](https://docs.expo.dev/eas-update/introduction/)
