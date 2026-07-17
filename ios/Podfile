@@ -1,4 +1,6 @@
+# Expo autolinking
 require File.join(File.dirname(`node --print "require.resolve('expo/package.json')"`), "scripts/autolinking")
+
 # Resolve react_native_pods.rb with node to allow for hoisting
 require Pod::Executable.execute_command('node', ['-p',
   'require.resolve(
@@ -6,7 +8,7 @@ require Pod::Executable.execute_command('node', ['-p',
     {paths: [process.argv[1]]},
   )', __dir__]).strip
 
-platform :ios, min_ios_version_supported
+platform :ios, '15.1'
 prepare_react_native_project!
 
 linkage = ENV['USE_FRAMEWORKS']
@@ -16,10 +18,27 @@ if linkage != nil
 end
 
 
-abstract_target 'IgniteKitBase' do
+abstract_target 'RnNewArchitectureDemoBase' do
   # Shared pods go here, if any
-  use_expo_modules!
+  
+  target 'ReactNativeIgniteKit' do
+    # Pods for ReactNativeIgniteKit
+  end
 
+  target 'ReactNativeIgniteKit dev' do
+    # Pods for ReactNativeIgniteKit dev
+  end
+
+  target 'ReactNativeIgniteKit stag' do
+    # Pods for ReactNativeIgniteKit sit
+  end
+
+  target 'ReactNativeIgniteKit prod' do
+    # Pods for ReactNativeIgniteKit prod
+  end
+  
+  # Expo modules (expo, expo-updates, …) autolinking
+  use_expo_modules!
   post_integrate do |installer|
     begin
       expo_patch_react_imports!(installer)
@@ -27,33 +46,16 @@ abstract_target 'IgniteKitBase' do
       Pod::UI.warn e
     end
   end
-  
-  target 'IgniteKit' do
-    # Pods for IgniteKit
-  end
 
-  target 'IgniteKit development' do
-    # Pods for IgniteKit development
-  end
-
-  target 'IgniteKit staging' do
-    # Pods for IgniteKit staging
-  end
-
-  target 'IgniteKit production' do
-    # Pods for IgniteKit production
-  end
-  
   config = use_native_modules!
   pod 'react-native-config/Extension', :path => '../node_modules/react-native-config'
   use_react_native!(
     :path => config[:reactNativePath],
-    :hermes_enabled => true,
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'IgniteKitTests' do
+  target 'ReactNativeIgniteKitTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -66,5 +68,12 @@ abstract_target 'IgniteKitBase' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+      end
+    end
+    installer.pods_project.save
   end
 end

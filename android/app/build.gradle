@@ -5,17 +5,14 @@ apply plugin: "com.facebook.react"
 
 
 // Load secure signing properties.
-//
-// Priority order:
-//  1. EAS Build (EAS_BUILD env var set) → EAS injects keystore via its own env vars
-//  2. Local .env.signing file           → for local Gradle / Fastlane builds
-//  3. Neither found                     → throw a helpful error
+// Priority: EAS (env vars) → local .env.signing → debug/dev fallback (no keystore).
+// The keystore is ONLY required for local RELEASE builds; debug/dev builds and
+// `./gradlew clean` work without it (they use the Android debug keystore).
 def signingPropsFile = rootProject.file("../.env.signing")
 def isEasBuild = System.getenv("EAS_BUILD") != null
+def isReleaseBuild = gradle.startParameter.taskNames.any { it.toLowerCase().contains("release") }
 
 if (isEasBuild) {
-    // EAS managed credentials: EAS injects keystore path + passwords as env vars.
-    // If env vars are absent, EAS is handling signing externally — use empty strings.
     ext.UPLOAD_STORE_FILE      = System.getenv("ANDROID_KEYSTORE_PATH")     ?: ""
     ext.UPLOAD_STORE_PASSWORD = System.getenv("ANDROID_KEYSTORE_PASSWORD")  ?: ""
     ext.UPLOAD_KEY_ALIAS      = System.getenv("ANDROID_KEY_ALIAS")          ?: ""
@@ -28,77 +25,61 @@ if (isEasBuild) {
     ext.UPLOAD_STORE_PASSWORD = signingProps['UPLOAD_STORE_PASSWORD']
     ext.UPLOAD_KEY_ALIAS      = signingProps['UPLOAD_KEY_ALIAS']
     ext.UPLOAD_KEY_PASSWORD   = signingProps['UPLOAD_KEY_PASSWORD']
-} else {
+} else if (isReleaseBuild) {
     throw new FileNotFoundException(
-        "🛑 .env.signing file is missing.\n" +
-        "   Copy .env.signing.example → .env.signing and fill in your keystore values.\n" +
-        "   See docs/EAS.md for setup instructions."
+        "🛑 .env.signing file is missing (needed only for local RELEASE builds).\n" +
+        "   Copy .env.signing.example → .env.signing and fill in your keystore values."
     )
+} else {
+    ext.UPLOAD_STORE_FILE      = ""
+    ext.UPLOAD_STORE_PASSWORD = ""
+    ext.UPLOAD_KEY_ALIAS      = ""
+    ext.UPLOAD_KEY_PASSWORD   = ""
 }
 
-// Environment files per build type + flavor.
-// Local overrides (e.g. .env.production.local) let each engineer keep private keys
-// outside git while sharing non-sensitive defaults in .env.*.
-def resolveEnvFile = { baseEnv ->
-    def localOverride = "${baseEnv}.local"
-    return rootProject.file("../${localOverride}").exists() ? localOverride : baseEnv
-}
+// Environment files per build type + flavor
 project.ext.envConfigFiles = [
-    productiondebug:     resolveEnvFile(".env.production"),
-    productionrelease:   resolveEnvFile(".env.production"),
-    developmentdebug:    resolveEnvFile(".env.development"),
-    developmentrelease:  resolveEnvFile(".env.development"),
-    stagingdebug:        resolveEnvFile(".env.staging"),
-    stagingrelease:      resolveEnvFile(".env.staging")
+    productiondebug:     ".env.production",
+    productionrelease:   ".env.production",
+    developmentdebug:    ".env.development",
+    developmentrelease:  ".env.development",
+    stagingdebug:        ".env.staging",
+    stagingrelease:      ".env.staging"
 ]
-
-// Guard against leaked ENVFILE forcing the wrong env (common on CI/EAS).
-def taskNames = gradle.startParameter.taskNames.collect { it.toLowerCase() }
-def expectedEnvFile = null
-if (taskNames.any { it.contains("development") }) {
-    expectedEnvFile = ".env.development"
-} else if (taskNames.any { it.contains("staging") }) {
-    expectedEnvFile = ".env.staging"
-} else if (taskNames.any { it.contains("production") }) {
-    expectedEnvFile = ".env.production"
-}
-def forcedEnvFile = System.getenv("ENVFILE")
-if (forcedEnvFile && expectedEnvFile && forcedEnvFile != expectedEnvFile) {
-    throw new RuntimeException(
-        "ENVFILE mismatch for selected flavor tasks.\n" +
-        "Expected: ${expectedEnvFile}\n" +
-        "Received: ${forcedEnvFile}\n" +
-        "Fix: set build profile env.ENVFILE in eas.json for each profile."
-    )
-}
-if (expectedEnvFile) {
-    // Force the default .env when Android Studio invokes bundle-only tasks
-    // (e.g. createBundleProductionReleaseJsAndAssets), where react-native-config
-    // flavor parsing can otherwise fall back to plain ".env".
-    project.ext.defaultEnvFile = expectedEnvFile
-}
 
 // Apply react-native-config dotenv support
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 react {
+    // With flavors the debuggable variants include the flavor prefix
+    debuggableVariants = ["developmentDebug", "stagingDebug", "productionDebug"]
     autolinkLibrariesWithApp()
-    //
-    // Added by install-expo-modules
-    entryFile = file(["node", "-e", "require('expo/scripts/resolveAppEntry')", rootDir.getAbsoluteFile().getParentFile().getAbsolutePath(), "android", "absolute"].execute(null, rootDir).text.trim())
-    cliFile = new File(["node", "--print", "require.resolve('@expo/cli')"].execute(null, rootDir).text.trim())
-    bundleCommand = "export:embed"
 }
 
 // Configuration switches
 def enableProguardInReleaseBuilds = false
-def jscFlavor = 'org.webkit:android-jsc:+'
+def jscFlavor = 'io.github.react-native-community:jsc-android:2026004.+'
 
 android {
     ndkVersion       rootProject.ext.ndkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk       rootProject.ext.compileSdkVersion
     namespace        "com.snapbiodata.app"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    packagingOptions {
+        // 16KB page alignment for native libraries (Android 15+ requirement)
+        jniLibs {
+            useLegacyPackaging = false
+        }
+    }
 
     defaultConfig {
         applicationId       "com.snapbiodata.app"
@@ -110,22 +91,24 @@ android {
 
     flavorDimensions "default"
 
-    /**
-     * Three flavors — development, staging, production — share the same applicationId
-     * so they map to one Play Store app on different tracks (internal, beta, production).
-     */
-
+    // Each flavor gets its own applicationId so development / staging / production
+    // can be installed side-by-side on one device. build_config_package stays the
+    // namespace (com.snapbiodata.app) — that's where BuildConfig is generated,
+    // regardless of the suffixed applicationId.
     productFlavors {
+        production {
+            dimension "default"
+            // com.snapbiodata.app  (the real Play Store / App Store identity)
+            resValue "string", "build_config_package", "com.snapbiodata.app"
+        }
         development {
-            applicationId "com.snapbiodata.app"
+            dimension "default"
+            applicationIdSuffix ".development"   // com.snapbiodata.app.development
             resValue "string", "build_config_package", "com.snapbiodata.app"
         }
         staging {
-            applicationId "com.snapbiodata.app"
-            resValue "string", "build_config_package", "com.snapbiodata.app"
-        }
-        production {
-            applicationId "com.snapbiodata.app"
+            dimension "default"
+            applicationIdSuffix ".staging"       // com.snapbiodata.app.staging
             resValue "string", "build_config_package", "com.snapbiodata.app"
         }
     }

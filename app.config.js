@@ -1,8 +1,8 @@
 /**
- * EAS app config (bare React Native — no `expo` app package required).
+ * EAS app config (bare workflow).
  *
- * Used by: `eas build`, `eas submit`, `eas update` (reads this + eas.json).
- * Not used by: Metro, `react-native start`, or local Gradle/Xcode (those use native projects).
+ * This file is only used by EAS Build / EAS Update — it is NOT used by the
+ * Metro bundler or react-native CLI at dev time.
  *
  * ─── ONE-TIME SETUP ─────────────────────────────────────────────────────────
  *  1. npm install -g eas-cli
@@ -15,47 +15,30 @@
 
 const pkg = require('./package.json');
 
-// Resolved from eas.json `env.APP_ENV` at build time, or locally from the shell.
-// Falls back to 'development' so local runs always work.
-const appEnv = (process.env.APP_ENV || 'development').toLowerCase();
-
-const envConfig = {
-  development: {
-    appName: 'SnapBiodata Dev',
-  },
-  staging: {
-    appName: 'SnapBiodata Stag',
-  },
-  production: {
-    appName: 'SnapBiodata',
-  },
-};
-
-const { appName } = envConfig[appEnv] ?? envConfig.development;
+const projectId = '46cb38f5-4c71-4a23-8c62-0652d34fb5d8';
 
 module.exports = {
-  name: appName,
+  name: 'SnapBiodata',
   slug: 'snapbiodata',
 
   // Kept in sync with package.json — run `yarn eas:version:get` to verify
   version: pkg.version,
 
-  // OTA updates: clients only receive updates built with the same runtimeVersion.
-  // 'appVersion' policy ties runtimeVersion to the native app version automatically.
+  owner: 'shivtiwari',
+
   runtimeVersion: '1.0.0',
+
+  plugins: ['expo-updates'],
+
   updates: {
-    url: 'https://u.expo.dev/46cb38f5-4c71-4a23-8c62-0652d34fb5d8',
+    url: `https://u.expo.dev/${projectId}`,
   },
 
-  // ─── FILL IN AFTER RUNNING `eas init` ───────────────────────────────────
-  owner: 'shivtiwari',
   extra: {
     eas: {
-      projectId: '46cb38f5-4c71-4a23-8c62-0652d34fb5d8',
+      projectId,
     },
-    appEnv,
   },
-  // ────────────────────────────────────────────────────────────────────────
 
   android: {
     package: 'com.snapbiodata.app',

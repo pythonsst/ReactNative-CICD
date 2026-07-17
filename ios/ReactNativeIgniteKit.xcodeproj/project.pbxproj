@@ -1,0 +1,1582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00E356F31AD99517003FC87E /* ReactNativeIgniteKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ReactNativeIgniteKitTests.m */; };
+		102B283507CFBE29B7222657 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DD0FD56E7B6FC04F08171 /* ExpoModulesProvider.swift */; };
+		1162447BDBAB9960663D2C46 /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C5E17F6EFB3C64C2E9007FA /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.a */; };
+		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		38DA62CBBE2CBC95D65C049D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC23E9557F0907D8A2F657C /* ExpoModulesProvider.swift */; };
+		42105F093CF92F0BC6D0D39E /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F4E5CFB90A66C07855BFD1 /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.a */; };
+		4D9846CA1001C28AFF34F2ED /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B876A3FB4E3CD6460FD7553A /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.a */; };
+		58BDA2ED2CCF866D00DF7710 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		58BDA2EE2CCF866D00DF7710 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		58BDA2F22CCF866D00DF7710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		58BDA2F32CCF866D00DF7710 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		58BDA2F42CCF866D00DF7710 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 54FB7891804E3AB387E32E27 /* PrivacyInfo.xcprivacy */; };
+		58BDA3002CCF866F00DF7710 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		58BDA3012CCF866F00DF7710 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		58BDA3052CCF866F00DF7710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		58BDA3062CCF866F00DF7710 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		58BDA3072CCF866F00DF7710 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 54FB7891804E3AB387E32E27 /* PrivacyInfo.xcprivacy */; };
+		58BDA3132CCF867300DF7710 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		58BDA3142CCF867300DF7710 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		58BDA3182CCF867300DF7710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		58BDA3192CCF867300DF7710 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		58BDA31A2CCF867300DF7710 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 54FB7891804E3AB387E32E27 /* PrivacyInfo.xcprivacy */; };
+		683029482775ECB47E4433D5 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8CECE58B150414E5BD754 /* ExpoModulesProvider.swift */; };
+		750C4A222E29D6E48EE01FD1 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271B0A4A9C21F089F3D1FF87 /* ExpoModulesProvider.swift */; };
+		7DFE8FF10DE858C526048B42 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FE12CE0BDF448C25033AD /* ExpoModulesProvider.swift */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9E20F5FF34AA4134FF643BFF /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E798846C4386ED32599F2F /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.a */; };
+		B543424A594AFB3615A4EFE0 /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8AB3913BA5F46B0EC39A1F /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.a */; };
+		C999AAEC7010428F20110704 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 54FB7891804E3AB387E32E27 /* PrivacyInfo.xcprivacy */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = ReactNativeIgniteKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00E356EE1AD99517003FC87E /* ReactNativeIgniteKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactNativeIgniteKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* ReactNativeIgniteKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactNativeIgniteKitTests.m; sourceTree = "<group>"; };
+		0742DBBF3FA09C929AAFF390 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.debug.xcconfig"; path = "Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.debug.xcconfig"; sourceTree = "<group>"; };
+		0E8AB3913BA5F46B0EC39A1F /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		10E798846C4386ED32599F2F /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		11667D51FDE09B3C92FB68D3 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.release.xcconfig"; path = "Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.release.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* ReactNativeIgniteKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactNativeIgniteKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ReactNativeIgniteKit/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = ReactNativeIgniteKit/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ReactNativeIgniteKit/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ReactNativeIgniteKit/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ReactNativeIgniteKit/main.m; sourceTree = "<group>"; };
+		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = ReactNativeIgniteKit/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1713925E4C9534CE7A2AEB68 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.release.xcconfig"; path = "Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.release.xcconfig"; sourceTree = "<group>"; };
+		2301ED84BDC8D662F73498F0 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit sit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit sit.release.xcconfig"; path = "Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit sit/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit sit.release.xcconfig"; sourceTree = "<group>"; };
+		271B0A4A9C21F089F3D1FF87 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		301596ABB39CC37B5DEB619B /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.debug.xcconfig"; path = "Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.debug.xcconfig"; sourceTree = "<group>"; };
+		3E8DD0FD56E7B6FC04F08171 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		54FB7891804E3AB387E32E27 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = ReactNativeIgniteKit/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		58BDA2FB2CCF866D00DF7710 /* ReactNativeIgniteKit dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ReactNativeIgniteKit dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		58BDA2FC2CCF866D00DF7710 /* ReactNativeIgniteKit dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "ReactNativeIgniteKit dev-Info.plist"; path = "/Users/shiv/Validus-Projects/ReactNativeIgniteKit/ios/ReactNativeIgniteKit dev-Info.plist"; sourceTree = "<absolute>"; };
+		58BDA30E2CCF866F00DF7710 /* ReactNativeIgniteKit stag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ReactNativeIgniteKit stag.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		58BDA30F2CCF866F00DF7710 /* ReactNativeIgniteKit stag-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "ReactNativeIgniteKit stag-Info.plist"; path = "/Users/shiv/Validus-Projects/ReactNativeIgniteKit/ios/ReactNativeIgniteKit stag-Info.plist"; sourceTree = "<absolute>"; };
+		58BDA3212CCF867300DF7710 /* ReactNativeIgniteKit prod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ReactNativeIgniteKit prod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		58BDA3222CCF867300DF7710 /* ReactNativeIgniteKit prod-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "ReactNativeIgniteKit prod-Info.plist"; path = "/Users/shiv/Validus-Projects/ReactNativeIgniteKit/ios/ReactNativeIgniteKit prod-Info.plist"; sourceTree = "<absolute>"; };
+		63E8CECE58B150414E5BD754 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		78F4E5CFB90A66C07855BFD1 /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ReactNativeIgniteKit/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		838A3D671DC441B5FFA3C3A2 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.release.xcconfig"; path = "Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.release.xcconfig"; sourceTree = "<group>"; };
+		9A9FE12CE0BDF448C25033AD /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		9C5E17F6EFB3C64C2E9007FA /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E003C75A916C53328D712DD /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.release.xcconfig"; path = "Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.release.xcconfig"; sourceTree = "<group>"; };
+		AA8E964B877FE297DFAD3772 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.release.xcconfig"; path = "Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.release.xcconfig"; sourceTree = "<group>"; };
+		B876A3FB4E3CD6460FD7553A /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B98226125106B8E4B0EC439F /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit sit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit sit.debug.xcconfig"; path = "Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit sit/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit sit.debug.xcconfig"; sourceTree = "<group>"; };
+		BA994064877A697386E98AEC /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.debug.xcconfig"; path = "Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DDC23E9557F0907D8A2F657C /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		E9BA0160FCCCC4BA27EDBB26 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.debug.xcconfig"; path = "Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.debug.xcconfig"; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EDEE5C23678AC5EC808F677C /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.debug.xcconfig"; path = "Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00E356EB1AD99517003FC87E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42105F093CF92F0BC6D0D39E /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1162447BDBAB9960663D2C46 /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58BDA2EF2CCF866D00DF7710 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B543424A594AFB3615A4EFE0 /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58BDA3022CCF866F00DF7710 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E20F5FF34AA4134FF643BFF /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58BDA3152CCF867300DF7710 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D9846CA1001C28AFF34F2ED /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E356EF1AD99517003FC87E /* ReactNativeIgniteKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F21AD99517003FC87E /* ReactNativeIgniteKitTests.m */,
+				00E356F01AD99517003FC87E /* Supporting Files */,
+			);
+			path = ReactNativeIgniteKitTests;
+			sourceTree = "<group>";
+		};
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0D1F9793EAB742050D6EEC6D /* ReactNativeIgniteKit stag */ = {
+			isa = PBXGroup;
+			children = (
+				9A9FE12CE0BDF448C25033AD /* ExpoModulesProvider.swift */,
+			);
+			name = "ReactNativeIgniteKit stag";
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* ReactNativeIgniteKit */ = {
+			isa = PBXGroup;
+			children = (
+				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				13B07FB71A68108700A75B9A /* main.m */,
+				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				54FB7891804E3AB387E32E27 /* PrivacyInfo.xcprivacy */,
+			);
+			name = ReactNativeIgniteKit;
+			sourceTree = "<group>";
+		};
+		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				9C5E17F6EFB3C64C2E9007FA /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.a */,
+				0E8AB3913BA5F46B0EC39A1F /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.a */,
+				B876A3FB4E3CD6460FD7553A /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.a */,
+				78F4E5CFB90A66C07855BFD1 /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.a */,
+				10E798846C4386ED32599F2F /* libPods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4B0F147B42AAC320DD10BC54 /* ReactNativeIgniteKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				3E8DD0FD56E7B6FC04F08171 /* ExpoModulesProvider.swift */,
+			);
+			name = ReactNativeIgniteKitTests;
+			sourceTree = "<group>";
+		};
+		58B0210E247ABBE1894B7EC2 /* ReactNativeIgniteKit dev */ = {
+			isa = PBXGroup;
+			children = (
+				63E8CECE58B150414E5BD754 /* ExpoModulesProvider.swift */,
+			);
+			name = "ReactNativeIgniteKit dev";
+			sourceTree = "<group>";
+		};
+		738D7447F8078399C48E25EE /* ReactNativeIgniteKit */ = {
+			isa = PBXGroup;
+			children = (
+				DDC23E9557F0907D8A2F657C /* ExpoModulesProvider.swift */,
+			);
+			name = ReactNativeIgniteKit;
+			sourceTree = "<group>";
+		};
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		83CBB9F61A601CBA00E9B192 = {
+			isa = PBXGroup;
+			children = (
+				13B07FAE1A68108700A75B9A /* ReactNativeIgniteKit */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				00E356EF1AD99517003FC87E /* ReactNativeIgniteKitTests */,
+				83CBBA001A601CBA00E9B192 /* Products */,
+				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				58BDA2FC2CCF866D00DF7710 /* ReactNativeIgniteKit dev-Info.plist */,
+				58BDA30F2CCF866F00DF7710 /* ReactNativeIgniteKit stag-Info.plist */,
+				58BDA3222CCF867300DF7710 /* ReactNativeIgniteKit prod-Info.plist */,
+				E8DCCF4425EB3ACE07D3BA27 /* ExpoModulesProviders */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+		};
+		83CBBA001A601CBA00E9B192 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13B07F961A680F5B00A75B9A /* ReactNativeIgniteKit.app */,
+				00E356EE1AD99517003FC87E /* ReactNativeIgniteKitTests.xctest */,
+				58BDA2FB2CCF866D00DF7710 /* ReactNativeIgniteKit dev.app */,
+				58BDA30E2CCF866F00DF7710 /* ReactNativeIgniteKit stag.app */,
+				58BDA3212CCF867300DF7710 /* ReactNativeIgniteKit prod.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B0330CDF7F50C543991FF516 /* ReactNativeIgniteKit prod */ = {
+			isa = PBXGroup;
+			children = (
+				271B0A4A9C21F089F3D1FF87 /* ExpoModulesProvider.swift */,
+			);
+			name = "ReactNativeIgniteKit prod";
+			sourceTree = "<group>";
+		};
+		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				301596ABB39CC37B5DEB619B /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.debug.xcconfig */,
+				838A3D671DC441B5FFA3C3A2 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.release.xcconfig */,
+				0742DBBF3FA09C929AAFF390 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.debug.xcconfig */,
+				1713925E4C9534CE7A2AEB68 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.release.xcconfig */,
+				E9BA0160FCCCC4BA27EDBB26 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.debug.xcconfig */,
+				AA8E964B877FE297DFAD3772 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.release.xcconfig */,
+				B98226125106B8E4B0EC439F /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit sit.debug.xcconfig */,
+				2301ED84BDC8D662F73498F0 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit sit.release.xcconfig */,
+				BA994064877A697386E98AEC /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.debug.xcconfig */,
+				9E003C75A916C53328D712DD /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.release.xcconfig */,
+				EDEE5C23678AC5EC808F677C /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.debug.xcconfig */,
+				11667D51FDE09B3C92FB68D3 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E8DCCF4425EB3ACE07D3BA27 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				738D7447F8078399C48E25EE /* ReactNativeIgniteKit */,
+				58B0210E247ABBE1894B7EC2 /* ReactNativeIgniteKit dev */,
+				B0330CDF7F50C543991FF516 /* ReactNativeIgniteKit prod */,
+				0D1F9793EAB742050D6EEC6D /* ReactNativeIgniteKit stag */,
+				4B0F147B42AAC320DD10BC54 /* ReactNativeIgniteKitTests */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00E356ED1AD99517003FC87E /* ReactNativeIgniteKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ReactNativeIgniteKitTests" */;
+			buildPhases = (
+				8288039AE02DE5D9BBD8B413 /* [CP] Check Pods Manifest.lock */,
+				ECEF4FA2EDF8804CF8694A80 /* [Expo] Configure project */,
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+				C27403DAE051F2D890D4D58B /* [CP] Embed Pods Frameworks */,
+				10D8852B896D2E5B5F2B30F5 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00E356F51AD99517003FC87E /* PBXTargetDependency */,
+			);
+			name = ReactNativeIgniteKitTests;
+			productName = ReactNativeIgniteKitTests;
+			productReference = 00E356EE1AD99517003FC87E /* ReactNativeIgniteKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13B07F861A680F5B00A75B9A /* ReactNativeIgniteKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ReactNativeIgniteKit" */;
+			buildPhases = (
+				6D14A1C3C87B9332D9FC2A81 /* [CP] Check Pods Manifest.lock */,
+				53BC95E7178337AC11F6279F /* [Expo] Configure project */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				E7C9ADAE3B026A428A6A2163 /* [CP] Embed Pods Frameworks */,
+				079F27EA451502E71B1576BB /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReactNativeIgniteKit;
+			productName = ReactNativeIgniteKit;
+			productReference = 13B07F961A680F5B00A75B9A /* ReactNativeIgniteKit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		58BDA2EA2CCF866D00DF7710 /* ReactNativeIgniteKit dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58BDA2F82CCF866D00DF7710 /* Build configuration list for PBXNativeTarget "ReactNativeIgniteKit dev" */;
+			buildPhases = (
+				D52DB2285EC70DB6C66278F6 /* [CP] Check Pods Manifest.lock */,
+				7123203350886A0AA992798C /* [Expo] Configure project */,
+				58BDA2EC2CCF866D00DF7710 /* Sources */,
+				58BDA2EF2CCF866D00DF7710 /* Frameworks */,
+				58BDA2F12CCF866D00DF7710 /* Resources */,
+				58BDA2F52CCF866D00DF7710 /* Bundle React Native code and images */,
+				C125031F9DFF09212ED3F151 /* [CP] Embed Pods Frameworks */,
+				35BAAF89DF45AC034313CE19 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ReactNativeIgniteKit dev";
+			productName = ReactNativeIgniteKit;
+			productReference = 58BDA2FB2CCF866D00DF7710 /* ReactNativeIgniteKit dev.app */;
+			productType = "com.apple.product-type.application";
+		};
+		58BDA2FD2CCF866F00DF7710 /* ReactNativeIgniteKit stag */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58BDA30B2CCF866F00DF7710 /* Build configuration list for PBXNativeTarget "ReactNativeIgniteKit stag" */;
+			buildPhases = (
+				02B19D1B8F82BBD401426D74 /* [CP] Check Pods Manifest.lock */,
+				8FC5368D90AE6A285617C995 /* [Expo] Configure project */,
+				58BDA2FF2CCF866F00DF7710 /* Sources */,
+				58BDA3022CCF866F00DF7710 /* Frameworks */,
+				58BDA3042CCF866F00DF7710 /* Resources */,
+				58BDA3082CCF866F00DF7710 /* Bundle React Native code and images */,
+				416924AB5FF032F4F348446A /* [CP] Embed Pods Frameworks */,
+				A5D6540627182A713DF777AC /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ReactNativeIgniteKit stag";
+			productName = ReactNativeIgniteKit;
+			productReference = 58BDA30E2CCF866F00DF7710 /* ReactNativeIgniteKit stag.app */;
+			productType = "com.apple.product-type.application";
+		};
+		58BDA3102CCF867300DF7710 /* ReactNativeIgniteKit prod */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58BDA31E2CCF867300DF7710 /* Build configuration list for PBXNativeTarget "ReactNativeIgniteKit prod" */;
+			buildPhases = (
+				6B1D606339A0D919B7564193 /* [CP] Check Pods Manifest.lock */,
+				69B13A5B9B777ABFED141A8D /* [Expo] Configure project */,
+				58BDA3122CCF867300DF7710 /* Sources */,
+				58BDA3152CCF867300DF7710 /* Frameworks */,
+				58BDA3172CCF867300DF7710 /* Resources */,
+				58BDA31B2CCF867300DF7710 /* Bundle React Native code and images */,
+				A1CE5FD8F4200625997CC7BF /* [CP] Embed Pods Frameworks */,
+				D25B0844A30B3B28C416E52C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ReactNativeIgniteKit prod";
+			productName = ReactNativeIgniteKit;
+			productReference = 58BDA3212CCF867300DF7710 /* ReactNativeIgniteKit prod.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					00E356ED1AD99517003FC87E = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1120;
+					};
+				};
+			};
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ReactNativeIgniteKit" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83CBB9F61A601CBA00E9B192;
+			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13B07F861A680F5B00A75B9A /* ReactNativeIgniteKit */,
+				00E356ED1AD99517003FC87E /* ReactNativeIgniteKitTests */,
+				58BDA2EA2CCF866D00DF7710 /* ReactNativeIgniteKit dev */,
+				58BDA2FD2CCF866F00DF7710 /* ReactNativeIgniteKit stag */,
+				58BDA3102CCF867300DF7710 /* ReactNativeIgniteKit prod */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00E356EC1AD99517003FC87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				C999AAEC7010428F20110704 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58BDA2F12CCF866D00DF7710 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58BDA2F22CCF866D00DF7710 /* LaunchScreen.storyboard in Resources */,
+				58BDA2F32CCF866D00DF7710 /* Images.xcassets in Resources */,
+				58BDA2F42CCF866D00DF7710 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58BDA3042CCF866F00DF7710 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58BDA3052CCF866F00DF7710 /* LaunchScreen.storyboard in Resources */,
+				58BDA3062CCF866F00DF7710 /* Images.xcassets in Resources */,
+				58BDA3072CCF866F00DF7710 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58BDA3172CCF867300DF7710 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58BDA3182CCF867300DF7710 /* LaunchScreen.storyboard in Resources */,
+				58BDA3192CCF867300DF7710 /* Images.xcassets in Resources */,
+				58BDA31A2CCF867300DF7710 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		02B19D1B8F82BBD401426D74 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		079F27EA451502E71B1576BB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		10D8852B896D2E5B5F2B30F5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		35BAAF89DF45AC034313CE19 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		416924AB5FF032F4F348446A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53BC95E7178337AC11F6279F /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env",
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/expo-configure-project.sh",
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/ExpoModulesProvider.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/expo-configure-project.sh\"\n";
+		};
+		58BDA2F52CCF866D00DF7710 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		58BDA3082CCF866F00DF7710 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		58BDA31B2CCF867300DF7710 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		69B13A5B9B777ABFED141A8D /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env",
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/expo-configure-project.sh",
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/ExpoModulesProvider.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit\\ prod/expo-configure-project.sh\"\n";
+		};
+		6B1D606339A0D919B7564193 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D14A1C3C87B9332D9FC2A81 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7123203350886A0AA992798C /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env",
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/expo-configure-project.sh",
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/ExpoModulesProvider.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit\\ dev/expo-configure-project.sh\"\n";
+		};
+		8288039AE02DE5D9BBD8B413 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FC5368D90AE6A285617C995 /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env",
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/expo-configure-project.sh",
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/ExpoModulesProvider.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit\\ stag/expo-configure-project.sh\"\n";
+		};
+		A1CE5FD8F4200625997CC7BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5D6540627182A713DF777AC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C125031F9DFF09212ED3F151 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C27403DAE051F2D890D4D58B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D25B0844A30B3B28C416E52C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D52DB2285EC70DB6C66278F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7C9ADAE3B026A428A6A2163 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECEF4FA2EDF8804CF8694A80 /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env",
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/expo-configure-project.sh",
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/Pods/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/ExpoModulesProvider.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/expo-configure-project.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00E356EA1AD99517003FC87E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E356F31AD99517003FC87E /* ReactNativeIgniteKitTests.m in Sources */,
+				102B283507CFBE29B7222657 /* ExpoModulesProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F871A680F5B00A75B9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				38DA62CBBE2CBC95D65C049D /* ExpoModulesProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58BDA2EC2CCF866D00DF7710 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58BDA2ED2CCF866D00DF7710 /* AppDelegate.mm in Sources */,
+				58BDA2EE2CCF866D00DF7710 /* main.m in Sources */,
+				683029482775ECB47E4433D5 /* ExpoModulesProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58BDA2FF2CCF866F00DF7710 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58BDA3002CCF866F00DF7710 /* AppDelegate.mm in Sources */,
+				58BDA3012CCF866F00DF7710 /* main.m in Sources */,
+				7DFE8FF10DE858C526048B42 /* ExpoModulesProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58BDA3122CCF867300DF7710 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58BDA3132CCF867300DF7710 /* AppDelegate.mm in Sources */,
+				58BDA3142CCF867300DF7710 /* main.m in Sources */,
+				750C4A222E29D6E48EE01FD1 /* ExpoModulesProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* ReactNativeIgniteKit */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00E356F61AD99517003FC87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA994064877A697386E98AEC /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 7BJAJP6YCF;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ReactNativeIgniteKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapbiodata.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReactNativeIgniteKit.app/ReactNativeIgniteKit";
+			};
+			name = Debug;
+		};
+		00E356F71AD99517003FC87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E003C75A916C53328D712DD /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 7BJAJP6YCF;
+				INFOPLIST_FILE = ReactNativeIgniteKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapbiodata.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReactNativeIgniteKit.app/ReactNativeIgniteKit";
+			};
+			name = Release;
+		};
+		13B07F941A680F5B00A75B9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 301596ABB39CC37B5DEB619B /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 39;
+				DEVELOPMENT_TEAM = H8PFJSSP87;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = ReactNativeIgniteKit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapbiodata.app;
+				PRODUCT_NAME = ReactNativeIgniteKit;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 838A3D671DC441B5FFA3C3A2 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 39;
+				DEVELOPMENT_TEAM = H8PFJSSP87;
+				INFOPLIST_FILE = ReactNativeIgniteKit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapbiodata.app;
+				PRODUCT_NAME = ReactNativeIgniteKit;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		58BDA2F92CCF866D00DF7710 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0742DBBF3FA09C929AAFF390 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Development";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 39;
+				DEVELOPMENT_TEAM = 7BJAJP6YCF;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "ReactNativeIgniteKit dev-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SnapBiodata Dev";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapbiodata.app.development;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		58BDA2FA2CCF866D00DF7710 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1713925E4C9534CE7A2AEB68 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Development";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 39;
+				DEVELOPMENT_TEAM = 7BJAJP6YCF;
+				INFOPLIST_FILE = "ReactNativeIgniteKit dev-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SnapBiodata Dev";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapbiodata.app.development;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		58BDA30C2CCF866F00DF7710 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDEE5C23678AC5EC808F677C /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Staging";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 39;
+				DEVELOPMENT_TEAM = 7BJAJP6YCF;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "ReactNativeIgniteKit stag-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SnapBiodata Stag";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapbiodata.app.staging;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		58BDA30D2CCF866F00DF7710 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11667D51FDE09B3C92FB68D3 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Staging";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 39;
+				DEVELOPMENT_TEAM = 7BJAJP6YCF;
+				INFOPLIST_FILE = "ReactNativeIgniteKit stag-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SnapBiodata Stag";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapbiodata.app.staging;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		58BDA31F2CCF867300DF7710 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9BA0160FCCCC4BA27EDBB26 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Production";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 39;
+				DEVELOPMENT_TEAM = 7BJAJP6YCF;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "ReactNativeIgniteKit prod-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = SnapBiodata;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapbiodata.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		58BDA3202CCF867300DF7710 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA8E964B877FE297DFAD3772 /* Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Production";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 39;
+				DEVELOPMENT_TEAM = 7BJAJP6YCF;
+				INFOPLIST_FILE = "ReactNativeIgniteKit prod-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = SnapBiodata;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapbiodata.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CXX = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD = "";
+				LDPLUSPLUS = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+					"-DFOLLY_CFG_NO_COROUTINES=1",
+					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
+				);
+				OTHER_LDFLAGS = "$(inherited)  ";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				USE_HERMES = true;
+			};
+			name = Debug;
+		};
+		83CBBA211A601CBA00E9B192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				CXX = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD = "";
+				LDPLUSPLUS = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+					"-DFOLLY_CFG_NO_COROUTINES=1",
+					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
+				);
+				OTHER_LDFLAGS = "$(inherited)  ";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				USE_HERMES = true;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ReactNativeIgniteKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E356F61AD99517003FC87E /* Debug */,
+				00E356F71AD99517003FC87E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ReactNativeIgniteKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13B07F941A680F5B00A75B9A /* Debug */,
+				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58BDA2F82CCF866D00DF7710 /* Build configuration list for PBXNativeTarget "ReactNativeIgniteKit dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58BDA2F92CCF866D00DF7710 /* Debug */,
+				58BDA2FA2CCF866D00DF7710 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58BDA30B2CCF866F00DF7710 /* Build configuration list for PBXNativeTarget "ReactNativeIgniteKit stag" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58BDA30C2CCF866F00DF7710 /* Debug */,
+				58BDA30D2CCF866F00DF7710 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58BDA31E2CCF867300DF7710 /* Build configuration list for PBXNativeTarget "ReactNativeIgniteKit prod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58BDA31F2CCF867300DF7710 /* Debug */,
+				58BDA3202CCF867300DF7710 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ReactNativeIgniteKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CBBA201A601CBA00E9B192 /* Debug */,
+				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+}

@@ -1,92 +1,66 @@
 {
   "cli": {
-    "version": ">= 18.4.0",
+    "version": ">= 16.32.0",
     "appVersionSource": "remote"
   },
   "build": {
     "development": {
       "distribution": "store",
       "channel": "development",
-      "environment": "development",
-      "env": {
-        "ENVFILE": ".env.development",
-        "APP_ENV": "development"
-      },
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleDevelopmentRelease"
       },
       "ios": {
-        "scheme": "IgniteKit development",
-        "image": "macos-sequoia-15.6-xcode-26.2"
+        "scheme": "development"
       }
     },
     "staging": {
       "distribution": "store",
       "channel": "staging",
-      "environment": "preview",
-      "env": {
-        "ENVFILE": ".env.staging",
-        "APP_ENV": "staging"
-      },
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleStagingRelease"
       },
       "ios": {
-        "scheme": "IgniteKit staging",
-        "image": "macos-sequoia-15.6-xcode-26.2"
+        "scheme": "staging"
       }
     },
     "production": {
       "distribution": "store",
       "channel": "production",
-      "environment": "production",
-      "env": {
-        "ENVFILE": ".env.production",
-        "APP_ENV": "production"
-      },
       "autoIncrement": true,
       "android": {
         "gradleCommand": ":app:bundleProductionRelease"
       },
       "ios": {
-        "scheme": "IgniteKit production",
-        "image": "macos-sequoia-15.6-xcode-26.2"
+        "scheme": "production"
       }
     }
   },
   "submit": {
     "development": {
       "android": {
-        "applicationId": "com.snapbiodata.app",
-        "track": "internal",
-        "releaseStatus": "draft"
+        "track": "internal"
       },
       "ios": {
-        "ascAppId": "6761337270",
-        "bundleIdentifier": "com.snapbiodata.app"
+        "bundleIdentifier": "com.snapbiodata.app.development"
       }
     },
     "staging": {
       "android": {
-        "applicationId": "com.snapbiodata.app",
-        "track": "beta",
-        "releaseStatus": "draft"
+        "track": "alpha"
       },
       "ios": {
-        "ascAppId": "6761337270",
-        "bundleIdentifier": "com.snapbiodata.app"
+        "bundleIdentifier": "com.snapbiodata.app.staging"
       }
     },
     "production": {
       "android": {
-        "applicationId": "com.snapbiodata.app",
-        "track": "production",
-        "releaseStatus": "completed"
+        "track": "production"
       },
       "ios": {
-        "ascAppId": "6761337270",
+        "ascAppId": "6791839989",
         "bundleIdentifier": "com.snapbiodata.app"
       }
     }

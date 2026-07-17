@@ -1,11 +1,9 @@
 ╭─────────────────────────────────────────────────────────────────────────────╮
 │  EAS — Build · Submit · Update (OTA)                                        │
-│  ReactNativeIgniteKit  ·  Complete reference guide                          │
+│  SnapBiodata  ·  Complete reference guide                                   │
 ╰─────────────────────────────────────────────────────────────────────────────╯
 
   Quick help in terminal:  yarn eas:help
-
-  Full matrix (EAS → Android flavor → Play track):  docs/RELEASE_AND_PLAY_MAPPING.md
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -15,7 +13,7 @@
   Step 1 — Install EAS CLI
   ────────────────────────
   npm install -g eas-cli
-  eas --version          # verify: must be >= 18.4.0
+  eas --version          # verify: must be >= 16.32.0
 
   Step 2 — Login to Expo
   ──────────────────────
@@ -39,26 +37,12 @@
   Replace every "YOUR_APP_STORE_APP_ID" in eas.json with that number.
   (Android tracks are pre-configured; no changes needed there.)
 
-  Step 6 — Set up iOS signing credentials
-  ────────────────────────────────────────
-  eas credentials --platform ios
-  # Select: Build Credentials → All: Set up all the required credentials
-  # EAS will automatically:
-  #   · Register com.educatorslabs.ignitekit on your Apple Developer account
-  #   · Generate an Apple Distribution Certificate
-  #   · Generate a Provisioning Profile
-  #   · Store both securely on EAS servers (used by every cloud build)
-  #
-  # Run this once per Apple Developer account.
-  # You can verify credentials at any time:
-  eas credentials --platform ios   # view / rotate / replace
-
-  Step 6b — Configure local signing (for local builds only)
-  ──────────────────────────────────────────────────────────
+  Step 6 — Configure local signing (for local/Fastlane builds only)
+  ─────────────────────────────────────────────────────────────────
   cp .env.signing.example .env.signing
   # Fill in your keystore path and passwords.
   # EAS Build manages signing automatically — this file is only needed for
-  # local Gradle builds.
+  # local Gradle / Fastlane builds.
 
   Step 7 — Add GitHub Secret
   ──────────────────────────
@@ -83,23 +67,17 @@
   ┌──────────────┬──────────────────────┬────────────────────┬──────────────┐
   │              │  development         │  staging           │  production  │
   ├──────────────┼──────────────────────┼────────────────────┼──────────────┤
-  │ Android      │  Internal testing    │  Open / beta       │  Production  │
-  │ Play submit  │  track: internal     │  track: beta       │  track: prod. │
-  │ Play Console │  Testing → Internal  │  Testing → Open    │  Release →   │
-  │              │  testing             │  testing (Beta)    │  Production  │
+  │ Android      │  Internal testing    │  Closed / alpha    │  Production  │
   │ iOS          │  TestFlight internal │  TestFlight ext.   │  App Store   │
   │ OTA channel  │  development         │  staging           │  production  │
-  │ iOS scheme   │  IgniteKit           │  IgniteKit         │  IgniteKit       │
-  │              │  development         │  staging           │  production      │
+  │ iOS scheme   │  development         │  staging           │  production  │
   │ Android task │  bundleDevelopment…  │  bundleStaging…    │  bundleProduction… │
   │ Audience     │  Dev team            │  QA / stakeholders │  Everyone    │
   └──────────────┴──────────────────────┴────────────────────┴──────────────┘
 
-  EAS build profile and EAS submit profile use the SAME name (development | staging | production).
-  Example:  eas build --profile staging  →  eas submit --profile staging
-
-  ⚠️  Android flavors
-      Three product flavors: development, staging, production (same applicationId).
+  Android flavor note
+      The project has three Android flavors: production, development, staging.
+      Each maps 1:1 to an EAS profile via gradleCommand in eas.json.
 
   Each environment bakes its OTA channel into the binary at build time.
   An update pushed to "staging" will NEVER reach development or production.
@@ -127,36 +105,26 @@
   VERSION CHECK
   ─────────────
   yarn eas:version:get          show versions: package.json · gradle · pbxproj
-  yarn eas:version:check        exit 1 if any mismatch (used before builds)
+  yarn eas:version:check        exit 1 if any mismatch (used by safe-build)
 
   BUILD
   ─────
-  yarn eas:build:dev            all platforms, development
+  yarn eas:build                all platforms, production
+  yarn eas:build:development    all platforms, development
   yarn eas:build:staging        all platforms, staging
-  yarn eas:build:prod           all platforms, production
+  yarn eas:build:production     all platforms, production
 
-  yarn eas:build:dev:ios        iOS only, development
-  yarn eas:build:staging:ios    iOS only, staging
-  yarn eas:build:prod:ios       iOS only, production
+  yarn eas:build:android:staging   Android only, staging
+  yarn eas:build:ios:staging       iOS only, staging
 
-  yarn eas:build:dev:android    Android only, development
-  yarn eas:build:staging:android  Android only, staging
-  yarn eas:build:prod:android   Android only, production
-
-  Local build (no EAS cloud — uses local Xcode/Gradle):
-  yarn eas:local:dev:ios
-  yarn eas:local:staging:ios
-  yarn eas:local:prod:ios
+  Safe build (version check first — recommended):
+  yarn eas:build:safe:staging
 
   SUBMIT  (run after build completes)
-  ──────
-  yarn eas:submit:dev           all platforms, development
-  yarn eas:submit:staging       all platforms, staging
-  yarn eas:submit:prod          all platforms, production
-
-  yarn eas:submit:dev:ios       iOS only, development
-  yarn eas:submit:staging:ios   iOS only, staging
-  yarn eas:submit:prod:ios      iOS only, production
+  ─────
+  yarn eas:submit:development
+  yarn eas:submit:staging
+  yarn eas:submit:production
 
   Submit a specific build ID (if --latest picks the wrong one):
   eas build:list --platform android --profile staging --limit 3
@@ -164,9 +132,9 @@
 
   OTA UPDATE
   ──────────
-  yarn eas:update:dev           push update to dev channel
+  yarn eas:update:development   push update to dev channel
   yarn eas:update:staging       push update to staging channel
-  yarn eas:update:prod          push update to production channel
+  yarn eas:update:production    push update to production channel
 
   Custom message:
   MESSAGE="Fix login crash" yarn eas:update:staging
@@ -203,7 +171,7 @@
   ① development  ──►  build + submit  ──►  Internal testing   (dev team)
           │
           ▼  (QA sign-off)
-  ② staging      ──►  build + submit  ──►  Open / beta        (QA, stakeholders)
+  ② staging      ──►  build + submit  ──►  Closed / alpha     (QA, stakeholders)
           │
           ▼  (stakeholder sign-off)
   ③ production   ──►  build + submit  ──►  Play Store / App Store  (everyone)
@@ -228,8 +196,8 @@
 
   "Scheme not found" on iOS build
   ·  Confirm the scheme exists in Xcode: Product → Scheme → Manage Schemes
-  ·  Scheme names must match eas.json exactly (quotes if spaces):
-       "IgniteKit development" / "IgniteKit staging" / "IgniteKit production"
+  ·  Scheme names must match eas.json exactly:
+       "development" / "staging" / "production"
 
   ".env.signing file is missing" on local build
   ·  Copy .env.signing.example → .env.signing and fill in your keystore values
