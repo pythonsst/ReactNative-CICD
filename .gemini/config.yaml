@@ -1,0 +1,27 @@
+# Gemini Code Assist — PR review configuration
+# Docs: https://developers.google.com/gemini-code-assist/docs/customize-gemini-behavior-github
+have_fun: false
+
+code_review:
+  disable: false
+  # Only surface issues that matter; avoid nitpick noise.
+  comment_severity_threshold: MEDIUM
+  # No cap on the number of inline comments.
+  max_review_comments: -1
+  pull_request_opened:
+    help: false
+    summary: true
+    code_review: true
+
+# Don't review generated / vendored / binary files.
+ignore_patterns:
+  - "**/node_modules/**"
+  - "ios/Pods/**"
+  - "ios/build/**"
+  - "**/build/**"
+  - "**/*.lock"
+  - "yarn.lock"
+  - "package-lock.json"
+  - "ios/fastlane/screenshots/**"
+  - "**/*.png"
+  - "**/*.pbxproj"
