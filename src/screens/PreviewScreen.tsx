@@ -10,7 +10,7 @@ import {
   StatusBar,
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {C, serif} from '../theme';
+import {C, serif, MAX_CONTENT_WIDTH} from '../theme';
 import type {BiodataRecord} from '../data/biodata';
 import {displayName} from '../data/biodata';
 import {getTemplate} from '../templates';
@@ -149,7 +149,12 @@ const styles = StyleSheet.create({
   headerSub: {fontSize: 11.5, color: C.muted, marginTop: 1},
 
   docWrap: {flex: 1, backgroundColor: '#dfd7cd'},
-  docContent: {padding: 16},
+  docContent: {
+    padding: 16,
+    width: '100%',
+    maxWidth: MAX_CONTENT_WIDTH,
+    alignSelf: 'center',
+  },
 
   actions: {
     flexDirection: 'row',
@@ -159,6 +164,9 @@ const styles = StyleSheet.create({
     backgroundColor: C.canvas,
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: C.line,
+    width: '100%',
+    maxWidth: MAX_CONTENT_WIDTH + 40,
+    alignSelf: 'center',
   },
   primary: {
     flex: 1.3,

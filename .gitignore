@@ -49,8 +49,12 @@ yarn-error.log
 
 **/fastlane/report.xml
 **/fastlane/Preview.html
-**/fastlane/screenshots
 **/fastlane/test_output
+
+# We DO commit the App Store screenshots so they're versioned and easy to
+# update, but never the App Store Connect API key.
+ios/fastlane/asc_api_key.p8
+**/fastlane/*.p8
 
 # Bundle artifact
 *.jsbundle

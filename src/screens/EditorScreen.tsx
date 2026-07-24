@@ -12,7 +12,7 @@ import {
   StatusBar,
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {C, serif} from '../theme';
+import {C, serif, MAX_CONTENT_WIDTH} from '../theme';
 import {
   biodataSections,
   headerPresets,
@@ -327,7 +327,13 @@ const styles = StyleSheet.create({
     color: C.ink,
   },
 
-  content: {paddingHorizontal: 20, paddingTop: 14},
+  content: {
+    paddingHorizontal: 20,
+    paddingTop: 14,
+    width: '100%',
+    maxWidth: MAX_CONTENT_WIDTH,
+    alignSelf: 'center',
+  },
   groupTitle: {
     fontSize: 12.5,
     fontWeight: '700',
@@ -418,8 +424,11 @@ const styles = StyleSheet.create({
     backgroundColor: C.canvas,
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: C.line,
+    alignItems: 'center',
   },
   cta: {
+    width: '100%',
+    maxWidth: MAX_CONTENT_WIDTH,
     backgroundColor: C.maroon,
     borderRadius: 15,
     paddingVertical: 16,

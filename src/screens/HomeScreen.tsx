@@ -9,7 +9,7 @@ import {
   StatusBar,
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {C, serif} from '../theme';
+import {C, serif, MAX_CONTENT_WIDTH} from '../theme';
 import type {BiodataRecord} from '../data/biodata';
 import {displayName} from '../data/biodata';
 import {getTemplate} from '../templates';
@@ -72,15 +72,17 @@ export default function HomeScreen({
 
       {/* Branded header */}
       <View style={[styles.header, {paddingTop: insets.top + 14}]}>
-        <View style={styles.brandRow}>
-          <View style={styles.badge}>
-            <Text style={styles.badgeGlyph}>♥</Text>
+        <View style={styles.headerInner}>
+          <View style={styles.brandRow}>
+            <View style={styles.badge}>
+              <Text style={styles.badgeGlyph}>♥</Text>
+            </View>
+            <Text style={styles.wordmark}>SnapBiodata</Text>
           </View>
-          <Text style={styles.wordmark}>SnapBiodata</Text>
+          <Text style={styles.tagline}>
+            Create beautiful marriage biodata — right on your device.
+          </Text>
         </View>
-        <Text style={styles.tagline}>
-          Create beautiful marriage biodata — right on your phone.
-        </Text>
       </View>
 
       {records.length === 0 ? (
@@ -174,6 +176,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 26,
     borderBottomRightRadius: 26,
   },
+  headerInner: {width: '100%', maxWidth: MAX_CONTENT_WIDTH, alignSelf: 'center'},
   brandRow: {flexDirection: 'row', alignItems: 'center', gap: 11},
   badge: {
     width: 40,
@@ -205,6 +208,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 40,
+    width: '100%',
+    maxWidth: MAX_CONTENT_WIDTH,
+    alignSelf: 'center',
   },
   emptyBadge: {
     width: 78,
@@ -248,7 +254,13 @@ const styles = StyleSheet.create({
   sampleBtnText: {color: C.maroon, fontSize: 15, fontWeight: '700'},
 
   list: {flex: 1},
-  listContent: {paddingHorizontal: 20, paddingTop: 20},
+  listContent: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    width: '100%',
+    maxWidth: MAX_CONTENT_WIDTH,
+    alignSelf: 'center',
+  },
   sectionLabel: {
     fontSize: 12.5,
     fontWeight: '700',
@@ -305,8 +317,11 @@ const styles = StyleSheet.create({
     bottom: 0,
     paddingHorizontal: 20,
     paddingTop: 10,
+    alignItems: 'center',
   },
   cta: {
+    width: '100%',
+    maxWidth: MAX_CONTENT_WIDTH,
     backgroundColor: C.maroon,
     borderRadius: 16,
     paddingVertical: 17,
