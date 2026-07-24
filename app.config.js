@@ -15,7 +15,7 @@
 
 const pkg = require('./package.json');
 
-const projectId = '46cb38f5-4c71-4a23-8c62-0652d34fb5d8';
+const projectId = 'ca1367f7-7e15-4ec7-af34-2bf2cca2fa0b';
 
 module.exports = {
   name: 'SnapBiodata',
@@ -24,7 +24,7 @@ module.exports = {
   // Kept in sync with package.json — run `yarn eas:version:get` to verify
   version: pkg.version,
 
-  owner: 'shivtiwari',
+  owner: 'agastyaai',
 
   runtimeVersion: '1.0.0',
 
