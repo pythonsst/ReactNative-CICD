@@ -89,14 +89,16 @@ function App(): React.JSX.Element {
     [refresh],
   );
 
-  // Editor keeps the working copy live; persist on every change so nothing is
-  // lost, and keep the in-memory active record in sync.
+  // Keep the working copy live in memory as the user edits. We deliberately do
+  // NOT write to storage on every keystroke: each save is a full
+  // read-modify-write of the records list, so concurrent writes during fast
+  // typing could race and drop edits. Persistence happens on navigation
+  // (Back / Preview) instead, which is race-free.
   const onEditorChange = useCallback(
     (record: BiodataRecord) => {
       setActiveRecord(record);
-      persist(record);
     },
-    [persist, setActiveRecord],
+    [setActiveRecord],
   );
 
   const onEditorBack = useCallback(
