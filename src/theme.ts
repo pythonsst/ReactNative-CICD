@@ -20,3 +20,8 @@ export const serif = Platform.select({
   android: 'serif',
   default: 'serif',
 });
+
+// On large screens (iPad) content is capped to a readable, centered column
+// instead of stretching edge-to-edge. Used by every screen's content wrapper.
+export const MAX_CONTENT_WIDTH = 620;
+
