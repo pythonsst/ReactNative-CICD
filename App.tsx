@@ -10,6 +10,13 @@ import {
   SafeAreaInsetsContext,
   initialWindowMetrics,
 } from 'react-native-safe-area-context';
+import {C} from './src/theme';
+import {sampleBiodata, type BiodataRecord} from './src/data/biodata';
+import {defaultTemplateId} from './src/templates';
+import {listRecords, saveRecord, deleteRecord, makeId} from './src/lib/storage';
+import HomeScreen from './src/screens/HomeScreen';
+import EditorScreen from './src/screens/EditorScreen';
+import PreviewScreen from './src/screens/PreviewScreen';
 
 // Static safe-area insets read once from the native window metrics.
 //
@@ -26,13 +33,6 @@ const INSETS = initialWindowMetrics?.insets ?? {
   bottom: Platform.OS === 'ios' ? 34 : 0,
   left: 0,
 };
-import {C} from './src/theme';
-import {sampleBiodata, type BiodataRecord} from './src/data/biodata';
-import {defaultTemplateId} from './src/templates';
-import {listRecords, saveRecord, deleteRecord, makeId} from './src/lib/storage';
-import HomeScreen from './src/screens/HomeScreen';
-import EditorScreen from './src/screens/EditorScreen';
-import PreviewScreen from './src/screens/PreviewScreen';
 
 type Screen = 'home' | 'editor' | 'preview';
 

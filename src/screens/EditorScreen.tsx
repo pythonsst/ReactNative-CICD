@@ -30,15 +30,23 @@ interface Props {
   onBack: (record: BiodataRecord) => void;
 }
 
-/** A tiny visual hint of each template's layout — no WebView needed. */
+// Muted tints used only by the inactive template thumbnails.
+const THUMB_MUTE = '#d9cfc6';
+const THUMB_FRAME_MUTE = '#e4d8c8';
+
+/** A tiny visual hint of each template's layout — a native, no-WebView preview. */
 function TemplateThumb({id, active}: {id: string; active: boolean}): React.JSX.Element {
-  const tint = active ? C.maroon : C.line;
+  // Dynamic colours are held in variables (not JSX object literals) so they
+  // compose cleanly with the StyleSheet entries below.
+  const lineTint = {backgroundColor: active ? C.maroon : C.line};
+
   if (id === 'modern') {
+    const sidebarTint = {backgroundColor: active ? C.maroon : THUMB_MUTE};
     return (
       <View style={thumb.page}>
-        <View style={[thumb.sidebar, {backgroundColor: active ? C.maroon : '#d9cfc6'}]} />
+        <View style={[thumb.sidebar, sidebarTint]} />
         <View style={thumb.mainCol}>
-          <View style={[thumb.line, {width: '70%', backgroundColor: tint}]} />
+          <View style={[thumb.line, thumb.lineWide, lineTint]} />
           <View style={thumb.lineSm} />
           <View style={thumb.lineSm} />
           <View style={thumb.lineSm} />
@@ -46,22 +54,27 @@ function TemplateThumb({id, active}: {id: string; active: boolean}): React.JSX.E
       </View>
     );
   }
+
   if (id === 'elegant') {
+    const dotTint = {borderColor: active ? C.gold : THUMB_MUTE};
     return (
       <View style={[thumb.page, thumb.center]}>
-        <View style={[thumb.dot, {borderColor: active ? C.gold : '#d9cfc6'}]} />
-        <View style={[thumb.line, {width: '55%', backgroundColor: tint, marginTop: 6}]} />
-        <View style={[thumb.lineSm, {width: '75%'}]} />
-        <View style={[thumb.lineSm, {width: '65%'}]} />
+        <View style={[thumb.dot, dotTint]} />
+        <View style={[thumb.line, thumb.lineElegant, lineTint]} />
+        <View style={[thumb.lineSm, thumb.lineSm75]} />
+        <View style={[thumb.lineSm, thumb.lineSm65]} />
       </View>
     );
   }
+
   // traditional (default) — double frame
+  const outerTint = {borderColor: active ? C.maroon : THUMB_MUTE};
+  const frameTint = {borderColor: active ? C.gold : THUMB_FRAME_MUTE};
   return (
-    <View style={[thumb.page, {borderWidth: 1.5, borderColor: active ? C.maroon : '#d9cfc6', padding: 4}]}>
-      <View style={[thumb.frame, {borderColor: active ? C.gold : '#e4d8c8'}]}>
-        <View style={[thumb.line, {width: '60%', backgroundColor: tint, alignSelf: 'center'}]} />
-        <View style={[thumb.lineSm, {marginTop: 5}]} />
+    <View style={[thumb.page, thumb.tradOuter, outerTint]}>
+      <View style={[thumb.frame, frameTint]}>
+        <View style={[thumb.line, thumb.lineCenter, lineTint]} />
+        <View style={[thumb.lineSm, thumb.lineSmTop]} />
         <View style={thumb.lineSm} />
         <View style={thumb.lineSm} />
       </View>
@@ -279,10 +292,17 @@ const thumb = StyleSheet.create({
   },
   center: {alignItems: 'center', paddingTop: 10, paddingHorizontal: 6},
   frame: {flex: 1, borderWidth: 1, padding: 5, justifyContent: 'flex-start'},
+  tradOuter: {borderWidth: 1.5, padding: 4},
   sidebar: {position: 'absolute', left: 0, top: 0, bottom: 0, width: 20},
   mainCol: {marginLeft: 26, marginRight: 6, marginTop: 12, gap: 4},
   line: {height: 4, borderRadius: 2},
+  lineWide: {width: '70%'},
+  lineCenter: {width: '60%', alignSelf: 'center'},
+  lineElegant: {width: '55%', marginTop: 6},
   lineSm: {height: 3, borderRadius: 2, backgroundColor: '#e0d6ca', marginTop: 4, width: '90%'},
+  lineSm75: {width: '75%'},
+  lineSm65: {width: '65%'},
+  lineSmTop: {marginTop: 5},
   dot: {width: 20, height: 20, borderRadius: 10, borderWidth: 2},
 });
 
