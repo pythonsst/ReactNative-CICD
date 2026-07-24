@@ -1,8 +1,8 @@
 /**
- * HTML renderers for the biodata document. The SAME HTML powers both the
- * on-screen preview (rendered in a WebView from a local string — this is
- * on-device content, never a remote page) and the exported PDF (expo-print).
- * Keeping one source guarantees the preview matches the printed document.
+ * HTML renderer for the exported PDF only. expo-print turns this HTML into a
+ * PDF on-device (no network, no WebView). The on-screen preview is rendered
+ * natively by src/components/BiodataDocument.tsx; both are driven by the same
+ * biodata data model so they stay consistent.
  */
 import {renderedSections, displayName, type Biodata} from '../data/biodata';
 

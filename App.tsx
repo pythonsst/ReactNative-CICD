@@ -1,12 +1,31 @@
 import React, {useState, useEffect, useCallback, useRef} from 'react';
 import {
-  StatusBar,
   StyleSheet,
   View,
   ActivityIndicator,
   BackHandler,
+  Platform,
 } from 'react-native';
-import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
+import {
+  SafeAreaInsetsContext,
+  initialWindowMetrics,
+} from 'react-native-safe-area-context';
+
+// Static safe-area insets read once from the native window metrics.
+//
+// We intentionally do NOT mount <SafeAreaProvider>: under the React Native
+// new architecture (bridgeless), its native view emits inset changes through
+// the legacy RCTEventEmitter path, which isn't registered as callable and
+// throws an uncaught error on every launch. Feeding the context statically
+// gives every screen correct insets via useSafeAreaInsets() with no native
+// event emitter — the app is portrait, so insets never need to change at
+// runtime anyway.
+const INSETS = initialWindowMetrics?.insets ?? {
+  top: Platform.OS === 'ios' ? 47 : 0,
+  right: 0,
+  bottom: Platform.OS === 'ios' ? 34 : 0,
+  left: 0,
+};
 import {C} from './src/theme';
 import {sampleBiodata, type BiodataRecord} from './src/data/biodata';
 import {defaultTemplateId} from './src/templates';
@@ -71,6 +90,13 @@ function App(): React.JSX.Element {
   const onCreate = useCallback(() => {
     setActiveRecord(newRecord());
     setScreen('editor');
+  }, [setActiveRecord]);
+
+  // Open a filled sample straight into the preview so first-time users can see
+  // what a finished biodata looks like. It isn't saved unless they edit it.
+  const onPreviewSample = useCallback(() => {
+    setActiveRecord(newRecord());
+    setScreen('preview');
   }, [setActiveRecord]);
 
   const onOpen = useCallback(
@@ -169,22 +195,20 @@ function App(): React.JSX.Element {
         onCreate={onCreate}
         onOpen={onOpen}
         onDelete={onDelete}
+        onPreviewSample={onPreviewSample}
       />
     );
   }
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
-        <StatusBar barStyle="dark-content" backgroundColor={C.canvas} />
-        {body}
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <SafeAreaInsetsContext.Provider value={INSETS}>
+      <View style={styles.root}>{body}</View>
+    </SafeAreaInsetsContext.Provider>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: {flex: 1, backgroundColor: C.canvas},
+  root: {flex: 1, backgroundColor: C.canvas},
   center: {flex: 1, alignItems: 'center', justifyContent: 'center'},
 });
 

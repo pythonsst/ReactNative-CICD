@@ -541,13 +541,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -562,13 +558,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -583,13 +575,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -604,13 +592,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -831,13 +815,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -852,13 +832,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit stag-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -873,13 +849,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -894,13 +866,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -915,13 +883,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit prod-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -958,13 +922,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit/Pods-RnNewArchitectureDemoBase-ReactNativeIgniteKit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1438,7 +1398,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -1511,7 +1474,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
