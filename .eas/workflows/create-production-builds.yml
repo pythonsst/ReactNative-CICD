@@ -1,0 +1,57 @@
+# EAS Workflow — production deploy for SnapBiodata (iOS)
+# Docs: https://docs.expo.dev/eas/workflows/get-started/
+#
+# Runs on EAS servers. Two ways to trigger:
+#   • automatically on every push to `main` (see `on:` below), or
+#   • manually:  npx eas-cli@latest workflow:run create-production-builds.yml
+#
+# ── One-time setup ───────────────────────────────────────────────────────────
+#   Connect this GitHub repo to the EAS project so pushes trigger the workflow:
+#   Expo dashboard → @agastyaai/snapbiodata → project settings → GitHub → connect.
+#
+# ⚠️ IMPORTANT: this submits to the App Store on every push to main. App Store
+#    review happens per submission, so for a real release cadence you likely want
+#    `submit_ios` to run only on version tags, not every push — see the commented
+#    `on:` alternative below. The `publish_update` (OTA) job is the safe
+#    every-push action for JS-only changes.
+#
+#    Android is intentionally omitted until its keystore is configured
+#    (`eas credentials` → Android). Add build_android/submit_android then.
+# ─────────────────────────────────────────────────────────────────────────────
+
+name: Create production builds
+
+on:
+  push:
+    branches:
+      - main
+  # Release-only alternative (recommended for build+submit) — swap the block above:
+  # push:
+  #   tags:
+  #     - 'v*'
+
+jobs:
+  # Fast path: publish an OTA JS update to the production channel on every push.
+  publish_update:
+    name: OTA update (production)
+    type: update
+    params:
+      branch: production
+      message: ${{ github.sha }}
+
+  # Native build.
+  build_ios:
+    name: Build iOS (production)
+    type: build
+    params:
+      platform: ios
+      profile: production
+
+  # Upload the fresh build to App Store Connect (personal account).
+  submit_ios:
+    name: Submit to App Store
+    needs: [build_ios]
+    type: submit
+    params:
+      platform: ios
+      profile: production
