@@ -5882,6 +5882,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-image-loader@npm:~6.0.0":
+  version: 6.0.0
+  resolution: "expo-image-loader@npm:6.0.0"
+  peerDependencies:
+    expo: "*"
+  checksum: 564f4930a4d688571ed61bfc84aa0a38adf550fd01d4d40cf76e8cc315e52a8e32b59dcaf6527231765888e25d8bea829f1953b8c50580fefb3ab0e647067a33
+  languageName: node
+  linkType: hard
+
+"expo-image-picker@npm:~17.0.11":
+  version: 17.0.11
+  resolution: "expo-image-picker@npm:17.0.11"
+  dependencies:
+    expo-image-loader: ~6.0.0
+  peerDependencies:
+    expo: "*"
+  checksum: b5287f133c0077c59d88c26460bb3657c37afa18d5a6b6522729477f2313a77d824780945a196eef4b47b7a73d65551b32cf7240c3168b3ef8982044d9cf03ea
+  languageName: node
+  linkType: hard
+
 "expo-json-utils@npm:~0.15.0":
   version: 0.15.0
   resolution: "expo-json-utils@npm:0.15.0"
@@ -5938,10 +5958,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-print@npm:~15.0.8":
+  version: 15.0.8
+  resolution: "expo-print@npm:15.0.8"
+  peerDependencies:
+    expo: "*"
+    react-native: "*"
+  checksum: 233e53690d01b0896d2c4a495c841ae6b6a435f6052c8de48495822e519f8ef8c7826788c51072b0a7c0bd2917ac785da7b2481dacc5ed2a701e8f696490b504
+  languageName: node
+  linkType: hard
+
 "expo-server@npm:^1.0.7":
   version: 1.0.7
   resolution: "expo-server@npm:1.0.7"
   checksum: 09d14ec3ddf530874051f3dbc7a7757c01b9e897b4e3671c4732bd9c4763faa7dca06be6331c626e0bed9a21462bf47e47760ecd21c2f6306f50c082822cc680
+  languageName: node
+  linkType: hard
+
+"expo-sharing@npm:~14.0.8":
+  version: 14.0.8
+  resolution: "expo-sharing@npm:14.0.8"
+  peerDependencies:
+    expo: "*"
+  checksum: 8ac54d82328141dc67add5b9db3f16253b42e0e0aa2d39589fffd4d9cf15067e10262b0ab21837b184caae2799de81d74f8b2d129886c50e25550ef4fc6919f3
   languageName: node
   linkType: hard
 
@@ -10803,6 +10842,9 @@ __metadata:
     babel-jest: ^29.6.3
     eslint: ^8.19.0
     expo: ^54.0.0
+    expo-image-picker: ~17.0.11
+    expo-print: ~15.0.8
+    expo-sharing: ~14.0.8
     expo-updates: ^29.0.12
     jest: ^29.7.0
     lefthook: ^1.8.1
