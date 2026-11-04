@@ -110,6 +110,21 @@
                                 and OTA runtime version (Expo.plist, strings.xml)
   yarn version:sync             re-sync native files to package.json version
 
+  RELEASE NOTES (production deploy / submit)
+  ─────────────
+  Edit WHATS_NEW.txt first. Production deploy/submit shows it and asks you to
+  confirm, then copies it to ios/fastlane/metadata (App Store, 4000 chars) and
+  android/fastlane/metadata (Play, 500 chars, trimmed to whole bullets).
+  yarn release-notes            sync WHATS_NEW.txt without deploying
+
+  OTA
+  ───
+  yarn eas:update:production    prompts for the message, confirms, publishes
+
+  APK (install directly, no store)
+  ───
+  yarn eas:build:android:staging-apk / :production-apk
+
   BUILD
   ─────
   yarn eas:build                all platforms, production
