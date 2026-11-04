@@ -24,6 +24,8 @@ interface Props {
   onOpenSettings: () => void;
 }
 
+const FEATURES = ['Offline', 'No sign-up', 'PDF export'];
+
 function formatDate(ts: number): string {
   try {
     return new Date(ts).toLocaleDateString('en-GB', {
@@ -99,6 +101,13 @@ export default function HomeScreen({
           <Text style={styles.tagline}>
             Create beautiful marriage biodata in minutes — right on your device.
           </Text>
+          <View style={styles.chips}>
+            {FEATURES.map(f => (
+              <View key={f} style={styles.chip}>
+                <Text style={styles.chipText}>✓ {f}</Text>
+              </View>
+            ))}
+          </View>
         </View>
       </View>
 
@@ -287,12 +296,23 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 8,
   },
+  chips: {flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 14},
+  chip: {
+    backgroundColor: 'rgba(255,255,255,0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.22)',
+    borderRadius: 999,
+    paddingHorizontal: 11,
+    paddingVertical: 5,
+  },
+  chipText: {color: '#fff', fontSize: 12, fontWeight: '600'},
   sampleBtn: {
     marginTop: 22,
+    backgroundColor: C.goldSoft,
     borderWidth: 1.5,
-    borderColor: C.maroon,
-    borderRadius: 12,
-    paddingHorizontal: 20,
+    borderColor: C.gold,
+    borderRadius: 999,
+    paddingHorizontal: 22,
     paddingVertical: 12,
   },
   sampleBtnText: {color: C.maroon, fontSize: 15, fontWeight: '700'},
