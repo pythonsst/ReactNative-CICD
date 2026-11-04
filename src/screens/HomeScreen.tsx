@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {C, serif, MAX_CONTENT_WIDTH} from '../theme';
+import {AppUpdateBanner} from '../components/AppUpdateBanner';
 import type {BiodataRecord} from '../data/biodata';
 import {displayName} from '../data/biodata';
 import {getTemplate} from '../templates';
@@ -83,6 +84,10 @@ export default function HomeScreen({
             Create beautiful marriage biodata — right on your device.
           </Text>
         </View>
+      </View>
+
+      <View style={styles.updateBanner}>
+        <AppUpdateBanner />
       </View>
 
       {records.length === 0 ? (
@@ -168,6 +173,13 @@ export default function HomeScreen({
 
 const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: C.canvas},
+  updateBanner: {
+    paddingHorizontal: 20,
+    paddingTop: 12,
+    width: '100%',
+    maxWidth: MAX_CONTENT_WIDTH,
+    alignSelf: 'center',
+  },
 
   header: {
     backgroundColor: C.maroon,

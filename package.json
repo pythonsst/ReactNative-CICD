@@ -79,7 +79,8 @@
     "react-native-safe-area-context": "5.6.2",
     "react-native-screens": "4.18.0",
     "react-native-webview": "13.15.0",
-    "reactotron-react-native": "^5.1.9"
+    "reactotron-react-native": "^5.1.9",
+    "sp-react-native-in-app-updates": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
