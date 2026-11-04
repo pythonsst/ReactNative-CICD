@@ -1,15 +1,24 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AppState, type AppStateStatus } from 'react-native';
 import * as Updates from 'expo-updates';
-import { checkStoreUpdate, startStoreUpdate } from '../services/storeUpdate';
+import {
+  checkStoreUpdate,
+  startStoreUpdate,
+  type StoreCheckResult,
+} from '../services/storeUpdate';
 import {
   resolveUpdateState,
   shouldShowUpdate,
   type AppUpdateState,
 } from './updateState';
 
-// Avoid re-checking on every foreground bounce.
+// Avoid re-checking on every foreground bounce or Home remount.
 const CHECK_THROTTLE_MS = 60_000;
+
+// Module-level so the throttle and last store result survive the banner
+// unmounting when the user navigates away from Home and back.
+let lastCheckAt = 0;
+let lastStoreResult: StoreCheckResult = { updateAvailable: false };
 
 export type AppUpdateStatus = {
   state: AppUpdateState;
@@ -24,11 +33,14 @@ export type AppUpdateStatus = {
 export const useAppUpdates = (): AppUpdateStatus => {
   const { isUpdateAvailable, isUpdatePending } = Updates.useUpdates();
 
-  const [storeUpdateAvailable, setStoreUpdateAvailable] = useState(false);
-  const [latestStoreVersion, setLatestStoreVersion] = useState<string>();
+  const [storeUpdateAvailable, setStoreUpdateAvailable] = useState(
+    lastStoreResult.updateAvailable,
+  );
+  const [latestStoreVersion, setLatestStoreVersion] = useState(
+    lastStoreResult.latestVersion,
+  );
   const [isChecking, setIsChecking] = useState(false);
 
-  const lastCheckRef = useRef(0);
   const inFlightRef = useRef(false);
 
   const checkNow = useCallback(async () => {
@@ -43,9 +55,10 @@ export const useAppUpdates = (): AppUpdateStatus => {
 
       const [, store] = await Promise.all([otaCheck, checkStoreUpdate()]);
 
+      lastStoreResult = store;
       setStoreUpdateAvailable(store.updateAvailable);
       setLatestStoreVersion(store.latestVersion);
-      lastCheckRef.current = Date.now();
+      lastCheckAt = Date.now();
     } finally {
       inFlightRef.current = false;
       setIsChecking(false);
@@ -53,12 +66,12 @@ export const useAppUpdates = (): AppUpdateStatus => {
   }, []);
 
   useEffect(() => {
-    checkNow();
+    const isStale = () => Date.now() - lastCheckAt > CHECK_THROTTLE_MS;
+    if (isStale()) {
+      checkNow();
+    }
     const sub = AppState.addEventListener('change', (next: AppStateStatus) => {
-      if (
-        next === 'active' &&
-        Date.now() - lastCheckRef.current > CHECK_THROTTLE_MS
-      ) {
+      if (next === 'active' && isStale()) {
         checkNow();
       }
     });

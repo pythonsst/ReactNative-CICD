@@ -86,9 +86,7 @@ export default function HomeScreen({
         </View>
       </View>
 
-      <View style={styles.updateBanner}>
-        <AppUpdateBanner />
-      </View>
+      <AppUpdateBanner style={styles.updateBanner} />
 
       {records.length === 0 ? (
         <View style={styles.empty}>

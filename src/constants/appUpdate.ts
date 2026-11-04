@@ -1,9 +1,5 @@
 import { Platform } from 'react-native';
 
-const pkg = require('../../package.json') as { version: string };
-
-export const CURRENT_APP_VERSION = pkg.version;
-
 export const APP_STORE_ID = '6791839989';
 export const ANDROID_PACKAGE = 'com.snapbiodata.app';
 

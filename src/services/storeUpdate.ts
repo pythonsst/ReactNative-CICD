@@ -1,9 +1,9 @@
-import { Platform } from 'react-native';
+import { Linking, Platform } from 'react-native';
 import SpInAppUpdates, {
   IAUUpdateKind,
   type StartUpdateOptions,
 } from 'sp-react-native-in-app-updates';
-import { CURRENT_APP_VERSION } from '../constants/appUpdate';
+import { STORE_URL } from '../constants/appUpdate';
 
 export type StoreCheckResult = {
   updateAvailable: boolean;
@@ -27,7 +27,9 @@ const getInAppUpdates = (): SpInAppUpdates | null => {
 
 /**
  * Detects a newer native binary on the store.
- * iOS: iTunes Search API lookup compared against curVersion.
+ * iOS: iTunes Search API lookup compared against the installed binary's
+ * version (read natively, not from package.json, which an OTA bundle can
+ * change without changing the binary).
  * Android: Play Core, which reads the installed versionCode natively.
  */
 export const checkStoreUpdate = async (): Promise<StoreCheckResult> => {
@@ -36,14 +38,15 @@ export const checkStoreUpdate = async (): Promise<StoreCheckResult> => {
     return { updateAvailable: false };
   }
   try {
-    const result = await inAppUpdates.checkNeedsUpdate({
-      curVersion: CURRENT_APP_VERSION,
-    });
+    const result = await inAppUpdates.checkNeedsUpdate();
     return {
       updateAvailable: Boolean(result?.shouldUpdate),
-      latestVersion: result?.storeVersion
-        ? String(result.storeVersion)
-        : undefined,
+      // Play Core only reports the versionCode (e.g. 12), not a display
+      // version, so only iOS gets a version badge.
+      latestVersion:
+        Platform.OS === 'ios' && result?.storeVersion
+          ? String(result.storeVersion)
+          : undefined,
     };
   } catch {
     // Store lookup is best-effort; never surface an update on failure.
@@ -52,15 +55,19 @@ export const checkStoreUpdate = async (): Promise<StoreCheckResult> => {
 };
 
 /**
- * iOS: alert prompting the user, then opens the App Store product page.
+ * iOS: opens the App Store product page directly (the user already tapped the
+ * banner, so the library's own confirm alert would ask twice).
  * Android: launches Play Core's immediate in-app update flow.
  */
 export const startStoreUpdate = async (): Promise<void> => {
+  if (Platform.OS === 'ios') {
+    await Linking.openURL(STORE_URL);
+    return;
+  }
   const inAppUpdates = getInAppUpdates();
   if (!inAppUpdates) {
     return;
   }
-  const options: StartUpdateOptions =
-    Platform.OS === 'android' ? { updateType: IAUUpdateKind.IMMEDIATE } : {};
+  const options: StartUpdateOptions = { updateType: IAUUpdateKind.IMMEDIATE };
   await inAppUpdates.startUpdate(options);
 };
