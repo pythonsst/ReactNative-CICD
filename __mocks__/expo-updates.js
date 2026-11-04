@@ -1,6 +1,8 @@
 // Manual mock for expo-updates so Jest never touches native code.
 module.exports = {
   isEnabled: false,
+  isEmbeddedLaunch: true,
+  createdAt: null,
   useUpdates: () => ({
     isUpdateAvailable: false,
     isUpdatePending: false,

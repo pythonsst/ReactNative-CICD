@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {C, serif, MAX_CONTENT_WIDTH} from '../theme';
+import {useAppUpdates} from '../hooks/useAppUpdates';
 import type {BiodataRecord} from '../data/biodata';
 import {displayName} from '../data/biodata';
 import {getTemplate} from '../templates';
@@ -20,6 +21,7 @@ interface Props {
   onOpen: (record: BiodataRecord) => void;
   onDelete: (id: string) => void;
   onPreviewSample: () => void;
+  onOpenSettings: () => void;
 }
 
 function formatDate(ts: number): string {
@@ -48,13 +50,17 @@ export default function HomeScreen({
   onOpen,
   onDelete,
   onPreviewSample,
+  onOpenSettings,
 }: Props): React.JSX.Element {
   const insets = useSafeAreaInsets();
+  const {hasUpdate} = useAppUpdates();
 
   const confirmDelete = (record: BiodataRecord) => {
     Alert.alert(
       'Delete biodata?',
-      `“${displayName(record.data)}” will be permanently removed from this device.`,
+      `“${displayName(
+        record.data,
+      )}” will be permanently removed from this device.`,
       [
         {text: 'Cancel', style: 'cancel'},
         {
@@ -78,6 +84,17 @@ export default function HomeScreen({
               <Text style={styles.badgeGlyph}>♥</Text>
             </View>
             <Text style={styles.wordmark}>SnapBiodata</Text>
+            <TouchableOpacity
+              style={styles.gear}
+              onPress={onOpenSettings}
+              hitSlop={{top: 8, bottom: 8, left: 8, right: 8}}
+              accessibilityRole="button"
+              accessibilityLabel={
+                hasUpdate ? 'Settings, update available' : 'Settings'
+              }>
+              <Text style={styles.gearGlyph}>⚙︎</Text>
+              {hasUpdate ? <View style={styles.gearDot} /> : null}
+            </TouchableOpacity>
           </View>
           <Text style={styles.tagline}>
             Create beautiful marriage biodata — right on your device.
@@ -93,8 +110,8 @@ export default function HomeScreen({
           <Text style={styles.emptyFlourish}>✦ ✦ ✦</Text>
           <Text style={styles.emptyTitle}>No biodata yet</Text>
           <Text style={styles.emptyMsg}>
-            Fill in your details, pick a template, and export a print-ready
-            PDF — 100% offline, no sign-up.
+            Fill in your details, pick a template, and export a print-ready PDF
+            — 100% offline, no sign-up.
           </Text>
           <TouchableOpacity
             style={styles.sampleBtn}
@@ -135,7 +152,8 @@ export default function HomeScreen({
                   {displayName(item.data)}
                 </Text>
                 <Text style={styles.cardMeta} numberOfLines={1}>
-                  {getTemplate(item.templateId).name} · {formatDate(item.updatedAt)}
+                  {getTemplate(item.templateId).name} ·{' '}
+                  {formatDate(item.updatedAt)}
                 </Text>
               </View>
               <TouchableOpacity
@@ -176,7 +194,11 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 26,
     borderBottomRightRadius: 26,
   },
-  headerInner: {width: '100%', maxWidth: MAX_CONTENT_WIDTH, alignSelf: 'center'},
+  headerInner: {
+    width: '100%',
+    maxWidth: MAX_CONTENT_WIDTH,
+    alignSelf: 'center',
+  },
   brandRow: {flexDirection: 'row', alignItems: 'center', gap: 11},
   badge: {
     width: 40,
@@ -189,6 +211,28 @@ const styles = StyleSheet.create({
     borderColor: C.gold,
   },
   badgeGlyph: {color: C.gold, fontSize: 19},
+  gear: {
+    marginLeft: 'auto',
+    width: 40,
+    height: 40,
+    borderRadius: 13,
+    backgroundColor: 'rgba(255,255,255,0.14)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  gearGlyph: {color: '#fff', fontSize: 21, lineHeight: 24},
+  // Gold dot: a store update or a downloaded OTA is waiting.
+  gearDot: {
+    position: 'absolute',
+    top: 7,
+    right: 7,
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: C.gold,
+    borderWidth: 2,
+    borderColor: C.maroon,
+  },
   wordmark: {
     fontFamily: serif,
     fontSize: 23,
@@ -308,7 +352,12 @@ const styles = StyleSheet.create({
     color: C.ink,
   },
   cardMeta: {fontSize: 12.5, color: C.muted, marginTop: 3},
-  delete: {color: C.muted, fontSize: 17, fontWeight: '600', paddingHorizontal: 4},
+  delete: {
+    color: C.muted,
+    fontSize: 17,
+    fontWeight: '600',
+    paddingHorizontal: 4,
+  },
 
   ctaWrap: {
     position: 'absolute',
@@ -336,5 +385,10 @@ const styles = StyleSheet.create({
     elevation: 6,
   },
   ctaPlus: {color: '#fff', fontSize: 18, fontWeight: '700', marginTop: -2},
-  ctaText: {color: '#fff', fontSize: 16.5, fontWeight: '700', letterSpacing: 0.3},
+  ctaText: {
+    color: '#fff',
+    fontSize: 16.5,
+    fontWeight: '700',
+    letterSpacing: 0.3,
+  },
 });

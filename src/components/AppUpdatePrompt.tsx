@@ -52,7 +52,12 @@ const COPY: Record<UpdatePrompt, Copy> = {
  * OTA is applied automatically on the next cold start anyway, so dismissing it never
  * strands the user on old code.
  */
-export const AppUpdatePrompt: React.FC = () => {
+type Props = {
+  // Temporarily hide (e.g. on Settings, which shows the update inline).
+  hidden?: boolean;
+};
+
+export const AppUpdatePrompt: React.FC<Props> = ({hidden = false}) => {
   const insets = useSafeAreaInsets();
   const {
     storeUpdateAvailable,
@@ -121,7 +126,7 @@ export const AppUpdatePrompt: React.FC = () => {
 
   return (
     <Modal
-      visible={shown !== null}
+      visible={shown !== null && !hidden}
       transparent
       animationType="slide"
       statusBarTranslucent

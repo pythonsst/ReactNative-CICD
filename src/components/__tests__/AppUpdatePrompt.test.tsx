@@ -108,3 +108,33 @@ it('shows nothing when up to date', async () => {
   });
   expect(isOpen(r)).toBe(false);
 });
+
+it('stays hidden while `hidden` is set and remembers "Later" across it', async () => {
+  mockHook(true, false);
+  let r!: ReactTestRenderer.ReactTestRenderer;
+  await act(async () => {
+    r = ReactTestRenderer.create(<AppUpdatePrompt />);
+  });
+  await act(async () => press(r, 'Later'));
+  await act(async () => {
+    r.update(<AppUpdatePrompt hidden />); // user opens Settings
+  });
+  expect(isOpen(r)).toBe(false);
+  await act(async () => {
+    r.update(<AppUpdatePrompt />); // back to Home
+  });
+  expect(isOpen(r)).toBe(false); // "Later" still respected
+});
+
+it('hides an open prompt while `hidden` is set', async () => {
+  mockHook(true, false);
+  let r!: ReactTestRenderer.ReactTestRenderer;
+  await act(async () => {
+    r = ReactTestRenderer.create(<AppUpdatePrompt hidden />);
+  });
+  expect(isOpen(r)).toBe(false);
+  await act(async () => {
+    r.update(<AppUpdatePrompt />);
+  });
+  expect(isOpen(r)).toBe(true);
+});

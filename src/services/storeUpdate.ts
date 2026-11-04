@@ -1,11 +1,13 @@
-import { Linking, Platform } from 'react-native';
+import {Linking, Platform} from 'react-native';
 import type SpInAppUpdatesType from 'sp-react-native-in-app-updates';
-import type { StartUpdateOptions } from 'sp-react-native-in-app-updates';
-import { IOS_PRODUCTION_BUNDLE_ID, STORE_URL } from '../constants/appUpdate';
+import type {StartUpdateOptions} from 'sp-react-native-in-app-updates';
+import {IOS_PRODUCTION_BUNDLE_ID, STORE_URL} from '../constants/appUpdate';
 
 export type StoreCheckResult = {
   updateAvailable: boolean;
   latestVersion?: string;
+  // App Store "What's New" text (iOS only; Play Core has no release notes).
+  releaseNotes?: string;
 };
 
 // IAUUpdateKind.IMMEDIATE from the library; inlined so we never touch the
@@ -43,13 +45,11 @@ const getInAppUpdates = (): SpInAppUpdatesType | null => {
 export const checkStoreUpdate = async (): Promise<StoreCheckResult> => {
   const inAppUpdates = getInAppUpdates();
   if (!inAppUpdates) {
-    return { updateAvailable: false };
+    return {updateAvailable: false};
   }
   try {
     const result = await inAppUpdates.checkNeedsUpdate(
-      Platform.OS === 'ios'
-        ? { bundleId: IOS_PRODUCTION_BUNDLE_ID }
-        : undefined,
+      Platform.OS === 'ios' ? {bundleId: IOS_PRODUCTION_BUNDLE_ID} : undefined,
     );
     return {
       updateAvailable: Boolean(result?.shouldUpdate),
@@ -59,10 +59,15 @@ export const checkStoreUpdate = async (): Promise<StoreCheckResult> => {
         Platform.OS === 'ios' && result?.storeVersion
           ? String(result.storeVersion)
           : undefined,
+      releaseNotes:
+        Platform.OS === 'ios'
+          ? ((result as {other?: {releaseNotes?: unknown}})?.other
+              ?.releaseNotes as string | undefined)
+          : undefined,
     };
   } catch {
     // Store lookup is best-effort; never surface an update on failure.
-    return { updateAvailable: false };
+    return {updateAvailable: false};
   }
 };
 
@@ -80,6 +85,26 @@ export const startStoreUpdate = async (): Promise<void> => {
   if (!inAppUpdates) {
     return;
   }
-  const options: StartUpdateOptions = { updateType: IMMEDIATE_UPDATE };
+  const options: StartUpdateOptions = {updateType: IMMEDIATE_UPDATE};
   await inAppUpdates.startUpdate(options);
+};
+
+export type InstalledVersion = {
+  version: string;
+  build?: string;
+};
+
+/**
+ * Version and build number of the installed binary, read natively.
+ * Falls back to package.json (no build number) if the native module is
+ * missing; the runtimeVersion equals the app version, so they agree.
+ */
+export const getInstalledVersion = (): InstalledVersion => {
+  try {
+    const DeviceInfo = require('react-native-device-info');
+    const api = DeviceInfo.default ?? DeviceInfo;
+    return {version: api.getVersion(), build: api.getBuildNumber()};
+  } catch {
+    return {version: require('../../package.json').version};
+  }
 };
