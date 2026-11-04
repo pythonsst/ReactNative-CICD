@@ -1,6 +1,6 @@
 {
   "name": "snapbiodata",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "resolutions": {
     "react-native-device-info": "14.1.1"
