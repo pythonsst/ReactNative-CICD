@@ -106,6 +106,9 @@
   ─────────────
   yarn eas:version:get          show versions: package.json · gradle · pbxproj
   yarn eas:version:check        exit 1 if any mismatch (used by safe-build)
+  yarn version:bump 1.0.2       set package.json version + sync gradle, pbxproj,
+                                and OTA runtime version (Expo.plist, strings.xml)
+  yarn version:sync             re-sync native files to package.json version
 
   BUILD
   ─────

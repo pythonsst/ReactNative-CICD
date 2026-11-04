@@ -1,6 +1,6 @@
 {
   "name": "snapbiodata",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "resolutions": {
     "react-native-device-info": "14.1.1"
@@ -35,6 +35,8 @@
     "eas:help": "cat docs/EAS.md",
     "eas:version:get": "node scripts/eas-version.js get",
     "eas:version:check": "node scripts/eas-version.js check",
+    "version:sync": "node scripts/sync-version.js",
+    "version:bump": "node scripts/sync-version.js",
     "eas:build": "yarn eas:version:check && eas build --platform all --profile production",
     "eas:build:development": "yarn eas:version:check && eas build --platform all --profile development",
     "eas:build:staging": "yarn eas:version:check && eas build --platform all --profile staging",
