@@ -97,7 +97,7 @@ export default function HomeScreen({
             </TouchableOpacity>
           </View>
           <Text style={styles.tagline}>
-            Create beautiful marriage biodata — right on your device.
+            Create beautiful marriage biodata in minutes — right on your device.
           </Text>
         </View>
       </View>

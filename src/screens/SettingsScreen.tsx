@@ -155,7 +155,7 @@ export default function SettingsScreen({onBack}: Props): React.JSX.Element {
           ) : null}
         </View>
 
-        <Text style={styles.footer}>Your biodata stays on this device.</Text>
+        <Text style={styles.footer}>Your biodata stays on this device — private and offline.</Text>
       </ScrollView>
     </View>
   );
