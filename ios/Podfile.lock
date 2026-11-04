@@ -2561,6 +2561,8 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
+  - RNDeviceInfo (14.1.1):
+    - React-Core
   - RNFastImage (8.6.3):
     - React-Core
     - SDWebImage (~> 5.11.1)
@@ -2727,6 +2729,7 @@ DEPENDENCIES:
   - ReactCodegen (from `build/generated/ios`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - SocketRocket (~> 0.7.1)
@@ -2924,6 +2927,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNDeviceInfo:
+    :path: "../node_modules/react-native-device-info"
   RNFastImage:
     :path: "../node_modules/react-native-fast-image"
   RNScreens:
@@ -3025,6 +3030,7 @@ SPEC CHECKSUMS:
   ReactCodegen: 6c26f8c25d0b5ae66f86a1cce1777076ac8bcbd8
   ReactCommon: 5f0e5c09a64a2717215dd84380e1a747810406f2
   RNCAsyncStorage: 29f0230e1a25f36c20b05f65e2eb8958d6526e82
+  RNDeviceInfo: bcce8752b5043a623fe3c26789679b473f705d3c
   RNFastImage: 462a183c4b0b6b26fdfd639e1ed6ba37536c3b87
   RNScreens: d821082c6dd1cb397cc0c98b026eeafaa68be479
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
@@ -3032,6 +3038,6 @@ SPEC CHECKSUMS:
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 728df40394d49f3f471688747cf558158b3a3bd1
 
-PODFILE CHECKSUM: 8f4d229fddd0ede11d5976aaf154488096884fd9
+PODFILE CHECKSUM: d37f3b648fee0a5abcce42e9e2b985de8a0a88e6
 
 COCOAPODS: 1.16.2

@@ -26,7 +26,9 @@ module.exports = {
 
   owner: 'agastyaai',
 
-  runtimeVersion: '1.0.0',
+  // Follows the app version (synced to native by `yarn version:bump`), so an
+  // OTA only reaches binaries of the release it was published from.
+  runtimeVersion: pkg.version,
 
   plugins: ['expo-updates'],
 

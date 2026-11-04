@@ -1,0 +1,4 @@
+• New Settings screen: see your app version and whether an update is available
+• Get notified when a new version is out, and update in one tap
+• Smaller improvements now arrive instantly — just restart the app to see them
+• Bug fixes and performance improvements

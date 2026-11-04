@@ -17,6 +17,8 @@ import {listRecords, saveRecord, deleteRecord, makeId} from './src/lib/storage';
 import HomeScreen from './src/screens/HomeScreen';
 import EditorScreen from './src/screens/EditorScreen';
 import PreviewScreen from './src/screens/PreviewScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
+import {AppUpdatePrompt} from './src/components/AppUpdatePrompt';
 
 // Static safe-area insets read once from the native window metrics.
 //
@@ -34,7 +36,7 @@ const INSETS = initialWindowMetrics?.insets ?? {
   left: 0,
 };
 
-type Screen = 'home' | 'editor' | 'preview';
+type Screen = 'home' | 'editor' | 'preview' | 'settings';
 
 function newRecord(): BiodataRecord {
   const now = Date.now();
@@ -146,6 +148,10 @@ function App(): React.JSX.Element {
   // Android hardware back navigation between screens.
   useEffect(() => {
     const sub = BackHandler.addEventListener('hardwareBackPress', () => {
+      if (screen === 'settings') {
+        setScreen('home');
+        return true;
+      }
       if (screen === 'preview') {
         setScreen('editor');
         return true;
@@ -180,6 +186,8 @@ function App(): React.JSX.Element {
         onBack={onEditorBack}
       />
     );
+  } else if (screen === 'settings') {
+    body = <SettingsScreen onBack={() => setScreen('home')} />;
   } else if (screen === 'preview' && active) {
     body = (
       <PreviewScreen
@@ -196,13 +204,20 @@ function App(): React.JSX.Element {
         onOpen={onOpen}
         onDelete={onDelete}
         onPreviewSample={onPreviewSample}
+        onOpenSettings={() => setScreen('settings')}
       />
     );
   }
 
   return (
     <SafeAreaInsetsContext.Provider value={INSETS}>
-      <View style={styles.root}>{body}</View>
+      <View style={styles.root}>
+        {body}
+        {/* Root-level so update prompts show on every screen. Hidden (not
+            unmounted, so "Later" is remembered) on Settings, which shows the
+            same update inline. */}
+        {!loading && <AppUpdatePrompt hidden={screen === 'settings'} />}
+      </View>
     </SafeAreaInsetsContext.Provider>
   );
 }

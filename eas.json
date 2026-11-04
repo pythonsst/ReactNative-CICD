@@ -8,6 +8,7 @@
       "distribution": "store",
       "channel": "development",
       "autoIncrement": true,
+      "environment": "development",
       "android": {
         "gradleCommand": ":app:bundleDevelopmentRelease"
       },
@@ -19,6 +20,7 @@
       "distribution": "store",
       "channel": "staging",
       "autoIncrement": true,
+      "environment": "staging",
       "android": {
         "gradleCommand": ":app:bundleStagingRelease"
       },
@@ -26,15 +28,44 @@
         "scheme": "staging"
       }
     },
+    "staging-apk": {
+      "distribution": "internal",
+      "channel": "staging",
+      "autoIncrement": true,
+      "environment": "staging",
+      "android": {
+        "gradleCommand": ":app:assembleStagingRelease",
+        "buildType": "apk"
+      },
+      "ios": {
+        "scheme": "staging",
+        "simulator": false
+      }
+    },
     "production": {
       "distribution": "store",
       "channel": "production",
       "autoIncrement": true,
+      "environment": "production",
       "android": {
         "gradleCommand": ":app:bundleProductionRelease"
       },
       "ios": {
         "scheme": "production"
+      }
+    },
+    "production-apk": {
+      "distribution": "internal",
+      "channel": "production",
+      "autoIncrement": true,
+      "environment": "production",
+      "android": {
+        "gradleCommand": ":app:assembleProductionRelease",
+        "buildType": "apk"
+      },
+      "ios": {
+        "scheme": "production",
+        "simulator": false
       }
     }
   },
@@ -49,7 +80,9 @@
     },
     "staging": {
       "android": {
-        "track": "alpha"
+        "applicationId": "com.snapbiodata.app.staging",
+        "track": "internal",
+        "releaseStatus": "completed"
       },
       "ios": {
         "bundleIdentifier": "com.snapbiodata.app.staging"
@@ -57,7 +90,9 @@
     },
     "production": {
       "android": {
-        "track": "production"
+        "applicationId": "com.snapbiodata.app",
+        "track": "production",
+        "changesNotSentForReview": true
       },
       "ios": {
         "ascAppId": "6791839989",

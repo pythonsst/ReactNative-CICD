@@ -59,7 +59,7 @@ if [ -z "$UDID" ]; then
   exit 1
 fi
 if ! xcrun simctl list devices booted | grep -q "$UDID"; then
-  echo "Booting $SIM_NAME…"; xcrun simctl boot "$UDID" || true
+  echo "Booting ${SIM_NAME}…"; xcrun simctl boot "$UDID" || true
 fi
 open -a Simulator || true
 echo "Using $SIM_NAME ($UDID)"
