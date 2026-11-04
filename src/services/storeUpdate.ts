@@ -1,21 +1,29 @@
 import { Linking, Platform } from 'react-native';
-import SpInAppUpdates, {
-  IAUUpdateKind,
-  type StartUpdateOptions,
-} from 'sp-react-native-in-app-updates';
-import { STORE_URL } from '../constants/appUpdate';
+import type SpInAppUpdatesType from 'sp-react-native-in-app-updates';
+import type { StartUpdateOptions } from 'sp-react-native-in-app-updates';
+import { IOS_PRODUCTION_BUNDLE_ID, STORE_URL } from '../constants/appUpdate';
 
 export type StoreCheckResult = {
   updateAvailable: boolean;
   latestVersion?: string;
 };
 
-// Lazily constructed so an OTA bundle landing on a binary without the native
-// module degrades gracefully (no store updates) instead of crashing at import.
-let instance: SpInAppUpdates | null | undefined;
-const getInAppUpdates = (): SpInAppUpdates | null => {
+// IAUUpdateKind.IMMEDIATE from the library; inlined so we never touch the
+// library's exports outside the guarded require below.
+const IMMEDIATE_UPDATE = 1;
+
+// Required lazily, never imported at module top level: the library pulls in
+// react-native-device-info, which THROWS at import time when its native module
+// is missing. Binaries built before these native modules were added (the
+// current production build, runtimeVersion 1.0.0) can still receive this JS via
+// OTA — a top-level import would crash the whole app on launch there. With the
+// guard, those builds just skip the store check; OTA prompts keep working.
+let instance: SpInAppUpdatesType | null | undefined;
+const getInAppUpdates = (): SpInAppUpdatesType | null => {
   if (instance === undefined) {
     try {
+      const mod = require('sp-react-native-in-app-updates');
+      const SpInAppUpdates: typeof SpInAppUpdatesType = mod.default ?? mod;
       // isDebug=true logs to the native console; keep it tied to __DEV__.
       instance = new SpInAppUpdates(__DEV__);
     } catch {
@@ -38,7 +46,11 @@ export const checkStoreUpdate = async (): Promise<StoreCheckResult> => {
     return { updateAvailable: false };
   }
   try {
-    const result = await inAppUpdates.checkNeedsUpdate();
+    const result = await inAppUpdates.checkNeedsUpdate(
+      Platform.OS === 'ios'
+        ? { bundleId: IOS_PRODUCTION_BUNDLE_ID }
+        : undefined,
+    );
     return {
       updateAvailable: Boolean(result?.shouldUpdate),
       // Play Core only reports the versionCode (e.g. 12), not a display
@@ -68,6 +80,6 @@ export const startStoreUpdate = async (): Promise<void> => {
   if (!inAppUpdates) {
     return;
   }
-  const options: StartUpdateOptions = { updateType: IAUUpdateKind.IMMEDIATE };
+  const options: StartUpdateOptions = { updateType: IMMEDIATE_UPDATE };
   await inAppUpdates.startUpdate(options);
 };

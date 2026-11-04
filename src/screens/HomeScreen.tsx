@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {C, serif, MAX_CONTENT_WIDTH} from '../theme';
-import {AppUpdateBanner} from '../components/AppUpdateBanner';
 import type {BiodataRecord} from '../data/biodata';
 import {displayName} from '../data/biodata';
 import {getTemplate} from '../templates';
@@ -85,8 +84,6 @@ export default function HomeScreen({
           </Text>
         </View>
       </View>
-
-      <AppUpdateBanner style={styles.updateBanner} />
 
       {records.length === 0 ? (
         <View style={styles.empty}>
@@ -171,13 +168,6 @@ export default function HomeScreen({
 
 const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: C.canvas},
-  updateBanner: {
-    paddingHorizontal: 20,
-    paddingTop: 12,
-    width: '100%',
-    maxWidth: MAX_CONTENT_WIDTH,
-    alignSelf: 'center',
-  },
 
   header: {
     backgroundColor: C.maroon,

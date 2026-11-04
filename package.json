@@ -2,6 +2,9 @@
   "name": "snapbiodata",
   "version": "1.0.0",
   "private": true,
+  "resolutions": {
+    "react-native-device-info": "14.1.1"
+  },
   "scripts": {
     "start": "react-native start",
     "reset": "yarn node:clean && yarn android:clean && yarn start --reset-cache",
@@ -75,6 +78,7 @@
     "react": "19.1.0",
     "react-native": "0.81.5",
     "react-native-config": "^1.6.1",
+    "react-native-device-info": "^14.1.1",
     "react-native-fast-image": "^8.6.3",
     "react-native-safe-area-context": "5.6.2",
     "react-native-screens": "4.18.0",

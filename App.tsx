@@ -17,6 +17,7 @@ import {listRecords, saveRecord, deleteRecord, makeId} from './src/lib/storage';
 import HomeScreen from './src/screens/HomeScreen';
 import EditorScreen from './src/screens/EditorScreen';
 import PreviewScreen from './src/screens/PreviewScreen';
+import {AppUpdatePrompt} from './src/components/AppUpdatePrompt';
 
 // Static safe-area insets read once from the native window metrics.
 //
@@ -202,7 +203,11 @@ function App(): React.JSX.Element {
 
   return (
     <SafeAreaInsetsContext.Provider value={INSETS}>
-      <View style={styles.root}>{body}</View>
+      <View style={styles.root}>
+        {body}
+        {/* Root-level so update prompts show on every screen. */}
+        {!loading && <AppUpdatePrompt />}
+      </View>
     </SafeAreaInsetsContext.Provider>
   );
 }

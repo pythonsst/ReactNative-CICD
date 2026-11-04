@@ -9974,12 +9974,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-device-info@npm:10.3.0":
-  version: 10.3.0
-  resolution: "react-native-device-info@npm:10.3.0"
+"react-native-device-info@npm:14.1.1":
+  version: 14.1.1
+  resolution: "react-native-device-info@npm:14.1.1"
   peerDependencies:
     react-native: "*"
-  checksum: 5f2b2f81a33c2dc66a44d404370908b8d7bd560c220920ce68b819bb471d293b657b1eb544b960f4a50006f43251fa6c02607f2aae32790c583b7bf2e4ebae22
+  checksum: bfd5e63fb9b4e4697caa5be289c619ac2988c0eb4f0d5b9025fcaed82596e861812786c37796647e1d9d8b2ac2afaab383c0e091097540161b9a4e334fd673e1
   languageName: node
   linkType: hard
 
@@ -10870,6 +10870,7 @@ __metadata:
     react: 19.1.0
     react-native: 0.81.5
     react-native-config: ^1.6.1
+    react-native-device-info: ^14.1.1
     react-native-fast-image: ^8.6.3
     react-native-safe-area-context: 5.6.2
     react-native-screens: 4.18.0

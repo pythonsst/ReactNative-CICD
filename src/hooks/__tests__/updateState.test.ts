@@ -1,54 +1,65 @@
-import { resolveUpdateState, shouldShowUpdate } from '../updateState';
+import { resolvePrompt } from '../updateState';
 
-describe('resolveUpdateState', () => {
-  it('prioritizes store-update over any OTA signal', () => {
-    // The 13.1 → 15.2 case: a store update outranks a pending/available OTA,
-    // because the behind-binary user cannot receive the new binary's OTA anyway.
+const none = { store: false, ota: false };
+
+describe('resolvePrompt', () => {
+  it('shows nothing when up to date', () => {
     expect(
-      resolveUpdateState({
+      resolvePrompt({
+        storeUpdateAvailable: false,
+        otaReady: false,
+        dismissed: none,
+      }),
+    ).toBeNull();
+  });
+
+  it('shows the store prompt first when both a store build and an OTA are ready', () => {
+    expect(
+      resolvePrompt({
         storeUpdateAvailable: true,
-        isOtaPending: true,
-        isOtaAvailable: true,
+        otaReady: true,
+        dismissed: none,
       }),
-    ).toBe('store-update');
+    ).toBe('store');
   });
 
-  it('returns ota-ready when an OTA is downloaded and pending', () => {
+  it('falls through to the OTA prompt after the store prompt is dismissed', () => {
     expect(
-      resolveUpdateState({
-        storeUpdateAvailable: false,
-        isOtaPending: true,
-        isOtaAvailable: true,
+      resolvePrompt({
+        storeUpdateAvailable: true,
+        otaReady: true,
+        dismissed: { store: true, ota: false },
       }),
-    ).toBe('ota-ready');
+    ).toBe('ota');
   });
 
-  it('returns ota-available when an OTA exists but is not yet downloaded', () => {
+  it('shows the OTA prompt alone when there is no store update', () => {
     expect(
-      resolveUpdateState({
+      resolvePrompt({
         storeUpdateAvailable: false,
-        isOtaPending: false,
-        isOtaAvailable: true,
+        otaReady: true,
+        dismissed: none,
       }),
-    ).toBe('ota-available');
+    ).toBe('ota');
   });
 
-  it('returns up-to-date when nothing is newer', () => {
+  it('shows nothing once every pending prompt is dismissed', () => {
     expect(
-      resolveUpdateState({
-        storeUpdateAvailable: false,
-        isOtaPending: false,
-        isOtaAvailable: false,
+      resolvePrompt({
+        storeUpdateAvailable: true,
+        otaReady: true,
+        dismissed: { store: true, ota: true },
       }),
-    ).toBe('up-to-date');
+    ).toBeNull();
   });
-});
 
-describe('shouldShowUpdate', () => {
-  it('hides the row only when up-to-date', () => {
-    expect(shouldShowUpdate('up-to-date')).toBe(false);
-    expect(shouldShowUpdate('store-update')).toBe(true);
-    expect(shouldShowUpdate('ota-ready')).toBe(true);
-    expect(shouldShowUpdate('ota-available')).toBe(true);
+  it('does not show the store prompt for an OTA-only dismissal', () => {
+    expect(
+      resolvePrompt({
+        storeUpdateAvailable: false,
+        otaReady: true,
+        dismissed: { store: false, ota: true },
+      }),
+    ).toBeNull();
   });
 });
